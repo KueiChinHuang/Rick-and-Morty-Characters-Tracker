@@ -11,7 +11,8 @@ export async function getStaticProps() {
   return {
     props: {
       allCharData
-    }
+    },
+    revalidate: 604800
   }
 }
 
@@ -24,8 +25,11 @@ export default function Home({allCharData}) {
           <div className={styles.card} key={i}>
             <img src={char.image} width="150" height="150" />
             <p className="title">{char.name}</p>
-            <p className="title">{char.location?.name}</p>
-            <p className="title">{char?.status}</p>
+            <p className={utilStyles.listItem}>{char.location?.name}</p>
+            <p>{char?.status}</p>
+            <p>{char.species}</p>
+            <p>{char?.type}</p>
+            <p>{char?.gender}</p>
           </div>
         </a>
       </Link> 
