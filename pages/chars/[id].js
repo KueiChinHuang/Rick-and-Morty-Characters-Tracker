@@ -1,5 +1,7 @@
+import Head from 'next/head'
 import Layout from '../../components/layout'
 // import { getAllCharIds, getCharData } from '../../lib/chars'
+import utilStyles from '../../styles/utils.module.css'
 
 export async function getServerSideProps(context) {
   // console.log(context)
@@ -15,8 +17,8 @@ export async function getServerSideProps(context) {
 
 export default function Post({charData}) {
   return (
+    /*
     <Layout>
-      {console.log(charData)}
  
       {charData.name}
       <br />
@@ -24,5 +26,18 @@ export default function Post({charData}) {
       <br />
       {charData.status}
     </Layout>
+    */
+      <Layout>
+      {console.log(charData)}
+        <Head>
+          <title>{charData.name}</title>
+        </Head>
+        <article>
+          <img src={charData.image}></img>
+          <h1 className={utilStyles.headingXl}>{charData.name}</h1>
+          <div className={utilStyles.lightText}>{charData.location.name}</div>
+          <div>{charData.status}</div>
+        </article>
+      </Layout>
   )
 }
