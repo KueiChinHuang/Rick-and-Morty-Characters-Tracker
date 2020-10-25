@@ -3,24 +3,8 @@ import { useEffect, useState } from 'react'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import styles from '../styles/Home.module.css'
-
-
-export const getAllData = async () => {
-  let chars = []
-  let nextHref = "https://rickandmortyapi.com/api/character"
-
-  while(nextHref !== null) {
-    const charsResp = await fetch(nextHref)
-    const charsData = await charsResp.json()
-
-    if (charsData) {
-      nextHref = charsData.info.next
-      chars = [...chars, ...charsData.results]
-    }
-  }
-
-  return chars
-}
+import { getAllData } from '../lib/chars'
+import Link from 'next/link'
 
 export async function getStaticProps() {
   const allCharData = await getAllData()
@@ -35,10 +19,16 @@ export default function Home({allCharData}) {
   var items = []
   allCharData.map((char, i) => {
     items.push(
-      <div className={styles.card} key={i}>
-        <img src={char.image} width="150" height="150" />
-        <p className="title">{char.name}</p>
-      </div>
+      <Link href="/chars/[id]" as={`/chars/${char.id}`}>
+        <a>
+          <div className={styles.card} key={i}>
+            <img src={char.image} width="150" height="150" />
+            <p className="title">{char.name}</p>
+            <p className="title">{char.location?.name}</p>
+            <p className="title">{char?.status}</p>
+          </div>
+        </a>
+      </Link> 
     );
   });
 
