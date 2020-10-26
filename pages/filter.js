@@ -6,18 +6,7 @@ import styles from '../styles/Home.module.css'
 import { getAllData } from '../lib/chars'
 import Link from 'next/link'
 import Filter from '../components/filter'
-
-/*
-export async function getStaticProps() {
-  const allCharData = await getAllData()
-  return {
-    props: {
-      allCharData
-    },
-    revalidate: 604800
-  }
-}
-*/
+import Home from '../components/home'
 
 export async function getServerSideProps(context) {
   console.log("-------------This is in filter page!---------------")
@@ -31,41 +20,9 @@ export async function getServerSideProps(context) {
   }
 }
 
+export default function HomeFilter({allCharData}) {
 
-export default function Home({allCharData}) {
-  var items = []
-  allCharData.map((char, i) => {
-    items.push(
-      <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-        <a>
-          <div className={styles.card} >
-            <img src={char.image} width="150" height="150" />
-            <p className="title">{char.name}</p>
-            <p className={utilStyles.listItem}>{char.location?.name}</p>
-            <p>{char?.status}</p>
-            <p>{char.species}</p>
-            <p>{char?.type}</p>
-            <p>{char?.gender}</p>
-          </div>
-        </a>
-      </Link> 
-    );
-  });
-
-  // items = items.slice(0,10)
-
-  return (<>
-    <Layout home>
-      <Head>Character Tracker</Head>
-      
-      <section>
-      <div className={styles.siteTitle}>Filter</div>   
-        <Filter />
-        {/* {console.log({allCharData})} */}
-        <div className={styles.grid}>{items}</div>   
-      </section>
-    </Layout>
-
-    </>
+  return (
+    <Home allCharData={allCharData} />
   )
 }

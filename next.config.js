@@ -8,16 +8,3 @@ module.exports = {
       return config
     },
   }
-/*
-  module.exports = {
-    async redirects() {
-      return [
-        {
-          source: '/',
-          destination: '/filter/:slug',
-          permanent: true,
-        },
-      ]
-    },
-  }
-  */

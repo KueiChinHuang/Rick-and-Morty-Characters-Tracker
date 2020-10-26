@@ -10,34 +10,12 @@ const Filter = () => {
           ...prev, 
           [e.target.name]: e.target.value
       }})
-        // queryObj[e.target.name] = e.target.value
-        console.log("query in the form: ", query)
-
-        // for (const [key, value] of Object.entries(queryObj)) {
-        //   setQuery(prev => {
-        //     if (value) {
-        //       `${prev}&${key}=${value}`
-        //     }
-        //   })
-        // }
+      // console.log("query in the form: ", query)
     }
 
-    // const handleSubmit = () => {
-    //     for (const [key, value] of Object.entries(queryObj)) {
-    //         setQuery(prev => {
-    //           if (value) {
-    //             `${prev}&${key}=${value}`
-    //           }
-    //         })
-    //     }
-
-    //     redirects(query)
-    // }
-
     return (
-      <form >
-      <label >
-        {/* <label onSubmit={handleSubmit}> */}
+      <form>
+      <label>
           Name:
           <input name="name" type="text" onChange={handleChange} />
         </label>
