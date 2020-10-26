@@ -10,7 +10,6 @@ const Filter = () => {
           ...prev, 
           [e.target.name]: e.target.value
       }})
-      // console.log("query in the form: ", query)
     }
 
     return (
@@ -35,7 +34,6 @@ const Filter = () => {
           Gender:
           <input name="gender" type="text" onChange={handleChange} />
         </label>
-        {/* <input type="submit" value="Filter" /> */}
         <Link
           href={{
             pathname: '/filter',
@@ -44,6 +42,7 @@ const Filter = () => {
         >
           <a> Filter </a>
         </Link>
+        <Link href="/"><a>Clear</a></Link>
       </form>
     )
 }
