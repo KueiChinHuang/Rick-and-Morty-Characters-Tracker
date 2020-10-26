@@ -20,8 +20,8 @@ export async function getStaticProps() {
 */
 
 export async function getServerSideProps(context) {
-//   console.log("-------------This is in filter page!---------------")
-//   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
+  console.log("-------------This is in filter page!---------------")
+  console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
   const query = context.resolvedUrl
   const allCharData = await getAllData(query)
   return {
@@ -61,7 +61,7 @@ export default function Home({allCharData}) {
       <section>
       <div className={styles.siteTitle}>Filter</div>   
         <Filter />
-        {console.log({allCharData})}
+        {/* {console.log({allCharData})} */}
         <div className={styles.grid}>{items}</div>   
       </section>
     </Layout>

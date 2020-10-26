@@ -2,11 +2,16 @@ import Link from "next/link";
 import { useState } from "react";
 
 const Filter = () => {
-    const queryObj = {}
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState({})
 
     const handleChange = (e) => {
-        queryObj[e.target.name] = e.target.value
+      setQuery(prev => {
+        return {
+          ...prev, 
+          [e.target.name]: e.target.value
+      }})
+        // queryObj[e.target.name] = e.target.value
+        console.log("query in the form: ", query)
 
         // for (const [key, value] of Object.entries(queryObj)) {
         //   setQuery(prev => {
@@ -56,7 +61,7 @@ const Filter = () => {
         <Link
           href={{
             pathname: '/filter',
-            query: { name: 'rick' },
+            query: query,
           }}
         >
           <a> Filter </a>

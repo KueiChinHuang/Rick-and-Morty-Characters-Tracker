@@ -60,7 +60,7 @@ export default function Home({allCharData}) {
       
       <section>
         <Filter />
-        {console.log({allCharData})}
+        {/* {console.log({allCharData})} */}
         <div className={styles.grid}>{items}</div>   
       </section>
     </Layout>
