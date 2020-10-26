@@ -3,6 +3,7 @@ import Layout from '../../components/layout'
 // import { getAllData } from '../../lib/chars'
 import { getAllData, getCharData } from '../../lib/chars'
 import utilStyles from '../../styles/utils.module.css'
+
 /*
 export async function getServerSideProps(context) {
   // console.log(context)
@@ -18,7 +19,7 @@ export async function getServerSideProps(context) {
 */
 
 export async function getStaticPaths() {
-  const allData = await getAllData()
+  const allData = await getAllData('')
   const paths = allData.map((c) => ({
     params: { id: c.id.toString() }
   }))
@@ -44,7 +45,7 @@ export async function getStaticProps({ params }) {
 export default function Post({charData}) {
   return (
       <Layout>
-      {console.log(charData)}
+      {/* {console.log(charData)} */}
         <Head>
           <title>{charData.name}</title>
         </Head>
