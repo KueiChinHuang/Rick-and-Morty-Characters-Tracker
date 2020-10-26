@@ -13,8 +13,8 @@ module.exports = {
     async redirects() {
       return [
         {
-          source: '/sth',
-          destination: '/',
+          source: '/',
+          destination: '/filter/:slug',
           permanent: true,
         },
       ]

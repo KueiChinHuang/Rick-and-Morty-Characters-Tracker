@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 const Filter = () => {
@@ -6,21 +7,34 @@ const Filter = () => {
 
     const handleChange = (e) => {
         queryObj[e.target.name] = e.target.value
+
+        // for (const [key, value] of Object.entries(queryObj)) {
+        //   setQuery(prev => {
+        //     if (value) {
+        //       `${prev}&${key}=${value}`
+        //     }
+        //   })
+        // }
     }
 
-    const handleSubmit = () => {
-        for (const [key, value] of Object.entries(queryObj)) {
-            setQuery(prev => `${prev}&${key}=${value}`)
-        }
+    // const handleSubmit = () => {
+    //     for (const [key, value] of Object.entries(queryObj)) {
+    //         setQuery(prev => {
+    //           if (value) {
+    //             `${prev}&${key}=${value}`
+    //           }
+    //         })
+    //     }
 
-        redirects(query)
-    }
+    //     redirects(query)
+    // }
 
     return (
       <form >
-        <label onSubmit={handleSubmit}>
+      <label >
+        {/* <label onSubmit={handleSubmit}> */}
           Name:
-          <input name="name" type="text" value={queryObj?.name || null} onChange={handleChange} />
+          <input name="name" type="text" onChange={handleChange} />
         </label>
         <label>
           Status:
@@ -38,7 +52,15 @@ const Filter = () => {
           Gender:
           <input name="gender" type="text" onChange={handleChange} />
         </label>
-        <input type="submit" value="Filter" />
+        {/* <input type="submit" value="Filter" /> */}
+        <Link
+          href={{
+            pathname: '/filter',
+            query: { name: 'rick' },
+          }}
+        >
+          <a> Filter </a>
+        </Link>
       </form>
     )
 }

@@ -7,10 +7,9 @@ import { getAllData } from '../lib/chars'
 import Link from 'next/link'
 import Filter from '../components/filter'
 
-
+/*
 export async function getStaticProps() {
-  // console.log("-------------This is in index page!---------------")
-  const allCharData = await getAllData('')
+  const allCharData = await getAllData()
   return {
     props: {
       allCharData
@@ -18,10 +17,11 @@ export async function getStaticProps() {
     revalidate: 604800
   }
 }
+*/
 
-/*
 export async function getServerSideProps(context) {
-  // console.log(context.resolvedUrl)
+//   console.log("-------------This is in filter page!---------------")
+//   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
   const query = context.resolvedUrl
   const allCharData = await getAllData(query)
   return {
@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
     }
   }
 }
-*/
+
 
 export default function Home({allCharData}) {
   var items = []
@@ -59,6 +59,7 @@ export default function Home({allCharData}) {
       <Head>Character Tracker</Head>
       
       <section>
+      <div className={styles.siteTitle}>Filter</div>   
         <Filter />
         {console.log({allCharData})}
         <div className={styles.grid}>{items}</div>   
