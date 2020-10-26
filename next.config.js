@@ -8,7 +8,7 @@ module.exports = {
       return config
     },
   }
-
+/*
   module.exports = {
     async redirects() {
       return [
@@ -20,3 +20,4 @@ module.exports = {
       ]
     },
   }
+  */
