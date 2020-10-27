@@ -1,20 +1,23 @@
-import { getAllData } from '../lib/chars'
-import Home from '../components/home'
+import { getAllData } from "../lib/chars";
+import Home from "../components/home";
+import Header from "../components/header";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")
-  const allCharData = await getAllData('')
+  const allCharData = await getAllData("");
   return {
     props: {
-      allCharData
+      allCharData,
     },
-    revalidate: 604800
-  }
+    revalidate: 604800,
+  };
 }
 
-export default function HomeIndex({allCharData}) {
-  
+export default function HomeIndex({ allCharData }) {
   return (
-    <Home allCharData={allCharData} />
-  )
+    <div>
+      <Header />
+      <Home allCharData={allCharData} />
+    </div>
+  );
 }
