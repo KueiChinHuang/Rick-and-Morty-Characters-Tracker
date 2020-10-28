@@ -1,28 +1,67 @@
-import { useState, useContext } from 'react';
-import UserContext from './userContext';
+import Axios from "axios";
+import { useState, useContext, useEffect } from "react";
+import UserContext from "./userContext";
+
+const getUsers = async () => {
+  const res = await Axios.get("/api/user");
+  return res.data.data;
+};
+
+const createUser = async (username, password) => {
+  const res = await Axios.post("/api/user", { username, password });
+  return res.data.data._id;
+};
 
 const Form = () => {
   const { signIn } = useContext(UserContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [uid, setUid] = useState("");
+  const [message, setMessage] = useState("");
 
-  const authenticate = e => {
+  useEffect(() => {
+    if (uid !== "") signIn(username, password, uid);
+  }, [uid]);
+
+  const handleOnClick = async (e) => {
     e.preventDefault();
-    if (username != '' || password != '') {
 
-      signIn(username, password);
+    if (username == "" || password == "") {
+      setMessage("Please enter your username and password");
     } else {
-      setMessage('Please enter your username and password');
+      let oldUser = false;
+
+      const users = await getUsers();
+      users.forEach((user) => {
+        if (user.username == username && user.password == password) {
+          setUid(user._id);
+          oldUser = true;
+        }
+      });
+
+      if (oldUser === false) {
+        const newUid = await createUser(username, password);
+        setUid(newUid);
+      }
     }
   };
 
   return (
     <form className="sign-in">
-      <input type="text" name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
-      <input type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
-      {message != '' && <div className="message">{message}</div>}
-      <button className="btn" onClick={e => authenticate(e)}>
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {message != "" && <div className="message">{message}</div>}
+      <button className="btn" onClick={(e) => handleOnClick(e)}>
         Sign In
       </button>
 
@@ -34,7 +73,8 @@ const Form = () => {
           background: #fff;
           padding: 40px;
           margin: 0 auto;
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08), 0 3px 3px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08),
+            0 3px 3px 0 rgba(0, 0, 0, 0.12);
         }
         input {
           font-size: 18px;
