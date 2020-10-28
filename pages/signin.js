@@ -1,12 +1,12 @@
-import Layout from '../components/Layout';
-import Form from '../components/Form';
+import SignInLayout from '../components/signInLayout';
+import Form from '../components/form';
 
 const SignIn = () => {
   return (
-    <Layout title="Sign In">
+    <SignInLayout title="Sign In">
       <h1>Sign In</h1>
       <Form />
-    </Layout>
+    </SignInLayout>
   );
 };
 

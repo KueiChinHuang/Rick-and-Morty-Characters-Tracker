@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const Layout = props => {
+const SignInLayout = props => {
   return (
     <div className="content-wrapper">
       <Head>
@@ -86,4 +86,4 @@ const Layout = props => {
   );
 };
 
-export default Layout;
+export default SignInLayout;
