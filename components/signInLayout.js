@@ -3,10 +3,10 @@ import Head from 'next/head';
 const SignInLayout = props => {
   return (
     <div className="content-wrapper">
-      <Head>
+      {/* <Head>
         <title>{props.title ? `${props.title} | Cool App` : 'Cool App'}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      </Head>
+      </Head> */}
 
       <div className="main-content">{props.children}</div>
 

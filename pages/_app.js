@@ -1,7 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Router from 'next/router';
-import UserContext from '../components/UserContext';
+import UserContext from '../components/userContext';
 
 export default class MyApp extends App {
   state = {
