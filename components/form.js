@@ -10,7 +10,8 @@ const Form = () => {
   const authenticate = e => {
     e.preventDefault();
     if (username != '' || password != '') {
-      signIn(username);
+
+      signIn(username, password);
     } else {
       setMessage('Please enter your username and password');
     }

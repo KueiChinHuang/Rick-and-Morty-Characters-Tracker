@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import UserContext from './userContext';
 
 const UserInfo = () => {
-  const { user, signOut } = useContext(UserContext);
+  const { user, password, signOut } = useContext(UserContext);
 
   if (!user) {
     return false;
@@ -12,6 +12,7 @@ const UserInfo = () => {
     <div className="user-info">
       <p>
         Hello, <strong>{user}</strong>
+        <p>Your password: {password}</p>
       </p>
       <p>Welcome to our app</p>
       <button className="btn" onClick={signOut}>

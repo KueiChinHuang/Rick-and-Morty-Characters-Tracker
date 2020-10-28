@@ -5,26 +5,31 @@ import UserContext from '../components/userContext';
 
 export default class MyApp extends App {
   state = {
-    user: null
+    user: null, 
+    password: null
   };
 
   componentDidMount = () => {
     const user = localStorage.getItem('coolapp-user');
+    const password = localStorage.getItem('coolapp-password');
     if (user) {
       this.setState({
-        user
+        user,
+        password
       });
     } else {
       Router.push('/signin');
     }
   };
 
-  signIn = (username) => {
+  signIn = (username, password) => {
     localStorage.setItem('coolapp-user', username);
+    localStorage.setItem('coolapp-password', password);
 
     this.setState(
       {
-        user: username
+        user: username,
+        password: password
       },
       () => {
         Router.push('/');
@@ -34,8 +39,10 @@ export default class MyApp extends App {
 
   signOut = () => {
     localStorage.removeItem('coolapp-user');
+    localStorage.removeItem('coolapp-password');
     this.setState({
-      user: null
+      user: null,
+      password: null
     });
     Router.push('/signin');
   };
@@ -44,7 +51,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <UserContext.Provider value={{ user: this.state.user, signIn: this.signIn, signOut: this.signOut }}>
+      <UserContext.Provider value={{ user: this.state.user, password: this.state.password, signIn: this.signIn, signOut: this.signOut }}>
         <Component {...pageProps} />
       </UserContext.Provider>
     );
