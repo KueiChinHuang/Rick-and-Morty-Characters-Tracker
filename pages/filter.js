@@ -1,5 +1,7 @@
 import { getAllData } from '../lib/chars'
 import Home from '../components/home'
+import { useContext } from 'react'
+import UserContext from '../components/userContext'
 
 export async function getServerSideProps(context) {
 //   console.log("-------------This is in filter page!---------------")
@@ -14,6 +16,11 @@ export async function getServerSideProps(context) {
 }
 
 export default function HomeFilter({allCharData}) {
+  const { user, signOut } = useContext(UserContext);
+
+  if (!user) {
+    return false;
+  }
 
   return (
     <Home allCharData={allCharData} />

@@ -4,8 +4,17 @@ import utilStyles from '../styles/utils.module.css'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Filter from '../components/filter'
+import { useContext } from 'react'
+import UserContext from './userContext';
 
 export default function Home({allCharData}) {
+  const { user, signOut } = useContext(UserContext);
+
+  if (!user) {
+    return false;
+  }
+
+  
   var items = []
   allCharData.map((char, i) => {
     items.push(
