@@ -1,5 +1,5 @@
-import dbConnect from "../../util/dbConnect"
-import Note from '../../models/Note'
+import dbConnect from "../../../util/dbConnect"
+import Note from '../../../models/Note'
 
 dbConnect();
 
