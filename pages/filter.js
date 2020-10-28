@@ -36,11 +36,13 @@ export async function getServerSideProps({ req, res, resolvedUrl }) {
       props: {
         user,
         allCharData,
+        // accessToken,
       },
     };
   }
 }
 
 export default function HomeFilter({ user, allCharData }) {
+  // console.log("accessToken: ", accessToken);
   return <Home allCharData={allCharData} />;
 }

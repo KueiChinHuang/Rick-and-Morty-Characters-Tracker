@@ -1,6 +1,5 @@
 import { getAllData } from "../lib/chars";
 import Home from "../components/home";
-import Header from "../components/header";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")
@@ -16,7 +15,6 @@ export async function getStaticProps() {
 export default function HomeIndex({ allCharData }) {
   return (
     <div>
-      <Header />
       <Home allCharData={allCharData} />
     </div>
   );

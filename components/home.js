@@ -1,17 +1,17 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import Filter from '../components/filter'
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import Filter from "../components/filter";
 
-export default function Home({allCharData}) {
-  var items = []
+export default function Home({ allCharData }) {
+  var items = [];
   allCharData.map((char, i) => {
     items.push(
       <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
         <a>
-          <div className={styles.card} >
+          <div className={styles.card}>
             <img src={char.image} width="150" height="150" />
             <p className="title">{char.name}</p>
             <p className={utilStyles.listItem}>{char.location?.name}</p>
@@ -21,20 +21,20 @@ export default function Home({allCharData}) {
             <p>{char?.gender}</p>
           </div>
         </a>
-      </Link> 
+      </Link>
     );
   });
-  
-  return (<>
-    <Layout home>
-      <Head>Character Tracker</Head>
-      
-      <section>
-        <Filter />
-        <div className={styles.grid}>{items}</div>   
-      </section>
-    </Layout>
 
+  return (
+    <>
+      <Layout home>
+        <Head>Character Tracker</Head>
+
+        <section>
+          <Filter />
+          <div className={styles.grid}>{items}</div>
+        </section>
+      </Layout>
     </>
-  )
+  );
 }
