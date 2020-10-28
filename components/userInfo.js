@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import UserContext from './userContext';
 
 const UserInfo = () => {
-  const { user, password, uid, signOut } = useContext(UserContext);
+  const { user, uid, signOut } = useContext(UserContext);
 
   if (!user) {
     return false;

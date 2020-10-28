@@ -20,7 +20,7 @@ const Form = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (uid !== "") signIn(username, password, uid);
+    if (uid !== "") signIn(username, uid);
   }, [uid]);
 
   const handleOnClick = async (e) => {
