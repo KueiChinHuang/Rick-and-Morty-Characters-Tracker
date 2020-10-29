@@ -59,7 +59,7 @@ export default function HomeFilter({}) {
       {partCharData ? (
         <Home allCharData={partCharData} uid={uid} />
       ) : (
-        <div>No Data</div>
+        <div>Loading...</div>
       )}
     </>
   );

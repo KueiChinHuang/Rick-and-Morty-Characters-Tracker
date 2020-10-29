@@ -7,6 +7,7 @@ import Filter from "../components/filter";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
+import useSWR from "swr";
 
 export default function Home({ allCharData, uid }) {
   // const { uid } = useContext(UserContext);
@@ -19,18 +20,18 @@ export default function Home({ allCharData, uid }) {
 
   useEffect(() => {
     const getFavorites = async () => {
-      console.log("uid:", uid);
       if (uid) {
         const res = await Axios.get(`/api/user/${uid}`);
-        // console.log("res.data.data.favorite:", res.data.data.favorite);
         const favorites = res.data.data.favorite;
-        // console.log("favorites:", favorites);
         setFavorites(favorites);
-        console.log("favorites:", favorites);
       }
     };
     getFavorites();
   }, []);
+
+  const { fdata } = useSWR(`/api/user/${uid}`, (url) =>
+    Axios(url).then((r) => r.data.data.favorite)
+  );
 
   const handleFavorite = async (charId, isFavorite) => {
     if (isFavorite) {
