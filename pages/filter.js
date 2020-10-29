@@ -1,6 +1,6 @@
 import { getPartData } from "../lib/chars";
 import Home from "../components/home";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
@@ -8,8 +8,8 @@ import Axios from "axios";
 export async function getServerSideProps(context) {
   //   console.log("-------------This is in filter page!---------------")
   //   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
-  const query = context.resolvedUrl;
-  const allCharData = await getAllData(query);
+  const query = context.query;
+  const allCharData = await getPartData(query);
   return {
     props: {
       allCharData,
@@ -28,15 +28,14 @@ const getAllChar = async (query) => {
   }
 };
 */
+// export default function HomeFilter({}) {
 export default function HomeFilter({}) {
-  // export default function HomeFilter({ allCharData }) {
+  const [partCharData, setPartCharData] = useState();
 
   const { user, uid } = useContext(UserContext);
   const router = useRouter();
   // console.log("router:", router);
   console.log("router.query: ", router.query);
-
-  let allCharData = {};
 
   useEffect(() => {
     if (!user) {
@@ -44,15 +43,24 @@ export default function HomeFilter({}) {
     }
 
     const getData = async () => {
-      allCharData = await getPartData(router.query);
-      console.log("allCharData:", allCharData);
+      const data = await getPartData(router.query);
+      console.log("data:", data);
+      setPartCharData(data);
     };
-    console.log("in use effect, allCharData:", allCharData);
 
+    console.log("in use effect, partCharData:", partCharData);
     getData();
-  }, [user]);
+  }, []);
 
-  // const allCharData = getAllChar(router.query);
-
-  return <>filter page{/* <Home allCharData={allCharData} uid={uid} /> */}</>;
+  return (
+    <>
+      <p>filter page</p>
+      {console.log("should load the data:", partCharData)}
+      {partCharData ? (
+        <Home allCharData={partCharData} uid={uid} />
+      ) : (
+        <div>No Data</div>
+      )}
+    </>
+  );
 }

@@ -32,7 +32,7 @@ export default class MyApp extends App {
         uid: uid,
       },
       () => {
-        Router.push("/");
+        Router.push("/filter");
       }
     );
   };
