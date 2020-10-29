@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^0.16.0",
     "axios": "^0.21.0",
     "date-fns": "^2.16.1",
     "mongodb": "^3.6.2",
