@@ -5,7 +5,7 @@ import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
 
 
-/*
+
 export async function getServerSideProps(context) {
   //   console.log("-------------This is in filter page!---------------")
   //   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
     },
   };
 }
-*/
+
 
 /*
 const getAllChar = async (query) => {
