@@ -4,29 +4,60 @@ import utilStyles from "../styles/utils.module.css";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Filter from "../components/filter";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
 
-const getFavorite = async (uid) => {
-  const res = await Axios.get("/api/user", { uid });
-  const favorite = res.data.favorite;
-  return favorite;
-};
-
 export default function Home({ allCharData }) {
   const { uid } = useContext(UserContext);
-  let favorites = null;
-  if (uid) {
-    favorites = getFavorite(uid);
-    console.log("favorite:", favorites);
-  }
+  const [favorites, setFavorites] = useState();
+  // let favorites = null;
+  // if (uid) {
+  //   favorites = getFavorites(uid);
+  //   console.log("favorites:", favorites);
+  // }
+
+  useEffect(() => {
+    const getFavorites = async () => {
+      console.log("uid:", uid);
+      if (uid) {
+        const res = await Axios.get(`/api/user/${uid}`);
+        // console.log("res.data.data.favorite:", res.data.data.favorite);
+        const favorites = res.data.data.favorite;
+        // console.log("favorites:", favorites);
+        setFavorites(favorites);
+        console.log("favorites:", favorites);
+      }
+    };
+    getFavorites();
+  }, []);
+
+  const handleFavorite = async (charId, isFavorite) => {
+    if (isFavorite) {
+      // remove from mongoDB
+      // update user.favorite array
+      // PUT /api/user
+      for (let i = favorites.length - 1; i >= 0; i--) {
+        if (favorites[i] == charId) {
+          favorites.splice(i, 1);
+        }
+      }
+      const res = await Axios.put("/api/user", {
+        favorite: favorites,
+      });
+      console.log("res from PUT: ", res);
+    }
+  };
 
   var items = [];
   allCharData.map((char, i) => {
+    let isFavorite = false;
+    if (favorites && favorites.includes(char.id.toString())) isFavorite = true;
     items.push(
       <div className={styles.card}>
-        <div>Is favorite: {}</div>
+        <button onClick={() => handleFavorite(char.id, isFavorite)}>
+          {isFavorite ? "FAVORITE!" : "Add?"}
+        </button>
 
         <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
           <a>
