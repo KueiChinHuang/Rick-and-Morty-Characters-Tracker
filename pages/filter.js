@@ -1,48 +1,46 @@
 import { getAllData } from "../lib/chars";
 import Home from "../components/home";
-import auth0 from "../utils/auth0";
+import { useContext, useEffect } from "react";
+import UserContext from "../components/userContext";
+import { useRouter } from "next/router";
+
 
 /*
 export async function getServerSideProps(context) {
-//   console.log("-------------This is in filter page!---------------")
-//   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
-  const query = context.resolvedUrl
-  const allCharData = await getAllData(query)
+  //   console.log("-------------This is in filter page!---------------")
+  //   console.log(" context.resolvedUrl in filter page!: ", context.resolvedUrl)
+  const query = context.resolvedUrl;
+  const allCharData = await getAllData(query);
   return {
     props: {
-      allCharData
-    }
-  }
+      allCharData,
+    },
+  };
 }
 */
 
-export async function getServerSideProps({ req, res, resolvedUrl }) {
-  if (typeof window === "undefined") {
-    const session = await auth0.getSession(req);
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: "/api/login",
-      });
-      res.end();
-      return;
+/*
+const getAllChar = async (query) => {
+  const res = await Axios.get("/api/characters", query);
+  console.log("res:", res);
+  return res.data;
+};
+*/
+// export default function HomeFilter({}) {
+
+export default function HomeFilter({ allCharData }) {
+  const { user, signOut } = useContext(UserContext);
+  const router = useRouter();
+  // console.log("router:", router);
+  // console.log("router.query: ", router.query);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
     }
-    const user = session.user;
-    console.log(session);
+  }, [user]);
 
-    const query = resolvedUrl;
-    const allCharData = await getAllData(query);
+  // const allCharData = getAllChar(router.query);
 
-    return {
-      props: {
-        user,
-        allCharData,
-        // accessToken,
-      },
-    };
-  }
-}
-
-export default function HomeFilter({ user, allCharData }) {
-  // console.log("accessToken: ", accessToken);
   return <Home allCharData={allCharData} />;
 }

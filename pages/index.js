@@ -1,5 +1,7 @@
 import { getAllData } from "../lib/chars";
 import Home from "../components/home";
+import { useContext } from "react";
+import UserContext from "../components/userContext";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")

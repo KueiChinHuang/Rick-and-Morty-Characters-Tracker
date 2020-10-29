@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-import Login from "./login";
+import Navbar from "../components/Navbar";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        <Login />
+        <Navbar />
         {home ? (
           <>
             <img
