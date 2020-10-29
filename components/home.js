@@ -9,15 +9,16 @@ import UserContext from "./userContext";
 import Axios from "axios";
 import useSWR from "swr";
 
-export default function Home({ allCharData, uid }) {
-  // const { uid } = useContext(UserContext);
+export default function Home({ allCharData }) {
+  const { uid } = useContext(UserContext);
   const [favorites, setFavorites] = useState();
   // let favorites = null;
   // if (uid) {
   //   favorites = getFavorites(uid);
   //   console.log("favorites:", favorites);
   // }
-
+  
+  /*
   useEffect(() => {
     const getFavorites = async () => {
       if (uid) {
@@ -28,9 +29,11 @@ export default function Home({ allCharData, uid }) {
     };
     getFavorites();
   }, []);
+*/
 
-  const { fdata } = useSWR(`/api/user/${uid}`, (url) =>
-    Axios(url).then((r) => r.data.data.favorite)
+
+  const { data } = useSWR(`/api/user/${uid}`, (url) =>
+    Axios(url).then((r) => r.data.data)
   );
 
   const handleFavorite = async (charId, isFavorite) => {
@@ -53,7 +56,7 @@ export default function Home({ allCharData, uid }) {
   var items = [];
   allCharData.map((char, i) => {
     let isFavorite = false;
-    if (favorites && favorites.includes(char.id.toString())) isFavorite = true;
+    if (data && data.favorite.includes(char.id.toString())) isFavorite = true;
     items.push(
       <div className={styles.card}>
         <button onClick={() => handleFavorite(char.id, isFavorite)}>

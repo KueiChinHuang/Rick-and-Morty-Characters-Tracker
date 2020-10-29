@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
+import useSWR from "swr";
+
 /*
 export async function getServerSideProps(context) {
   //   console.log("-------------This is in filter page!---------------")
@@ -34,33 +36,31 @@ export default function HomeFilter({}) {
 
   const { user, uid } = useContext(UserContext);
   const router = useRouter();
-  // console.log("router:", router);
-  console.log("router.query: ", router.query);
 
   useEffect(() => {
     if (!user) {
       router.push("/");
     }
-
-    const getData = async () => {
-      const data = await getPartData(router.query);
-      console.log("data:", data);
-      setPartCharData(data);
-    };
-
-    console.log("in use effect, partCharData:", partCharData);
-    getData();
   }, []);
+
+  const { data } = useSWR(
+    `https://rickandmortyapi.com/api/character/${router.asPath.slice(7)}`,
+    async (nextUrl) => {
+      let characters = [];
+
+      while (nextUrl !== null) {
+        const charsResp = await Axios(nextUrl).then((r) => r.data);
+        nextUrl = charsResp.info?.next || null;
+        characters = [...characters, ...charsResp.results];
+      }
+      return characters;
+    }
+  );
 
   return (
     <>
       <p>filter page</p>
-      {console.log("should load the data:", partCharData)}
-      {partCharData ? (
-        <Home allCharData={partCharData} uid={uid} />
-      ) : (
-        <div>Loading...</div>
-      )}
+      {data ? <Home allCharData={data} /> : <div>Loading...</div>}
     </>
   );
 }
