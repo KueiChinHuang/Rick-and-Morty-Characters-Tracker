@@ -8,8 +8,8 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
 
-export default function Home({ allCharData }) {
-  const { uid } = useContext(UserContext);
+export default function Home({ allCharData, uid }) {
+  // const { uid } = useContext(UserContext);
   const [favorites, setFavorites] = useState();
   // let favorites = null;
   // if (uid) {
