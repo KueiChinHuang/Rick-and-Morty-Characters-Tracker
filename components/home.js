@@ -4,37 +4,50 @@ import utilStyles from "../styles/utils.module.css";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Filter from "../components/filter";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
 import useSWR from "swr";
 
 export default function Home({ allCharData }) {
   const { uid } = useContext(UserContext);
-  const [favorites, setFavorites] = useState();
+  const [favorites, setFavorites] = useState([]);
 
   const { data } = useSWR(`/api/user/${uid}`, (url) =>
     Axios(url).then((r) => r.data.data)
   );
 
+  useEffect(() => {
+    if (data) {
+      setFavorites(data.favorite);
+      console.log("favorites in use effect:", favorites);
+    }
+    return () => {
+      // cleanup;
+    };
+  }, [favorites, data]);
+
   const handleFavorite = async (charId, isFavorite) => {
     if (isFavorite) {
       for (let i = favorites.length - 1; i >= 0; i--) {
         if (favorites[i] == charId) {
-          favorites.splice(i, 1);
+          setFavorites((prev) => prev.splice(i, 1));
         }
       }
-      const res = await Axios.put("/api/user", {
-        favorite: favorites,
-      });
-      console.log("res from PUT: ", res);
+      await Axios.put(`/api/user/${uid}`, { favorite: favorites })
+        .then((res) => console.log("res from PUT : ", res))
+        .catch((error) => console.log("error for using axios put:", error));
+    } else {
+      setFavorites((prev) => prev.push(charId));
+      await Axios.put(`/api/user/${uid}`, { favorite: favorites })
+        .then((res) => console.log("res from PUT : ", res))
+        .catch((error) => console.log("error for using axios put:", error));
     }
   };
 
   var items = [];
   allCharData.map((char, i) => {
-    let isFavorite = false;
-    if (data && data.favorite.includes(char.id.toString())) isFavorite = true;
+    let isFavorite = favorites.includes(char.id) ? true : false;
     items.push(
       <div className={styles.card}>
         <button onClick={() => handleFavorite(char.id, isFavorite)}>
@@ -62,6 +75,7 @@ export default function Home({ allCharData }) {
         <Head>Character Tracker</Head>
 
         <section>
+          {console.log("favorites in render:", favorites)}
           <Filter />
           <div className={styles.grid}>{items}</div>
         </section>
