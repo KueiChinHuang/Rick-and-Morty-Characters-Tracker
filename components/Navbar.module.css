@@ -1,0 +1,14 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid lightblue;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px;
+}

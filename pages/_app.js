@@ -18,7 +18,7 @@ export default class MyApp extends App {
         uid,
       });
     } else {
-      Router.push("/signin");
+      Router.push("/");
     }
   };
 
@@ -32,7 +32,7 @@ export default class MyApp extends App {
         uid: uid,
       },
       () => {
-        Router.push("/");
+        Router.push("/filter");
       }
     );
   };
@@ -44,7 +44,7 @@ export default class MyApp extends App {
       user: null,
       uid: null,
     });
-    Router.push("/signin");
+    Router.push("/");
   };
 
   render() {

@@ -10,9 +10,6 @@ import UserContext from './userContext';
 export default function Home({allCharData}) {
   const { user, signOut } = useContext(UserContext);
 
-  if (!user) {
-    return false;
-  }
 
   
   var items = []

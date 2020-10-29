@@ -1,10 +1,11 @@
-import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Head from "next/head";
+import styles from "./layout.module.css";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import Navbar from "../components/Navbar";
 
-const name = 'Rick and Morty Character Tracker'
-export const siteTitle = 'Created by Kuei-Chin Huang'
+const name = "Rick and Morty Character Tracker";
+export const siteTitle = "Created by Kuei-Chin Huang";
 
 export default function Layout({ children, home }) {
   return (
@@ -25,6 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+        <Navbar />
         {home ? (
           <>
             <img
@@ -62,5 +64,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }
