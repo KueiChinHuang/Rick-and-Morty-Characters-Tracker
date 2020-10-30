@@ -38,20 +38,25 @@ export default function Home({ allCharData }) {
       <div className={styles.card}>
         <img className={styles.img} src={char.image} width="150" height="150" />
         <div className={styles.content}>
-          <div
-            className={styles.favorite}
-            onClick={() => handleFavorite(char.id)}
-          >
-            {typeof favorites !== "undefined" && favorites.includes(char.id) ? (
-              <div title="Remove from favorite">
-                <StarIcon color="primary" fontSize="large" />
-              </div>
-            ) : (
-              <div title="Add to favorite">
-                <StarBorderIcon color="disabled" fontSize="large" />
-              </div>
-            )}
-          </div>
+          {!uid ? (
+            <></>
+          ) : (
+            <div
+              className={styles.favorite}
+              onClick={() => handleFavorite(char.id)}
+            >
+              {typeof favorites !== "undefined" &&
+              favorites.includes(char.id) ? (
+                <div title="Remove from favorite">
+                  <StarIcon color="primary" fontSize="large" />
+                </div>
+              ) : (
+                <div title="Add to favorite">
+                  <StarBorderIcon color="disabled" fontSize="large" />
+                </div>
+              )}
+            </div>
+          )}
           <div className={styles.title}>
             {!uid ? (
               <h3>{char.name}</h3>
