@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import App from "next/app";
 import Router from "next/router";
-import UserContext from "../components/userContext";
+import UserContext from "../components/UserContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

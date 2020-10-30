@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UserContext from "./userContext";
+import UserContext from "./UserContext";
 import styles from "../styles/navbar.module.css";
 import Link from "next/link";
 
