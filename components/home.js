@@ -1,6 +1,5 @@
 import styles from "../styles/home.module.css";
 import Link from "next/link";
-import Filter from "./Filter";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./UserContext";
 import Axios from "axios";
@@ -92,7 +91,6 @@ export default function Home({ allCharData }) {
 
   return (
     <section>
-      <Filter />
       <div className={styles.grid}>{items}</div>
     </section>
   );

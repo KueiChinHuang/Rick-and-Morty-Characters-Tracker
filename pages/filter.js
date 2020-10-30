@@ -5,6 +5,7 @@ import UserContext from "../components/UserContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";
+import Filter from "../components/Filter";
 
 export default function HomeFilter({}) {
   const { uid } = useContext(UserContext);
@@ -33,6 +34,7 @@ export default function HomeFilter({}) {
   return (
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
+      <Filter />
       {data ? <Home allCharData={data} /> : <div>Loading...</div>}
     </Layout>
   );
