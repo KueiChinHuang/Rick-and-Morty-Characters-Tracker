@@ -1,4 +1,4 @@
-import Home from "../components/home";
+import Home from "../components/Home";
 import Layout from "../components/Layout";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../components/userContext";
