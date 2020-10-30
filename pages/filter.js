@@ -1,5 +1,5 @@
 import Home from "../components/home";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
