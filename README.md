@@ -1,15 +1,8 @@
 > This project is a part of my interview process as well as my #100DaysOfCode progress. I'm opened to any advice and suggestion!
 
-**Day 3 of #100DaysOfCode**
+LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
 
-**Personal Project: IKEA Clone using React.js + context API. (Day 7 of this project)**
-
-- Orders Review
-  - Review all orders in the past
-  - Review a specific order (pop-up modal)
-- Live App --\&gt; [https://ikea-clone-8d049.web.app/](https://ikea-clone-8d049.web.app/)
-
-**Day 4 of #100DaysOfCode**
+# Day 4 of #100DaysOfCode
 
 **Next.js + Docker**
 
@@ -37,14 +30,13 @@
 - Getting start w/ Next.JS + Docker (09 May 2019) [https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker](https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker)
 - How to Get Started with Docker (Aug 14, 2020) [How to Get Started with Docker](https://youtu.be/iqqDU2crIEQ)
 
-**Day 5 of #100DaysOfCode**
+# Day 5 of #100DaysOfCode
 
-**Next.js + Docker**
+**Next.js & SSR**
 
 1. Practice Server-side Rendering (SSR) in Next.js for SEO purpose
-2. Deploy to Vercel. LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
-3. Filter
-4. Next.js + MongoDB
+2. Filter
+3. Next.js + MongoDB
 
 **Learning Resources**
 
@@ -56,50 +48,41 @@
 
 #reactjs #nextjs #SSR #SSG #SEO #API @vercel
 
-**Day 6 of #100DaysOfCode**
+# Day 6 of #100DaysOfCode
 
-**Profilt with JavaScript**
-
-1. Module 10 - Twitter Clone - Lesson 2 (Watching without coding)
-
-**Next.js Project: Rick and Morty Character Tracker**
+**Fixing timeout issue**
 
 1. **Issue from yesterday** : Home page would time out due to huge data amount
 
-1. **Goal &amp; Limitation** : Implementing SSR is one of the main resaon of using Next.js, but &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot; can&#39;t work together in the same page.
-1. **Possible Solutions** :
+2. **Goal &amp; Limitation** : Implementing SSR is one of the main resaon of using Next.js, but &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot; can&#39;t work together in the same page.
+3. **Possible Solutions** :
 
-1. Implement react package: Infinite Scroll [https://www.npmjs.com/package/infinite-scroll](https://www.npmjs.com/package/infinite-scroll)
+- Implement react package: Infinite Scroll [https://www.npmjs.com/package/infinite-scroll](https://www.npmjs.com/package/infinite-scroll)
 
-1. pros: clean and fast
-1. cons: I failed to integrate this package with Next.js SSR solution
-1. Build the infinite scrolling manually: looks very dirty
-1. Multiple components for home page: less dirty in my opinion ...
-1. **Selected Solution** :
+  - pros: clean and fast
+  - cons: I failed to integrate this package with Next.js SSR solution
+
+- Build the infinite scrolling manually: looks very dirty
+- Multiple components for home page: less dirty in my opinion ...
+
+4. **Selected Solution** :
    When user load all the data: go to the page use &quot;getStaticProps()&quot;;
    When user filter something: go to the page use &quot;getServerSideProps&quot;.
    User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
 
-1. HomeIndex component: Doing &quot;getStaticProps()&quot; --\&gt; static data --\&gt; pass to Home component
-1. HomeFilter component: Doing &quot;getServerSideProps()&quot; --\&gt; fetch data when request --\&gt; pass to Home component
-1. Home component
+- HomeIndex component: Doing &quot;getStaticProps()&quot; --\&gt; static data --\&gt; pass to Home component
+- HomeFilter component: Doing &quot;getServerSideProps()&quot; --\&gt; fetch data when request --\&gt; pass to Home component
+- Home component
 
-1. --\&gt; **Result** : The solution might be horrible but the result is OK. [https://rick-and-morty-characters-tracker.vercel.app/](https://rick-and-morty-characters-tracker.vercel.app/) (This isn&#39;t the end. More is coming up in next few days!)
+5. --\&gt; **Result** : The solution might be horrible but the result is OK. [https://rick-and-morty-characters-tracker.vercel.app/](https://rick-and-morty-characters-tracker.vercel.app/) (This isn&#39;t the end. More is coming up in next few days!)
 
-1. Next.js &amp; API Routes
+6. Next.js &amp; API Routes
 
-1. I built the back-end application endpoints in pages/api that can fetch my data from external API, but it seems useless because I can&#39;t use that in &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot;. I currently use some stupid way to get the external data in my library.
-1. Check out my GitHub --\&gt; [https://github.com/KueiChinHuang/Rick-and-Morty-Characters-Tracker](https://github.com/KueiChinHuang/Rick-and-Morty-Characters-Tracker)
+- I built the back-end application endpoints in pages/api that can fetch my data from external API, but it seems useless because I can&#39;t use that in &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot;. I currently use some stupid way to get the external data in my library.
 
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
+# Day 7 of #100DaysOfCode
 
-**Day 7 of #100DaysOfCode**
-
-**Profilt with JavaScript**
-
-1. Module 10 - Twitter Clone - Lesson 3 &amp; 4
-
-**Next.js Project: Rick and Morty Character Tracker**
+**API and User Authentication**
 
 1. Tried to use the api endpoint that I set up in my app to fetch the external data for user
 
@@ -118,13 +101,9 @@
 
 #reactjs #nextjs #SSR #SSG #SEO #API @vercel
 
-**Day 8 of #100DaysOfCode**
+# Day 8 of #100DaysOfCode
 
-**Profilt with JavaScript**
-
-1. Module 10 - Twitter Clone
-
-**Next.js Project: Rick and Morty Character Tracker**
+**User Sessions**
 
 1. Dump Auth0 and use useContext (temporary) for user session
 2. Use mongoose for data schema
@@ -141,13 +120,9 @@
 
 #reactjs #nextjs #SSR #SSG #SEO #API @vercel
 
-**Day 9 of #100DaysOfCode**
+# Day 9 of #100DaysOfCode
 
-**Profilt with JavaScript**
-
-1. Module 10 - Twitter Clone
-
-**Next.js Project: Rick and Morty Character Tracker**
+**Users and their favorites**
 
 1. User can login/logout
 2. User can add/remove the character to/from their favorite collection (External API + my MongoDB)
@@ -156,22 +131,10 @@
 
 1. If fetching data on client side, SWR is super fast --\&gt; [React Hooks SWR: Fetch, Cache and ReValidate server data with SWR and Axios](https://youtu.be/a7JigiLw_OY)
 
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
+# Day 10 of #100DaysOfCode
 
-**Day 10 of #100DaysOfCode**
-
-**Profilt with JavaScript**
-
-1. Module 10 - Twitter Clone
-
-**Next.js Project: Rick and Morty Character Tracker**
+**First State Finished**
 
 1. Styles
 2. User can only see the filter when they log in
 3. User can only add favorite when they log in
-
-**Learning Resources**
-
-1. If fetchi
-
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
