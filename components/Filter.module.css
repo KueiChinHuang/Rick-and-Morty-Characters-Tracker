@@ -1,17 +1,30 @@
-.navbar {
+.filterForm {
   width: 100%;
+  line-height: 1.5em;
+  font-size: 1.2em;
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  font-size: 1.1em;
 }
 
-.navbar span {
+.label {
+  height: 80%;
   margin: 10px;
+  display: flex;
 }
-.navbar span:nth-child(2) {
-  color: rgb(182, 182, 182);
+
+.title {
+  margin: 5px;
 }
+
+.label input {
+  border: 1px solid rgb(207, 206, 206);
+  border-radius: 5px;
+  font-size: 1em;
+  width: 130px;
+}
+
 .btn {
   text-decoration: none;
   color: inherit;
@@ -19,7 +32,6 @@
   margin: 10px;
   border: 1px solid lightblue;
   border-radius: 30px;
-  cursor: pointer;
 }
 
 .btn:hover,

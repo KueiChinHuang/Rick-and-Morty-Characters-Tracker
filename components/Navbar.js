@@ -11,12 +11,14 @@ const Navbar = () => {
       {user ? (
         <>
           <span>
-            Hello, <strong>{user}</strong>! Your uid is: {uid}
+            Hello, <strong>{user}</strong>!
           </span>
 
-          <button className={styles.btn} onClick={signOut}>
+          <span>UID: {uid}</span>
+
+          <div className={styles.btn} onClick={signOut}>
             Sign Out
-          </button>
+          </div>
         </>
       ) : (
         <>

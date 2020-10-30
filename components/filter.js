@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import styles from "./Filter.module.css";
 
 const Filter = () => {
   const [query, setQuery] = useState({});
@@ -14,25 +15,25 @@ const Filter = () => {
   };
 
   return (
-    <form>
-      <label>
-        Name:
+    <form className={styles.filterForm}>
+      <label className={styles.label}>
+        <span className={styles.title}>Name:</span>
         <input name="name" type="text" onChange={handleChange} />
       </label>
-      <label>
-        Status:
+      <label className={styles.label}>
+        <span className={styles.title}>Status:</span>
         <input name="status" type="text" onChange={handleChange} />
       </label>
-      <label>
-        Species:
+      <label className={styles.label}>
+        <span className={styles.title}>Species:</span>
         <input name="species" type="text" onChange={handleChange} />
       </label>
-      <label>
-        Type:
+      <label className={styles.label}>
+        <span className={styles.title}>Type:</span>
         <input name="type" type="text" onChange={handleChange} />
       </label>
-      <label>
-        Gender:
+      <label className={styles.label}>
+        <span className={styles.title}>Gender:</span>
         <input name="gender" type="text" onChange={handleChange} />
       </label>
       <Link
@@ -41,10 +42,10 @@ const Filter = () => {
           query: query,
         }}
       >
-        <a> Filter </a>
+        <a className={styles.btn}> Filter </a>
       </Link>
       <Link href="/">
-        <a>Clear</a>
+        <a className={styles.btn}>Clear</a>
       </Link>
     </form>
   );
