@@ -46,8 +46,6 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 4. Fetching Data in Next.js (Jul 21, 2020) [Next.js 9.3+ Data Fetching Explained: getServerSideProps(), getStaticProps(), and getStaticPaths()](https://youtu.be/eWObYvG0-lI)
 5. How to Integrate MongoDB Into Your Next.js App (Sep 10, 2020) [https://developer.mongodb.com/how-to/nextjs-with-mongodb](https://developer.mongodb.com/how-to/nextjs-with-mongodb)
 
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
-
 # Day 6 of #100DaysOfCode
 
 **Fixing timeout issue**
@@ -70,11 +68,11 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
    When user filter something: go to the page use &quot;getServerSideProps&quot;.
    User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
 
-- HomeIndex component: Doing &quot;getStaticProps()&quot; --\&gt; static data --\&gt; pass to Home component
-- HomeFilter component: Doing &quot;getServerSideProps()&quot; --\&gt; fetch data when request --\&gt; pass to Home component
+- HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
+- HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
 - Home component
 
-5. --\&gt; **Result** : The solution might be horrible but the result is OK. [https://rick-and-morty-characters-tracker.vercel.app/](https://rick-and-morty-characters-tracker.vercel.app/) (This isn&#39;t the end. More is coming up in next few days!)
+5. **Result** : The solution might be horrible but the result seems OK. Hope will find a better solution soon.
 
 6. Next.js &amp; API Routes
 
@@ -86,20 +84,17 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 1. Tried to use the api endpoint that I set up in my app to fetch the external data for user
 
---\&gt; failed, because only absolute URL is allowed in pages.
+- failed, because only absolute URL is allowed in pages.
 
-1. User Authentication with Auth0
+2. User Authentication with Auth0
 
---\&gt; User can login/logout, but I gonna try to store user&#39;s session info using useContext tomorrow.
-
---\&gt; The user authentication in the server-less model is not the same as MERN stack so I had a hard time figuring out a better practice of authentication in Next.js.
+- User can login/logout, but I gonna try to store user&#39;s session info using useContext tomorrow.
+- The user authentication in the server-less model is not the same as MERN stack so I had a hard time figuring out a better practice of authentication in Next.js.
 
 **Learning Resources**
 
 1. The Ultimate Guide to Next.js Authentication with Auth0 (October 10, 2019) [https://auth0.com/blog/ultimate-guide-nextjs-authentication-auth0/](https://auth0.com/blog/ultimate-guide-nextjs-authentication-auth0/)
 2. @auth0/nextjs-auth0 (README.md: 15 days ago) [https://github.com/auth0/nextjs-auth0](https://github.com/auth0/nextjs-auth0)
-
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
 
 # Day 8 of #100DaysOfCode
 
@@ -138,3 +133,8 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 1. Styles
 2. User can only see the filter when they log in
 3. User can only add favorite when they log in
+4. Debug deployment issue on Vercel
+
+- Issue: local build succeed but remote build failed
+- Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
+- The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
