@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/layout.module.css";
 import Link from "next/link";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
