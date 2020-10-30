@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Filter from "./filter";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "./userContext";
+import UserContext from "./UserContext";
 import Axios from "axios";
 import useSWR from "swr";
 import StarIcon from "@material-ui/icons/Star";

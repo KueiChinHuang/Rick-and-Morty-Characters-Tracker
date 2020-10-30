@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "./layout.module.css";
+import styles from "../styles/layout.module.css";
 import Link from "next/link";
 import Navbar from "./Navbar";
 
@@ -10,7 +10,6 @@ export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{name}</title>
         <link rel="icon" href="/Rick.ico" />
         <meta
           name="description"

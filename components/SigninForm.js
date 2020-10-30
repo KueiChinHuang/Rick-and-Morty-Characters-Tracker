@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useState, useContext, useEffect } from "react";
-import UserContext from "./userContext";
-import styles from "./Signin.module.css";
+import UserContext from "./UserContext";
+import styles from "../styles/signin.module.css";
 
 const getUsers = async () => {
   const res = await Axios.get("/api/user");

@@ -1,7 +1,7 @@
 import Home from "../components/home";
 import Layout from "../components/layout";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../components/userContext";
+import UserContext from "../components/UserContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";
@@ -32,6 +32,7 @@ export default function HomeFilter({}) {
 
   return (
     <Layout home>
+      <title>Rick and Morty Character Tracker</title>
       {data ? <Home allCharData={data} /> : <div>Loading...</div>}
     </Layout>
   );

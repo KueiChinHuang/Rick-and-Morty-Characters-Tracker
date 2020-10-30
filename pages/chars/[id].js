@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../components/layout";
 // import { getAllData } from '../../lib/chars'
 import { getAllData, getCharData } from "../../lib/chars";
-import styles from "../../components/Layout.module.css";
+import styles from "../../styles/layout.module.css";
 
 /*
 export async function getServerSideProps(context) {
@@ -47,6 +47,7 @@ export async function getStaticProps({ params }) {
 export default function Post({ charData }) {
   return (
     <Layout>
+      <title>{charData.name} | Rick and Morty Character Tracker</title>
       <article>
         <img src={charData.image}></img>
         <h1 className={styles.headingXl}>{charData.name}</h1>

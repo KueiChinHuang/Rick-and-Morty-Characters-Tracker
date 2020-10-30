@@ -1,5 +1,5 @@
 import Form from "../components/SigninForm";
-import styles from "../components/Signin.module.css";
+import styles from "../styles/signin.module.css";
 
 const SignIn = () => {
   return (
