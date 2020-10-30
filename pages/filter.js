@@ -1,4 +1,5 @@
 import Home from "../components/home";
+import Layout from "../components/layout";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
@@ -30,9 +31,8 @@ export default function HomeFilter({}) {
   );
 
   return (
-    <>
-      <p>filter page</p>
+    <Layout home>
       {data ? <Home allCharData={data} /> : <div>Loading...</div>}
-    </>
+    </Layout>
   );
 }

@@ -1,13 +1,8 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-const SignInLayout = props => {
+const SignInLayout = (props) => {
   return (
     <div className="content-wrapper">
-      {/* <Head>
-        <title>{props.title ? `${props.title} | Cool App` : 'Cool App'}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      </Head> */}
-
       <div className="main-content">{props.children}</div>
 
       <style jsx global>{`
@@ -29,8 +24,8 @@ const SignInLayout = props => {
           background: #fff;
           background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
           color: #353535;
-          font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Fira Sans', Avenir, 'Helvetica Neue',
-            'Lucida Grande', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
+            "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif;
           text-rendering: optimizeLegibility;
           height: 100%;
         }

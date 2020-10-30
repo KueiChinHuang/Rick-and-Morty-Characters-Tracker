@@ -2,6 +2,8 @@ import { getAllData } from "../lib/chars";
 import Home from "../components/home";
 import { useContext } from "react";
 import UserContext from "../components/userContext";
+import Head from "next/head";
+import Layout from "../components/layout";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")
@@ -16,8 +18,8 @@ export async function getStaticProps() {
 
 export default function HomeIndex({ allCharData }) {
   return (
-    <div>
+    <Layout home>
       <Home allCharData={allCharData} />
-    </div>
+    </Layout>
   );
 }

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../components/layout";
 // import { getAllData } from '../../lib/chars'
 import { getAllData, getCharData } from "../../lib/chars";
-import utilStyles from "../../styles/utils.module.css";
+import styles from "../../components/Layout.module.css";
 
 /*
 export async function getServerSideProps(context) {
@@ -47,14 +47,10 @@ export async function getStaticProps({ params }) {
 export default function Post({ charData }) {
   return (
     <Layout>
-      {/* {console.log(charData)} */}
-      <Head>
-        <title>{charData.name}</title>
-      </Head>
       <article>
         <img src={charData.image}></img>
-        <h1 className={utilStyles.headingXl}>{charData.name}</h1>
-        <div className={utilStyles.lightText}>
+        <h1 className={styles.headingXl}>{charData.name}</h1>
+        <div className={styles.lightText}>
           Location: {charData.location.name}
         </div>
         <div>Status: {charData.status}</div>

@@ -1,9 +1,6 @@
-import Head from "next/head";
-import Layout from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import Filter from "../components/filter";
+import Filter from "./filter";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
@@ -44,31 +41,37 @@ export default function Home({ allCharData }) {
             : "Add?"}
         </button>
 
-        <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-          <a>
-            <img src={char.image} width="150" height="150" />
-            <p className="title">{char.name}</p>
-          </a>
-        </Link>
-        <p className={utilStyles.listItem}>{char.location?.name}</p>
-        <p>{char?.status}</p>
-        <p>{char.species}</p>
-        <p>{char?.type}</p>
-        <p>{char?.gender}</p>
+        <div className={styles.title}>
+          <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
+            <a>
+              <img src={char.image} width="150" height="150" />
+              <h3>{char.name}</h3>
+            </a>
+          </Link>
+          <small>{char.location?.name}</small>
+        </div>
+        <div className={styles.description}>
+          <p>
+            <span>Status:</span> {char?.status}
+          </p>
+          <p>
+            <span>Species:</span> {char.species}
+          </p>
+          <p>
+            <span>Type:</span> {char?.type}
+          </p>
+          <p>
+            <span>Gender:</span> {char?.gender}
+          </p>
+        </div>
       </div>
     );
   });
 
   return (
-    <>
-      <Layout home>
-        <Head>Character Tracker</Head>
-
-        <section>
-          <Filter />
-          <div className={styles.grid}>{items}</div>
-        </section>
-      </Layout>
-    </>
+    <section>
+      <Filter />
+      <div className={styles.grid}>{items}</div>
+    </section>
   );
 }
