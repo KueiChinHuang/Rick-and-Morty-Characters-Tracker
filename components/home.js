@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
 import useSWR from "swr";
+import StarIcon from "@material-ui/icons/Star";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 export default function Home({ allCharData }) {
   const { uid } = useContext(UserContext);
@@ -35,34 +37,54 @@ export default function Home({ allCharData }) {
   allCharData.map((char, i) => {
     items.push(
       <div className={styles.card}>
-        <button onClick={() => handleFavorite(char.id)}>
-          {typeof favorites !== "undefined" && favorites.includes(char.id)
-            ? "FAVORITE!"
-            : "Add?"}
-        </button>
+        <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
+          <a>
+            <img
+              className={styles.img}
+              src={char.image}
+              width="150"
+              height="150"
+            />
+          </a>
+        </Link>
+        <div className={styles.content}>
+          <div
+            className={styles.favorite}
+            onClick={() => handleFavorite(char.id)}
+          >
+            {typeof favorites !== "undefined" && favorites.includes(char.id) ? (
+              <div title="Remove from favorite">
+                <StarIcon color="primary" fontSize="large" />
+              </div>
+            ) : (
+              <div title="Add to favorite">
+                <StarBorderIcon color="disabled" fontSize="large" />
+              </div>
+            )}
+          </div>
+          <div className={styles.title}>
+            <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
+              <a>
+                <h3>{char.name}</h3>
+              </a>
+            </Link>
+            <small>{char.location?.name}</small>
+          </div>
 
-        <div className={styles.title}>
-          <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-            <a>
-              <img src={char.image} width="150" height="150" />
-              <h3>{char.name}</h3>
-            </a>
-          </Link>
-          <small>{char.location?.name}</small>
-        </div>
-        <div className={styles.description}>
-          <p>
-            <span>Status:</span> {char?.status}
-          </p>
-          <p>
-            <span>Species:</span> {char.species}
-          </p>
-          <p>
-            <span>Type:</span> {char?.type}
-          </p>
-          <p>
-            <span>Gender:</span> {char?.gender}
-          </p>
+          <div className={styles.description}>
+            <p>
+              <span>Status:</span> {char?.status}
+            </p>
+            <p>
+              <span>Species:</span> {char.species}
+            </p>
+            <p>
+              <span>Type:</span> {char?.type}
+            </p>
+            <p>
+              <span>Gender:</span> {char?.gender}
+            </p>
+          </div>
         </div>
       </div>
     );
