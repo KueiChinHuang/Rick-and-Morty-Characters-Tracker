@@ -16,7 +16,7 @@ export async function getStaticProps() {
 export default function HomeIndex({ allCharData }) {
   return (
     <Layout home>
-      <title>Rick and Morty Character Tracker</title>
+      <title>Rick and Morty Character Tracker | Kuei-Chin Huang</title>
       <Home allCharData={allCharData} />
     </Layout>
   );
