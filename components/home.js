@@ -4,45 +4,45 @@ import utilStyles from "../styles/utils.module.css";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Filter from "../components/filter";
-// import { useContext, useEffect, useState } from "react";
-// import UserContext from "./userContext";
-// import Axios from "axios";
-// import useSWR from "swr";
-import Favorite from "./Favorite";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "./userContext";
+import Axios from "axios";
+import useSWR from "swr";
 
 export default function Home({ allCharData }) {
-  // const { uid } = useContext(UserContext);
-  // const { data } = useSWR(`/api/user/${uid}`, (url) =>
-  //   Axios(url).then((r) => r.data.data)
-  // );
-  // const [favorites, setFavorites] = useState(data ? data.favorite : []);
+  const { uid } = useContext(UserContext);
+  const { data } = useSWR(`/api/user/${uid}`, (url) =>
+    Axios(url).then((r) => r.data.data)
+  );
+  const [favorites, setFavorites] = useState(data ? data.favorite : []);
 
-  // const handleFavorite = async (charId) => {
-  //   if (favorites.includes(charId)) {
-  //     setFavorites((prev) => prev.filter((p) => p !== charId));
-  //     await Axios.put(`/api/user/${uid}`, { favorite: favorites })
-  //       .then((res) => console.log("res from PUT : ", res))
-  //       .catch((error) => console.log("error for using axios put:", error));
-  //   } else {
-  //     setFavorites((prev) => prev.concat(charId));
-  //     await Axios.put(`/api/user/${uid}`, {
-  //       favorite: favorites.concat(charId),
-  //     })
-  //       .then((res) => console.log("res from PUT : ", res))
-  //       .catch((error) => console.log("error for using axios put:", error));
-  //   }
-  // };
+  const handleFavorite = async (charId) => {
+    if (favorites.includes(charId)) {
+      setFavorites((prev) => prev.filter((p) => p !== charId));
+      await Axios.put(`/api/user/${uid}`, {
+        favorite: favorites.filter((p) => p !== charId),
+      })
+        .then((res) => console.log("res from PUT : ", res.data.data.favorite))
+        .catch((error) => console.log("error for using axios put:", error));
+    } else {
+      setFavorites((prev) => prev.concat(charId));
+      await Axios.put(`/api/user/${uid}`, {
+        favorite: favorites.concat(charId),
+      })
+        .then((res) => console.log("res from PUT : ", res.data.data.favorite))
+        .catch((error) => console.log("error for using axios put:", error));
+    }
+  };
 
   var items = [];
   allCharData.map((char, i) => {
     items.push(
       <div className={styles.card}>
-        {/* <button onClick={() => handleFavorite(char.id)}>
+        <button onClick={() => handleFavorite(char.id)}>
           {typeof favorites !== "undefined" && favorites.includes(char.id)
             ? "FAVORITE!"
             : "Add?"}
-        </button> */}
-        <Favorite cid={char.id} />
+        </button>
 
         <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
           <a>
