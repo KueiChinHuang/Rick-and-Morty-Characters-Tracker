@@ -1,7 +1,7 @@
-import Home from "../components/Home";
-import Layout from "../components/Layout";
+import Home from "../components/home";
+import Layout from "../components/layout";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../components/UserContext";
+import UserContext from "../components/userContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";

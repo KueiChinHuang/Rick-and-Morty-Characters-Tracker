@@ -1,4 +1,4 @@
-import Form from "../components/SigninForm";
+import Form from "../components/signinForm";
 import styles from "../styles/signin.module.css";
 
 const SignIn = () => {

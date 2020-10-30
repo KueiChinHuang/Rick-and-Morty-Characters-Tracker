@@ -1,6 +1,6 @@
 import { getAllData } from "../lib/chars";
-import Home from "../components/Home";
-import Layout from "../components/Layout";
+import Home from "../components/home";
+import Layout from "../components/layout";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layout";
 // import { getAllData } from '../../lib/chars'
 import { getAllData, getCharData } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
