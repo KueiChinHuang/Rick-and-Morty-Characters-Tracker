@@ -1,6 +1,6 @@
 import styles from "../styles/home.module.css";
 import Link from "next/link";
-import Filter from "./filter";
+import Filter from "./Filter";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./userContext";
 import Axios from "axios";
