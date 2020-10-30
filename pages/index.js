@@ -1,8 +1,5 @@
 import { getAllData } from "../lib/chars";
 import Home from "../components/Home";
-import { useContext } from "react";
-import UserContext from "../components/UserContext";
-import Head from "next/head";
 import Layout from "../components/Layout";
 
 export async function getStaticProps() {
