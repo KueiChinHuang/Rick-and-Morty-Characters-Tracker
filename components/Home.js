@@ -36,16 +36,7 @@ export default function Home({ allCharData }) {
   allCharData.map((char, i) => {
     items.push(
       <div className={styles.card}>
-        <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-          <a>
-            <img
-              className={styles.img}
-              src={char.image}
-              width="150"
-              height="150"
-            />
-          </a>
-        </Link>
+        <img className={styles.img} src={char.image} width="150" height="150" />
         <div className={styles.content}>
           <div
             className={styles.favorite}
@@ -62,11 +53,15 @@ export default function Home({ allCharData }) {
             )}
           </div>
           <div className={styles.title}>
-            <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-              <a>
-                <h3>{char.name}</h3>
-              </a>
-            </Link>
+            {!uid ? (
+              <h3>{char.name}</h3>
+            ) : (
+              <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
+                <a>
+                  <h3>{char.name}</h3>
+                </a>
+              </Link>
+            )}
             <small>{char.location?.name}</small>
           </div>
 

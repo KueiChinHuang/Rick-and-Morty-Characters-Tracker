@@ -76,9 +76,9 @@
   color: inherit;
 }
 
-.title:hover,
-.title:focus,
-.title:active {
+.title a:hover,
+.title a:focus,
+.title a:active {
   color: rgb(252, 197, 17);
 }
 
