@@ -1,15 +1,12 @@
-import SignInLayout from "../components/signInLayout";
-import Form from "../components/form";
-import Head from "next/head";
+import Form from "../components/SigninForm";
+import styles from "../components/Signin.module.css";
 
 const SignIn = () => {
   return (
-    <>
-      <SignInLayout title="Sign In">
-        <h1>Sign In</h1>
-        <Form />
-      </SignInLayout>
-    </>
+    <div className={styles.container}>
+      <h1>Sign In</h1>
+      <Form />
+    </div>
   );
 };
 

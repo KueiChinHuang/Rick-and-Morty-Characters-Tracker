@@ -2,6 +2,7 @@ import React from "react";
 import App from "next/app";
 import Router from "next/router";
 import UserContext from "../components/userContext";
+import "../styles/globals.css"
 
 export default class MyApp extends App {
   state = {
