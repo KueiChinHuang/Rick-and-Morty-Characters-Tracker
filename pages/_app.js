@@ -1,67 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import App from "next/app";
 import Router from "next/router";
 import UserContext from "../components/userContext";
 import "../styles/globals.css";
 
-export default class MyApp extends App {
-  state = {
-    user: null,
-    uid: null,
-  };
+function MyApp({ Component, pageProps }) {
+  const [user, setUser] = useState();
+  const [uid, setUid] = useState();
 
-  componentDidMount = () => {
-    const user = localStorage.getItem("coolapp-user");
-    const uid = localStorage.getItem("coolapp-uid");
+  useEffect(() => {
     if (user) {
-      this.setState({
-        user,
-        uid,
-      });
+      setUser();
+      setUid();
     } else {
       Router.push("/");
     }
+  }, []);
+
+  const signIn = (username, uid) => {
+    setUser(username);
+    setUid(uid);
+    Router.push("/filter");
   };
 
-  signIn = (username, uid) => {
-    localStorage.setItem("coolapp-user", username);
-    localStorage.setItem("coolapp-uid", uid);
-
-    this.setState(
-      {
-        user: username,
-        uid: uid,
-      },
-      () => {
-        Router.push("/filter");
-      }
-    );
-  };
-
-  signOut = () => {
-    localStorage.removeItem("coolapp-user");
-    localStorage.removeItem("coolapp-uid");
-    this.setState({
-      user: null,
-      uid: null,
-    });
+  const signOut = () => {
+    setUser();
+    setUid();
     Router.push("/");
   };
 
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
-      <UserContext.Provider
-        value={{
-          user: this.state.user,
-          uid: this.state.uid,
-          signIn: this.signIn,
-          signOut: this.signOut,
-        }}
-      >
-        <Component {...pageProps} />
-      </UserContext.Provider>
-    );
-  }
+  return (
+    <UserContext.Provider
+      value={{
+        user: user,
+        uid: uid,
+        signIn: signIn,
+        signOut: signOut,
+      }}
+    >
+      <Component {...pageProps} />
+    </UserContext.Provider>
+  );
 }
+
+export default MyApp;
