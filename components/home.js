@@ -6,6 +6,7 @@ import Axios from "axios";
 import useSWR from "swr";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import Filter from "./Filter";
 
 export default function Home({ allCharData }) {
   const { uid } = useContext(UserContext);
@@ -91,6 +92,7 @@ export default function Home({ allCharData }) {
 
   return (
     <section>
+      {uid && <Filter />}
       <div className={styles.grid}>{items}</div>
     </section>
   );

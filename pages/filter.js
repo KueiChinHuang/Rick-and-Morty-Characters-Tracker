@@ -34,7 +34,6 @@ export default function HomeFilter({}) {
   return (
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
-      <Filter />
       {data ? <Home allCharData={data} /> : <div>Loading...</div>}
     </Layout>
   );
