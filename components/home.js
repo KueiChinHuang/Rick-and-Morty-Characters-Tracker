@@ -63,7 +63,7 @@ export default function Home({ allCharData }) {
               <h3>{char.name}</h3>
             ) : (
               <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
-                <a>
+                <a title={char.name}>
                   <h3>{char.name}</h3>
                 </a>
               </Link>

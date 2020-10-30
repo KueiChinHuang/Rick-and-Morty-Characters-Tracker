@@ -59,13 +59,20 @@
   margin-bottom: 2px;
   align-self: flex-end;
 }
+
+.favorite:hover,
+.favorite:focus,
+.favorite:active {
+  cursor: pointer;
+}
+
 .title {
   color: #0070f3;
   font-weight: bold;
   transition: all 0.15s ease;
   line-height: 1.15;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .title h3 {
   margin: 0;
@@ -90,12 +97,12 @@
 .description {
   margin-top: 10px;
   line-height: 1.5;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .description p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.5;
 }
 
