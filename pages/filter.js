@@ -18,16 +18,19 @@ export default function HomeFilter({}) {
   }, []);
 
   const { data } = useSWR(
-    `https://rickandmortyapi.com/api/character/${router.asPath.slice(7)}`,
+    `https://rickandmortyapi.com/api/character/${router.asPath}`,
     async (nextUrl) => {
       let characters = [];
-
-      while (nextUrl !== null) {
-        const charsResp = await Axios(nextUrl).then((r) => r.data);
-        nextUrl = charsResp.info?.next || null;
-        characters = [...characters, ...charsResp.results];
+      try {
+        while (nextUrl !== null) {
+          const charsResp = await Axios(nextUrl).then((r) => r.data);
+          nextUrl = charsResp.info?.next || null;
+          characters = [...characters, ...charsResp.results];
+        }
+        return characters;
+      } catch (error) {
+        console.log("Can't get the external data", error);
       }
-      return characters;
     }
   );
 
