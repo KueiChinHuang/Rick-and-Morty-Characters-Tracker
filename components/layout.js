@@ -37,7 +37,7 @@ export default function Layout({ children, home }) {
           </>
         ) : (
           <>
-            <Link href="/filter">
+            <Link href="/">
               <a>
                 <img
                   src="/images/profile.jpg"
@@ -47,7 +47,7 @@ export default function Layout({ children, home }) {
               </a>
             </Link>
             <h2 className={styles.headingXl}>
-              <Link href="/filter">
+              <Link href="/">
                 <a className={styles.colorInherit}>{name}</a>
               </Link>
             </h2>
@@ -57,7 +57,7 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/filter">
+          <Link href="/">
             <a>← Back to home</a>
           </Link>
         </div>

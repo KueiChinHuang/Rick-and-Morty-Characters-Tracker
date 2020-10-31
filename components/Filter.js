@@ -38,7 +38,7 @@ const Filter = () => {
       </label>
       <Link
         href={{
-          pathname: "/filter",
+          pathname: "/",
           query: query,
         }}
       >

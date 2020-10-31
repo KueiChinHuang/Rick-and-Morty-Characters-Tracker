@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
   const signIn = (username, uid) => {
     setUser(username);
     setUid(uid);
-    Router.push("/filter");
+    Router.push("/");
   };
 
   const signOut = () => {

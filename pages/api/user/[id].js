@@ -22,7 +22,8 @@ export default async (req, res) => {
 
         res.status(200).json({ success: true, data: user });
       } catch (error) {
-        res.status(400).json({ success: false, error });
+        const errRes = error.response;
+        res.status(400).json({ success: false, errRes });
       }
       break;
     case "PUT":
@@ -40,7 +41,8 @@ export default async (req, res) => {
 
         res.status(200).json({ success: true, data: user });
       } catch (error) {
-        res.status(400).json({ success: false, error });
+        const errRes = error.response;
+        res.status(400).json({ success: false, errRes });
       }
       break;
     case "DELETE":
@@ -53,7 +55,8 @@ export default async (req, res) => {
 
         res.status(200).json({ success: true, data: {} });
       } catch (error) {
-        res.status(400).json({ success: false });
+        const errRes = error.response;
+        res.status(400).json({ success: false, errRes });
       }
       break;
     default:
