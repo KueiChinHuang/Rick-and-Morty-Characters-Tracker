@@ -23,11 +23,11 @@ export default function HomeIndex({ allCharData }) {
   const { uid } = useContext(UserContext);
   const router = useRouter();
 
-  useEffect(() => {
-    if (!uid) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!uid) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   const { data } = useSWR(
     `https://rickandmortyapi.com/api/character/${router.asPath}`,
