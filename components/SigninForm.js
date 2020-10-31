@@ -4,8 +4,12 @@ import UserContext from "./UserContext";
 import styles from "../styles/signin.module.css";
 
 const getUsers = async () => {
-  const res = await Axios.get("/api/user");
-  return res.data.data;
+  try {
+    const res = await Axios.get("/api/user");
+    return res.data.data;
+  } catch (error) {
+    console.log("Can't get user:", error);
+  }
 };
 
 const createUser = async (username, password) => {
