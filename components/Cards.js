@@ -1,4 +1,4 @@
-import styles from "../styles/home.module.css";
+import styles from "../styles/cards.module.css";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./UserContext";
