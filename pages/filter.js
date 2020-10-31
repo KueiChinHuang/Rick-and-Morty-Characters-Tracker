@@ -29,7 +29,7 @@ export default function HomeFilter({}) {
         }
         return characters;
       } catch (error) {
-        console.log("Can't get the external data", error);
+        console.log("Can't get the external data", error.response);
       }
     }
   );

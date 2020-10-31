@@ -22,14 +22,18 @@ export default function Home({ allCharData }) {
         favorite: favorites.filter((p) => p !== charId),
       })
         .then((res) => console.log("res from PUT : ", res.data.data.favorite))
-        .catch((error) => console.log("error for using axios put:", error));
+        .catch((error) =>
+          console.log("error for using axios put:", error.response)
+        );
     } else {
       setFavorites((prev) => prev.concat(charId));
       await Axios.put(`/api/user/${uid}`, {
         favorite: favorites.concat(charId),
       })
         .then((res) => console.log("res from PUT : ", res.data.data.favorite))
-        .catch((error) => console.log("error for using axios put:", error));
+        .catch((error) =>
+          console.log("error for using axios put:", error.response)
+        );
     }
   };
 

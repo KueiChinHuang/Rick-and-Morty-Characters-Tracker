@@ -10,8 +10,8 @@ export default async function charHandler(req, res) {
     .then((response) => {
       resData = response.data;
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log(error.response);
     });
 
   res.status(200).json(resData);
