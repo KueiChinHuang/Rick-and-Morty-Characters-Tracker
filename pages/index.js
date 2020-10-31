@@ -1,5 +1,5 @@
 import { getAllData } from "../lib/chars";
-import Home from "../components/Home";
+import Cards from "../components/Cards";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import Axios from "axios";
@@ -36,7 +36,7 @@ export default function HomeIndex({ allCharData }) {
   return (
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
-      {!data ? <Home allCharData={allCharData} /> : <Home allCharData={data} />}
+      {!data ? <Cards allCharData={allCharData} /> : <Cards allCharData={data} />}
     </Layout>
   );
 }

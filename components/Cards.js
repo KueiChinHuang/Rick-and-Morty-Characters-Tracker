@@ -8,7 +8,7 @@ import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Filter from "./Filter";
 
-export default function Home({ allCharData }) {
+export default function Cards({ allCharData }) {
   const { uid } = useContext(UserContext);
   const { data } = useSWR(`/api/user/${uid}`, (url) =>
     Axios(url).then((r) => r.data.data)
