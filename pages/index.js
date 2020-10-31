@@ -6,7 +6,6 @@ import Axios from "axios";
 import useSWR from "swr";
 
 export async function getStaticProps() {
-  // console.log("-------------This is in index page!---------------")
   const allCharData = await getAllData("");
   return {
     props: {
@@ -36,7 +35,11 @@ export default function HomeIndex({ allCharData }) {
   return (
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
-      {!data ? <Cards allCharData={allCharData} /> : <Cards allCharData={data} />}
+      {!data ? (
+        <Cards allCharData={allCharData} />
+      ) : (
+        <Cards allCharData={data} />
+      )}
     </Layout>
   );
 }

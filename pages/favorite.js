@@ -1,7 +1,15 @@
 import React from "react";
+import Layout from "../components/Layout";
 
 function MyFavorite() {
-  return <div></div>;
+  return (
+    <Layout>
+      <title>My Favorite | Rick and Morty Character Tracker</title>
+      <article>
+          <h1>Favorite Page</h1>
+      </article>
+    </Layout>
+  );
 }
 
 export default MyFavorite;
