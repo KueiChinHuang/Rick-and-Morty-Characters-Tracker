@@ -1,25 +1,9 @@
-import Head from "next/head";
 import Layout from "../../components/Layout";
-// import { getAllData } from '../../lib/chars'
-import { getAllData, getCharData } from "../../lib/chars";
+import { getAllData } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
 
-/*
-export async function getServerSideProps(context) {
-  // console.log(context)
-  const { id } = context.query
-  const resp = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
-  const charData = await resp.json()
-  return {
-    props: {
-      charData
-    },
-  }
-}
-*/
-
 export async function getStaticPaths() {
-  const allData = await getAllData("");
+  const allData = await getAllData();
   const paths = allData.map((c) => ({
     params: { id: c.id.toString() },
   }));
@@ -44,7 +28,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Post({ charData }) {
+export default function CharDetails({ charData }) {
   return (
     <Layout>
       <title>{charData.name} | Rick and Morty Character Tracker</title>
