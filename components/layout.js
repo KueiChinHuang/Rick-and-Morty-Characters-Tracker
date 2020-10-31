@@ -2,11 +2,13 @@ import Head from "next/head";
 import styles from "../styles/layout.module.css";
 import Link from "next/link";
 import Navbar from "./Navbar";
+import { useRouter } from "next/router";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
 
 export default function Layout({ children, home }) {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
@@ -57,9 +59,9 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
+          <span onClick={() => router.back()}>
+            <a>← Back to last page</a>
+          </span>
         </div>
       )}
     </div>
