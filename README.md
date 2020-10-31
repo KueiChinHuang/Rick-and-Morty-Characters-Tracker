@@ -53,13 +53,12 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 1. **Issue from yesterday** : Home page would time out due to huge data amount
 
 2. **Goal &amp; Limitation** : Implementing SSR is one of the main resaon of using Next.js, but &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot; can&#39;t work together in the same page.
+
 3. **Possible Solutions** :
 
 - Implement react package: Infinite Scroll [https://www.npmjs.com/package/infinite-scroll](https://www.npmjs.com/package/infinite-scroll)
-
   - pros: clean and fast
   - cons: I failed to integrate this package with Next.js SSR solution
-
 - Build the infinite scrolling manually: looks very dirty
 - Multiple components for home page: less dirty in my opinion ...
 
@@ -113,8 +112,6 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 3. NextJS + MongoDB (Mar 26, 2020) [Build an app with NextJS and MongoDB - Part 1](https://youtu.be/tt9hws5JGRc)
 4. Redirect in Next.js [https://nextjs.org/docs/api-reference/next/router#routerpush](https://nextjs.org/docs/api-reference/next/router#routerpush)
 
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
-
 # Day 9 of #100DaysOfCode
 
 **Users and their favorites**
@@ -124,11 +121,11 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 **Learning Resources**
 
-1. If fetching data on client side, SWR is super fast --\&gt; [React Hooks SWR: Fetch, Cache and ReValidate server data with SWR and Axios](https://youtu.be/a7JigiLw_OY)
+1. If fetching data on client side, SWR is super fast --> [React Hooks SWR: Fetch, Cache and ReValidate server data with SWR and Axios](https://youtu.be/a7JigiLw_OY)
 
 # Day 10 of #100DaysOfCode
 
-**First State Finished**
+**First Stage Finished**
 
 1. Styles
 2. User can only see the filter when they log in
