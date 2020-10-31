@@ -1,12 +1,9 @@
 import { getAllData } from "../lib/chars";
 import Home from "../components/Home";
 import Layout from "../components/Layout";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../components/UserContext";
 import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";
-import Filter from "../components/Filter";
 
 export async function getStaticProps() {
   // console.log("-------------This is in index page!---------------")
@@ -20,14 +17,7 @@ export async function getStaticProps() {
 }
 
 export default function HomeIndex({ allCharData }) {
-  const { uid } = useContext(UserContext);
   const router = useRouter();
-
-  // useEffect(() => {
-  //   if (!uid) {
-  //     router.push("/");
-  //   }
-  // }, []);
 
   const { data } = useSWR(
     `https://rickandmortyapi.com/api/character/${router.asPath}`,
