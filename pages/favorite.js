@@ -19,15 +19,15 @@ function MyFavorite() {
     Axios(url).then((r) => r.data.data)
   );
 
-  const [favorites, setFavorites] = useState(user ? user.favorite : []);
-  const [allFavData, setAllFavData] = useState([]);
+  const [favIDs, setFavIDs] = useState(user ? user.favorite : []);
+  const [favData, setFavData] = useState([]);
 
   useEffect(() => {
     const aFunc = async () => {
-      setAllFavData([]);
-      for (let i in favorites) {
-        const oneChar = await getOneData(favorites[i]);
-        setAllFavData((prev) => [...prev, oneChar]);
+      setFavData([]);
+      for (let i in favIDs) {
+        const oneChar = await getOneData(favIDs[i]);
+        setFavData((prev) => [...prev, oneChar]);
       }
     };
     aFunc();
@@ -37,13 +37,13 @@ function MyFavorite() {
     <Layout>
       <title>My Favorite | Rick and Morty Character Tracker</title>
       <article>
-        {console.log("this user's favorite items:", favorites)}
-        {console.log("this user's allFavData:", allFavData)}
-        <h1>Favorite Page</h1>
-        {allFavData.length < favorites.length ? (
+        {console.log("favIDs:", favIDs)}
+        {console.log("favData:", favData)}
+        <h1>My Favorite</h1>
+        {favData.length !== favIDs.length ? (
           <div>No Favorite yet.</div>
         ) : (
-          <Cards allCharData={allFavData} />
+          <Cards allCharData={favData} />
         )}
       </article>
     </Layout>

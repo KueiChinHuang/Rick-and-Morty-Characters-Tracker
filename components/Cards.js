@@ -3,44 +3,46 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "./UserContext";
 import Axios from "axios";
-import useSWR from "swr";
+import useSWR, { mutate, trigger } from "swr";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Filter from "./Filter";
 
 export default function Cards({ allCharData }) {
   const { uid } = useContext(UserContext);
-  const { data } = useSWR(`/api/user/${uid}`, (url) =>
+  const { data: user } = useSWR(`/api/user/${uid}`, (url) =>
     Axios(url).then((r) => r.data.data)
   );
-  const [favorites, setFavorites] = useState(data ? data.favorite : []);
+  const [favIDs, setFavIDs] = useState(user ? user.favorite : []);
 
   const handleFavorite = async (charId) => {
-    if (favorites.includes(charId)) {
-      setFavorites((prev) => prev.filter((p) => p !== charId));
+    mutate(`/api/user/${uid}`);
+    if (favIDs.includes(charId)) {
+      setFavIDs((prev) => prev.filter((p) => p !== charId));
       await Axios.put(`/api/user/${uid}`, {
-        favorite: favorites.filter((p) => p !== charId),
+        favorite: favIDs.filter((p) => p !== charId),
       })
         .then((res) => console.log("res from PUT : ", res.data.data.favorite))
         .catch((error) =>
           console.log("error for using axios put:", error.response)
         );
     } else {
-      setFavorites((prev) => prev.concat(charId));
+      setFavIDs((prev) => prev.concat(charId));
       await Axios.put(`/api/user/${uid}`, {
-        favorite: favorites.concat(charId),
+        favorite: favIDs.concat(charId),
       })
         .then((res) => console.log("res from PUT : ", res.data.data.favorite))
         .catch((error) =>
           console.log("error for using axios put:", error.response)
         );
     }
+    trigger(`/api/user/${uid}`);
   };
 
   var items = [];
   allCharData.map((char, i) => {
     items.push(
-      <div className={styles.card}>
+      <div className={styles.card} key={i}>
         <img className={styles.img} src={char.image} width="150" height="150" />
         <div className={styles.content}>
           {!uid ? (
@@ -50,8 +52,7 @@ export default function Cards({ allCharData }) {
               className={styles.favorite}
               onClick={() => handleFavorite(char.id)}
             >
-              {typeof favorites !== "undefined" &&
-              favorites.includes(char.id) ? (
+              {typeof favIDs !== "undefined" && favIDs.includes(char.id) ? (
                 <div title="Remove from favorite">
                   <StarIcon color="primary" fontSize="large" />
                 </div>
@@ -66,7 +67,7 @@ export default function Cards({ allCharData }) {
             {!uid ? (
               <h3>{char.name}</h3>
             ) : (
-              <Link href="/chars/[id]" as={`/chars/${char.id}`} key={i}>
+              <Link href="/chars/[id]" as={`/chars/${char.id}`}>
                 <a title={char.name}>
                   <h3>{char.name}</h3>
                 </a>
