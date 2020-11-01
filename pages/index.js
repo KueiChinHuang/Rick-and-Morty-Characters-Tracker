@@ -1,5 +1,6 @@
 import { getAllData } from "../lib/chars";
-import Cards from "../components/Cards";
+import Card from "../components/Card";
+import styles from "../styles/cards.module.css";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import Axios from "axios";
@@ -42,9 +43,21 @@ export default function HomeIndex({ allCharData }) {
 
       {uid && <Filter />}
       {!data ? (
-        <Cards allCharData={allCharData} />
+        <section>
+          <div className={styles.grid}>
+            {allCharData.map((charData) => (
+              <Card character={charData} />
+            ))}
+          </div>
+        </section>
       ) : (
-        <Cards allCharData={data} />
+        <section>
+          <div className={styles.grid}>
+            {data.map((d) => (
+              <Card character={d} />
+            ))}
+          </div>
+        </section>
       )}
     </Layout>
   );

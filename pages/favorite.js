@@ -1,7 +1,8 @@
 import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
-import Cards from "../components/Cards";
+import Card from "../components/Card";
+import styles from "../styles/cards.module.css";
 import Layout from "../components/Layout";
 import UserContext from "../components/UserContext";
 
@@ -15,11 +16,10 @@ const getOneData = async (cid) => {
 
 function MyFavorite() {
   const { uid } = useContext(UserContext);
-  const { data: user } = useSWR(`/api/user/${uid}`, (url) =>
-    Axios(url).then((r) => r.data.data)
+  const { data: favIDs } = useSWR(`/api/user/${uid}`, (url) =>
+    Axios(url).then((r) => r.data.data.favorite)
   );
 
-  const [favIDs, setFavIDs] = useState(user ? user.favorite : []);
   const [favData, setFavData] = useState([]);
 
   useEffect(() => {
@@ -40,10 +40,16 @@ function MyFavorite() {
         {console.log("favIDs:", favIDs)}
         {console.log("favData:", favData)}
         <h1>My Favorite</h1>
-        {favData.length !== favIDs.length ? (
+        {favData && favIDs && favData.length !== favIDs.length ? (
           <div>No Favorite yet.</div>
         ) : (
-          <Cards allCharData={favData} />
+          <section>
+            <div className={styles.grid}>
+              {favData.map((data) => (
+                <Card character={data} />
+              ))}
+            </div>
+          </section>
         )}
       </article>
     </Layout>
