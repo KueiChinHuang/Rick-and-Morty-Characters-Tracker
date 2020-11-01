@@ -56,14 +56,14 @@ export default function Layout({ children, home }) {
           </>
         )}
       </header>
-      <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <span onClick={() => router.back()}>
+          <h4 onClick={() => router.back()}>
             <a>← Back to last page</a>
-          </span>
+          </h4>
         </div>
       )}
+      <main>{children}</main>
     </div>
   );
 }

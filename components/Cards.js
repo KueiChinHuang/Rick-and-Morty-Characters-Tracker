@@ -97,7 +97,6 @@ export default function Cards({ allCharData }) {
 
   return (
     <section>
-      {uid && <Filter />}
       <div className={styles.grid}>{items}</div>
     </section>
   );

@@ -4,6 +4,9 @@ import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";
+import Filter from "../components/Filter";
+import UserContext from "../components/UserContext";
+import { useContext, useEffect, useState } from "react";
 
 export async function getStaticProps() {
   const allCharData = await getAllData();
@@ -26,6 +29,7 @@ const fetcher = async (nextUrl) => {
 };
 
 export default function HomeIndex({ allCharData }) {
+  const { uid } = useContext(UserContext);
   const router = useRouter();
   const { data } = useSWR(
     `https://rickandmortyapi.com/api/character/${router.asPath}`,
@@ -35,6 +39,8 @@ export default function HomeIndex({ allCharData }) {
   return (
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
+
+      {uid && <Filter />}
       {!data ? (
         <Cards allCharData={allCharData} />
       ) : (
