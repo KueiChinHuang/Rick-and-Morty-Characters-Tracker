@@ -47,6 +47,9 @@ const Filter = () => {
       <Link href="/">
         <a className={styles.btn}>Clear</a>
       </Link>
+      <Link href="/favorite">
+        <a className={styles.btn}>My Favorite</a>
+      </Link>
     </form>
   );
 };
