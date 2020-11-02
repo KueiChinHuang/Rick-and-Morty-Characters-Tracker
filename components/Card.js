@@ -14,25 +14,21 @@ export default function Card({ character }) {
   );
 
   const handleFavorite = async (cid) => {
-    mutate(`/api/user/${uid}`);
     if (favIDs.includes(cid)) {
       await Axios.put(`/api/user/${uid}`, {
         favorite: favIDs.filter((p) => p !== cid),
       })
-        .then((res) => console.log("res from PUT : ", res.data.data.favorite))
-        .catch((error) =>
-          console.log("error for using axios put:", error.response)
-        );
+        .then((res) => console.log("DB updated:", res.data.data.favorite))
+        .catch((error) => console.log("Failed to update DB:", error));
     } else {
       await Axios.put(`/api/user/${uid}`, {
         favorite: favIDs.concat(cid),
       })
-        .then((res) => console.log("res from PUT : ", res.data.data.favorite))
-        .catch((error) =>
-          console.log("error for using axios put:", error.response)
-        );
+        .then((res) => console.log("DB updated:", res.data.data.favorite))
+        .catch((error) => console.log("Failed to update DB:", error));
     }
     trigger(`/api/user/${uid}`);
+    trigger(`/api/user/${uid}/favorite`);
   };
 
   return (
@@ -44,6 +40,7 @@ export default function Card({ character }) {
         height="150"
       />
       <div className={styles.content}>
+        {/* User can manage favorite only when they login */}
         {!uid ? (
           <></>
         ) : (
@@ -63,6 +60,7 @@ export default function Card({ character }) {
           </div>
         )}
         <div className={styles.title}>
+          {/* User can click on character only when they login */}
           {!uid ? (
             <h3>{character.name}</h3>
           ) : (

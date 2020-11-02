@@ -1,5 +1,5 @@
 import Axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import useSWR from "swr";
 import Card from "../components/Card";
 import styles from "../styles/cards.module.css";
@@ -16,31 +16,18 @@ const getOneData = async (cid) => {
 
 function MyFavorite() {
   const { uid } = useContext(UserContext);
-  const { data: favIDs } = useSWR(`/api/user/${uid}`, (url) =>
-    Axios(url).then((r) => r.data.data.favorite)
+  const { data: favData } = useSWR(`/api/user/${uid}/favorite`, (url) =>
+    Axios(url).then((r) => r.data.favData)
   );
-
-  const [favData, setFavData] = useState([]);
-
-  useEffect(() => {
-    const aFunc = async () => {
-      setFavData([]);
-      for (let i in favIDs) {
-        const oneChar = await getOneData(favIDs[i]);
-        setFavData((prev) => [...prev, oneChar]);
-      }
-    };
-    aFunc();
-  }, []);
 
   return (
     <Layout>
       <title>My Favorite | Rick and Morty Character Tracker</title>
       <article>
-        {console.log("favIDs:", favIDs)}
+        {console.log("uid:", uid)}
         {console.log("favData:", favData)}
         <h1>My Favorite</h1>
-        {favData && favIDs && favData.length !== favIDs.length ? (
+        {typeof favData == "undefined" || !favData ? (
           <div>No Favorite yet.</div>
         ) : (
           <section>

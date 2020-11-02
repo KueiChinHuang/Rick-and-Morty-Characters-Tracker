@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  const name = req.query.name ? req.query.name : "";
-  const status = req.query.status ? req.query.status : "";
-  const type = req.query.type ? req.query.type : "";
-  const gender = req.query.gender ? req.query.gender : "";
+  const {
+    query: { name, status, type, gender },
+    method,
+  } = req;
 
   let chars = [];
   let nextHref = `https://rickandmortyapi.com/api/character/?`;
