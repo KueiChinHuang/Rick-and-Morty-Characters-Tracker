@@ -1,0 +1,10 @@
+.favorite {
+  margin-bottom: 2px;
+  align-self: flex-end;
+}
+
+.favorite:hover,
+.favorite:focus,
+.favorite:active {
+  cursor: pointer;
+}
