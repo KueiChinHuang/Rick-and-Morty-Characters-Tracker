@@ -13,14 +13,20 @@ export default function Card({ character }) {
     Axios(url).then((r) => r.data.data.favorite)
   );
 
-  const handleFavorite = async (cid) => {
+  const handleFavorite = async (cid, cname) => {
     // If this character is already one of user's favorites, REMOVE it
     if (favIDs.includes(cid)) {
-      await Axios.put(`/api/user/${uid}`, {
-        favorite: favIDs.filter((p) => p !== cid),
-      })
-        .then((res) => console.log("DB updated:", res.data.data.favorite))
-        .catch((error) => console.log("Failed to update DB:", error));
+      if (
+        window.confirm(
+          `Are you sure you want to remove ${cname} from favorite?`
+        )
+      ) {
+        await Axios.put(`/api/user/${uid}`, {
+          favorite: favIDs.filter((p) => p !== cid),
+        })
+          .then((res) => console.log("DB updated:", res.data.data.favorite))
+          .catch((error) => console.log("Failed to update DB:", error));
+      }
     }
 
     // If this character is NOT yet a user's favorite, ADD it
@@ -51,7 +57,7 @@ export default function Card({ character }) {
         ) : (
           <div
             className={styles.favorite}
-            onClick={() => handleFavorite(character.id)}
+            onClick={() => handleFavorite(character.id, character.name)}
           >
             {favIDs && favIDs.includes(character.id) ? (
               <div title="Remove from favorite">
