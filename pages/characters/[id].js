@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function CharDetails({ charData }) {
+export default function CharactersDetails({ charData }) {
   return (
     <Layout>
       <title>{charData.name} | Rick and Morty Character Tracker</title>
