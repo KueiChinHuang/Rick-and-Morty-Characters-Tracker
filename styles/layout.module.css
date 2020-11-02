@@ -92,3 +92,13 @@
 .backToHome a:active {
   color: darkblue;
 }
+
+.favorite {
+  margin: 2px;
+}
+
+.favorite:hover,
+.favorite:focus,
+.favorite:active {
+  cursor: pointer;
+}
