@@ -14,19 +14,24 @@ export default function Card({ character }) {
   );
 
   const handleFavorite = async (cid) => {
+    // If this character is already one of user's favorites, REMOVE it
     if (favIDs.includes(cid)) {
       await Axios.put(`/api/user/${uid}`, {
         favorite: favIDs.filter((p) => p !== cid),
       })
         .then((res) => console.log("DB updated:", res.data.data.favorite))
         .catch((error) => console.log("Failed to update DB:", error));
-    } else {
+    }
+
+    // If this character is NOT yet a user's favorite, ADD it
+    else {
       await Axios.put(`/api/user/${uid}`, {
         favorite: favIDs.concat(cid),
       })
         .then((res) => console.log("DB updated:", res.data.data.favorite))
         .catch((error) => console.log("Failed to update DB:", error));
     }
+
     trigger(`/api/user/${uid}`);
     trigger(`/api/user/${uid}/favorite`);
   };
