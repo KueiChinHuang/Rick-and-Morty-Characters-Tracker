@@ -58,9 +58,9 @@ export default function Layout({ children, home }) {
       </header>
       {!home && (
         <div className={styles.backToHome}>
-          <h4 onClick={() => router.back()}>
+          <h3 onClick={() => router.back()}>
             <a>← Back to last page</a>
-          </h4>
+          </h3>
         </div>
       )}
       <main>{children}</main>
