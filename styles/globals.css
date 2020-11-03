@@ -20,3 +20,9 @@ body {
 #__next {
   height: 100%;
 }
+
+a {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}

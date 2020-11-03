@@ -4,6 +4,7 @@ import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
 import Link from "next/link";
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
@@ -28,22 +29,23 @@ const Comments = ({ cid }) => {
 
   return (
     <div className={styles.comments}>
-      <div className={styles.history}>
-        <ul>
-          {commentData?.map((data) => (
-            <li>
-              <span>{data.created_at}</span>
-              <span>
-                <Link href="/characters/[id]" as={`/characters/${cid}`}>
-                  <Author cid={data.author} />
-                </Link>
-              </span>
-              <span>{data.author}</span>
-              <span>{data.content}</span>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.histories}>
+        <h2>History</h2>
+        {commentData?.map((data) => (
+          <div className={styles.history}>
+            <span>{data.created_at}</span>
+            <Link href="/characters/[id]" as={`/characters/${cid}`}>
+              <a>
+                <Author cid={data.author} />
+              </a>
+            </Link>
+            <ArrowForwardIcon/>
+            <span>{data.content}</span>
+          </div>
+        ))}
       </div>
+      
+      <h2>Your Comment</h2>
       <form>
         <Select
           options={allOptions}
