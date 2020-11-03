@@ -2,8 +2,35 @@ import styles from "../styles/comments.module.css";
 import useSWR from "swr";
 import Axios from "axios";
 import Author from "./Author";
+import Select from "react-select";
+import { getAllData } from "../lib/chars";
+
+const options = [
+  { id: 1, name: "Abe", customAbbreviation: "A" },
+  { id: 2, name: "John", customAbbreviation: "J" },
+  { id: 3, name: "Dustin", customAbbreviation: "D" },
+];
+
+const formatOptionLabel = ({ id, label, customAbbreviation }) => (
+  <Author cid={id} />
+);
+
+const fetcher = async (nextUrl) => {
+  let characters = [];
+  while (nextUrl !== null) {
+    const charsResp = await Axios(nextUrl).then((r) => r.data);
+    nextUrl = charsResp.info?.next || null;
+    characters = [...characters, ...charsResp.results];
+  }
+  return characters;
+};
 
 const Comments = ({ cid }) => {
+  const { data: allCharData } = useSWR(
+    "https://rickandmortyapi.com/api/character/",
+    fetcher
+  );
+
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
     Axios.get(url).then((r) => r.data.data)
   );
@@ -11,6 +38,7 @@ const Comments = ({ cid }) => {
   return (
     <div className={styles.comments}>
       {console.log("cid:", cid, "get comment:", commentData)}
+      {console.log("allCharData:", allCharData)}
       <div className={styles.history}>
         <ul>
           {commentData?.map((data) => (
@@ -26,14 +54,10 @@ const Comments = ({ cid }) => {
         </ul>
       </div>
       <form>
-        <select>
-          <option value="grapefruit">Grapefruit</option>
-          <option value="lime">Lime</option>
-          <option selected value="coconut">
-            Coconut
-          </option>
-          <option value="mango">Mango</option>
-        </select>
+        <Select
+          formatOptionLabel={formatOptionLabel}
+          options={allCharData}
+        />
         <textarea>Hello there, this is some text in a text area</textarea>
 
         <input type="submit" value="Submit" />
