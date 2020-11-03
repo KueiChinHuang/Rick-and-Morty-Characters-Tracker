@@ -7,7 +7,7 @@ import { getAllData } from "../lib/chars";
 import AsyncSelect from "react-select/async";
 import { useState } from "react";
 
-const formatOptionLabel = ({ id }) => <Author cid={id} />;
+const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
 const fetcher = async (nextUrl) => {
   let characters = [];
@@ -24,33 +24,18 @@ const Comments = ({ cid }) => {
     "https://rickandmortyapi.com/api/character/",
     fetcher
   );
+  const { data: allOptions } = useSWR("/api/character/options", (url) =>
+    Axios.get(url).then((r) => r.data.data)
+  );
 
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
     Axios.get(url).then((r) => r.data.data)
   );
 
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (newValue) => {
-    setInputValue(newValue.replace(/\W/g, ""));
-  };
-
-  const filterColors = (inputValue) => {
-    return allCharData?.filter((i) =>
-      i.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-  };
-
-  const loadOptions = (inputValue, callback) => {
-    setTimeout(() => {
-      callback(filterColors(inputValue));
-    }, 1000);
-  };
-
   return (
     <div className={styles.comments}>
       {console.log("cid:", cid, "get comment:", commentData)}
-      {console.log("allCharData:", allCharData)}
+      {console.log("allOptions:", allOptions)}
       <div className={styles.history}>
         <ul>
           {commentData?.map((data) => (
@@ -66,16 +51,8 @@ const Comments = ({ cid }) => {
         </ul>
       </div>
       <form>
-        <AsyncSelect
-          formatOptionLabel={formatOptionLabel}
-          options={allCharData}
-          cacheOptions
-          loadOptions={loadOptions}
-          defaultOptions
-          onInputChange={handleInputChange}
-        />
+        <Select options={allOptions} formatOptionLabel={formatOptionLabel} />
         <textarea>Hello there, this is some text in a text area</textarea>
-
         <input type="submit" value="Submit" />
       </form>
     </div>
