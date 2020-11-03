@@ -5,25 +5,25 @@
 .comments form {
   margin: 40px 0;
   border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 12em;
   display: grid;
-  grid-template-columns: 2fr 4fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 4fr 4fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  padding: 15px 15px 5px 15px;
 }
 
-.comments form select,
 .comments form textarea,
 .comments form input {
   font-size: 1em;
   border: 1px solid lightgrey;
-  border-radius: 10px;
+  border-radius: 5px;
   background: transparent;
-  margin: 15px;
+  margin: 15px 0;
   padding: 15px;
 }
 
-.comments form select {
+.comments form:nth-child(1) {
   grid-column: 1/2;
   grid-row: 1;
 }
@@ -36,4 +36,5 @@
 .comments form input {
   grid-column: 3/4;
   grid-row: 3;
+  margin-left: 15px;
 }

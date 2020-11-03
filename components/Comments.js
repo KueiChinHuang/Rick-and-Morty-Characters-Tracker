@@ -3,9 +3,6 @@ import useSWR from "swr";
 import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
-import { getAllData } from "../lib/chars";
-import AsyncSelect from "react-select/async";
-import { useState } from "react";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
@@ -20,10 +17,6 @@ const fetcher = async (nextUrl) => {
 };
 
 const Comments = ({ cid }) => {
-  const { data: allCharData } = useSWR(
-    "https://rickandmortyapi.com/api/character/",
-    fetcher
-  );
   const { data: allOptions } = useSWR("/api/character/options", (url) =>
     Axios.get(url).then((r) => r.data.data)
   );
@@ -34,8 +27,6 @@ const Comments = ({ cid }) => {
 
   return (
     <div className={styles.comments}>
-      {console.log("cid:", cid, "get comment:", commentData)}
-      {console.log("allOptions:", allOptions)}
       <div className={styles.history}>
         <ul>
           {commentData?.map((data) => (
@@ -51,7 +42,7 @@ const Comments = ({ cid }) => {
         </ul>
       </div>
       <form>
-        <Select options={allOptions} formatOptionLabel={formatOptionLabel} />
+        <Select options={allOptions} formatOptionLabel={formatOptionLabel} defaultOptions/>
         <textarea>Hello there, this is some text in a text area</textarea>
         <input type="submit" value="Submit" />
       </form>
