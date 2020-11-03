@@ -6,6 +6,10 @@ const CommentSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please add a character ID"],
     },
+    author: {
+      type: Number,
+      required: [true, "Please add an author ID"],
+    },
     content: {
       type: String,
       required: true,

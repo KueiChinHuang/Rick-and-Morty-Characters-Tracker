@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import { getAllData } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
 import Favorite from "../../components/Favorite";
+import Comments from "../../components/Comments";
 
 export async function getStaticPaths() {
   const allData = await getAllData();
@@ -45,6 +46,7 @@ export default function CharactersDetails({ charData }) {
         <div>Gender: {charData.gender}</div>
         <div>Type: {charData.type}</div>
         <div>Origin: {charData.origin.name}</div>
+        <Comments cid={charData.id}/>
       </article>
     </Layout>
   );
