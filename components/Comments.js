@@ -4,16 +4,10 @@ import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
 import { getAllData } from "../lib/chars";
+import AsyncSelect from "react-select/async";
+import { useState } from "react";
 
-const options = [
-  { id: 1, name: "Abe", customAbbreviation: "A" },
-  { id: 2, name: "John", customAbbreviation: "J" },
-  { id: 3, name: "Dustin", customAbbreviation: "D" },
-];
-
-const formatOptionLabel = ({ id, label, customAbbreviation }) => (
-  <Author cid={id} />
-);
+const formatOptionLabel = ({ id }) => <Author cid={id} />;
 
 const fetcher = async (nextUrl) => {
   let characters = [];
@@ -35,6 +29,24 @@ const Comments = ({ cid }) => {
     Axios.get(url).then((r) => r.data.data)
   );
 
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (newValue) => {
+    setInputValue(newValue.replace(/\W/g, ""));
+  };
+
+  const filterColors = (inputValue) => {
+    return allCharData?.filter((i) =>
+      i.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  };
+
+  const loadOptions = (inputValue, callback) => {
+    setTimeout(() => {
+      callback(filterColors(inputValue));
+    }, 1000);
+  };
+
   return (
     <div className={styles.comments}>
       {console.log("cid:", cid, "get comment:", commentData)}
@@ -54,9 +66,13 @@ const Comments = ({ cid }) => {
         </ul>
       </div>
       <form>
-        <Select
+        <AsyncSelect
           formatOptionLabel={formatOptionLabel}
           options={allCharData}
+          cacheOptions
+          loadOptions={loadOptions}
+          defaultOptions
+          onInputChange={handleInputChange}
         />
         <textarea>Hello there, this is some text in a text area</textarea>
 

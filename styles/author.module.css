@@ -1,0 +1,16 @@
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.author img {
+  width: 3em;
+  margin: 5px;
+  background: transparent;
+  border: 1px black solid;
+  border-radius: 50%;
+}
+
+.author span {
+  margin: 5px;
+}
