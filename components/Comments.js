@@ -21,11 +21,19 @@ const Comments = ({ cid }) => {
           ))}
         </ul>
       </div>
-      <div className={styles.new}>
-        <div className={styles.author}>Autohr</div>
-        <textarea></textarea>
-        <button>Comment</button>
-      </div>
+      <form>
+        <select>
+          <option value="grapefruit">Grapefruit</option>
+          <option value="lime">Lime</option>
+          <option selected value="coconut">
+            Coconut
+          </option>
+          <option value="mango">Mango</option>
+        </select>
+        <textarea>Hello there, this is some text in a text area</textarea>
+
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 };

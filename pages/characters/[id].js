@@ -46,7 +46,7 @@ export default function CharactersDetails({ charData }) {
         <div>Gender: {charData.gender}</div>
         <div>Type: {charData.type}</div>
         <div>Origin: {charData.origin.name}</div>
-        <Comments cid={charData.id}/>
+        <Comments cid={charData.id} />
       </article>
     </Layout>
   );

@@ -19,15 +19,6 @@ export default async (req, res) => {
         res.status(400).json({ success: false, errRes });
       }
       break;
-    case "POST":
-      try {
-        const comment = await Comment.create(req.body);
-        res.status(201).json({ success: true, data: comment });
-      } catch (error) {
-        const errRes = error.response;
-        res.status(400).json({ success: false, errRes });
-      }
-      break;
     default:
       res.status(400).json({ success: false, error: "Method is wrong." });
   }
