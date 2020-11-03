@@ -1,6 +1,7 @@
 import styles from "../styles/comments.module.css";
 import useSWR from "swr";
 import Axios from "axios";
+import Author from "./Author";
 
 const Comments = ({ cid }) => {
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
@@ -15,6 +16,9 @@ const Comments = ({ cid }) => {
           {commentData?.map((data) => (
             <li>
               <span>{data.created_at}</span>
+              <span>
+                <Author cid={data.author} />
+              </span>
               <span>{data.author}</span>
               <span>{data.content}</span>
             </li>
