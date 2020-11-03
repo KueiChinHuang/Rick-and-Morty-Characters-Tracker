@@ -38,3 +38,9 @@
   grid-row: 3;
   margin-left: 15px;
 }
+
+.comments form input:hover,
+.comments form input:focus,
+.comments form input:active {
+  background: lightblue;
+}

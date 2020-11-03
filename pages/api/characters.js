@@ -2,8 +2,7 @@ import axios from "axios";
 
 export default async function handler(req, res) {
   const {
-    query: { name, status, type, gender },
-    method,
+    query: { name, status, type, gender }
   } = req;
 
   let chars = [];
@@ -30,7 +29,6 @@ export default async function handler(req, res) {
     console.log("charsData in getAllData: ", charsData);
 
     if (charsData !== null) {
-      //   const charsData = await charsResp.json()
       nextHref = charsData.info?.next || null;
       chars = [...chars, ...charsData.results];
     }

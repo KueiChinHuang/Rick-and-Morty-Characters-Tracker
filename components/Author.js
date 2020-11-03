@@ -9,11 +9,11 @@ const Author = ({ cid }) => {
   );
 
   return (
-    <div className={styles.author}>
-      <img src={data?.image} alt="" />
-      <span>{data?.id} </span>
-      <span>{data?.name} </span>
-    </div>
+      <div className={styles.author}>
+        <img src={data?.image} alt="" />
+        <span>{data?.id} </span>
+        <span>{data?.name} </span>
+      </div>
   );
 };
 export default Author;

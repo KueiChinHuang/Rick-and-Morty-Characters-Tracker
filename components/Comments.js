@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
+import Link from "next/link";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
@@ -33,7 +34,9 @@ const Comments = ({ cid }) => {
             <li>
               <span>{data.created_at}</span>
               <span>
-                <Author cid={data.author} />
+                <Link href="/characters/[id]" as={`/characters/${cid}`}>
+                  <Author cid={data.author} />
+                </Link>
               </span>
               <span>{data.author}</span>
               <span>{data.content}</span>
@@ -42,7 +45,11 @@ const Comments = ({ cid }) => {
         </ul>
       </div>
       <form>
-        <Select options={allOptions} formatOptionLabel={formatOptionLabel} defaultOptions/>
+        <Select
+          options={allOptions}
+          formatOptionLabel={formatOptionLabel}
+          defaultOptions
+        />
         <textarea>Hello there, this is some text in a text area</textarea>
         <input type="submit" value="Submit" />
       </form>
