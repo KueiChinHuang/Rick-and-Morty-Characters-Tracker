@@ -45,16 +45,16 @@ export default function HomeIndex({ allCharData }) {
       {!data ? (
         <section>
           <div className={styles.grid}>
-            {allCharData.map((charData) => (
-              <Card character={charData} />
+            {allCharData.map((charData, i) => (
+              <Card character={charData} key={i}/>
             ))}
           </div>
         </section>
       ) : (
         <section>
           <div className={styles.grid}>
-            {data.map((d) => (
-              <Card character={d} />
+            {data.map((d, i) => (
+              <Card character={d} key={i}/>
             ))}
           </div>
         </section>

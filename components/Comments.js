@@ -9,11 +9,7 @@ import { useState } from "react";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
-const Comments = ({ cid }) => {
-  const { data: allOptions } = useSWR("/api/character/options", (url) =>
-    Axios.get(url).then((r) => r.data.data)
-  );
-
+const Comments = ({ cid, options }) => {
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
     Axios.get(url).then((r) => r.data.data)
   );
@@ -43,10 +39,10 @@ const Comments = ({ cid }) => {
       {console.log("author and content:", author, content)}
       <div className={styles.histories}>
         <h2>History</h2>
-        {commentData?.map((data) => (
-          <div className={styles.history}>
+        {commentData?.map((data, i) => (
+          <div className={styles.history} key={i}>
             <span>{data.created_at}</span>
-            <Link href="/characters/[id]" as={`/characters/${cid}`}>
+            <Link href="/characters/[id]" as={`/characters/${data.author}`}>
               <a>
                 <Author cid={data.author} />
               </a>
@@ -60,10 +56,11 @@ const Comments = ({ cid }) => {
       <h2>Your Comment</h2>
       <form onSubmit={handleSubmit}>
         <Select
-          options={allOptions}
+          options={options}
           formatOptionLabel={formatOptionLabel}
           defaultOptions
           onChange={(e) => setAuthor(e.value)}
+          loadingMessage={() => "Loading..."}
         />
         <textarea
           onChange={(e) => setContent(e.target.value)}
