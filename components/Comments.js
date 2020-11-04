@@ -17,21 +17,28 @@ const Comments = ({ cid, options }) => {
 
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      await Axios.post("/api/comment", {
-        cid: cid,
-        author: author,
-        content: content,
-      });
-      trigger(`/api/comment/${cid}`);
-      setContent("");
-      console.log("Submit succeed.");
-    } catch (error) {
-      console.log("Fail to submit.", error);
+    if (cid === author) {
+      setMessage("Please try to use another character as the author.");
+    } else {
+      try {
+        await Axios.post("/api/comment", {
+          cid: cid,
+          author: author,
+          content: content,
+        });
+        trigger(`/api/comment/${cid}`);
+        setContent("");
+        console.log("Submit succeed.");
+        setMessage("");
+      } catch (error) {
+        setMessage("Please ensure you have set both author and content.");
+        console.log("Fail to submit.", error);
+      }
     }
   };
 
@@ -58,11 +65,12 @@ const Comments = ({ cid, options }) => {
       </div>
 
       <h2>Your Comment</h2>
+      <div>{message}</div>
       <form onSubmit={handleSubmit}>
         <Select
           options={options}
           formatOptionLabel={formatOptionLabel}
-          defaultOptions
+          defaultValue={options[0]}
           onChange={(e) => setAuthor(e.value)}
         />
         <textarea

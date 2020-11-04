@@ -20,13 +20,18 @@ export async function getStaticProps() {
 }
 
 const fetcher = async (nextUrl) => {
-  let characters = [];
-  while (nextUrl !== null) {
-    const charsResp = await Axios(nextUrl).then((r) => r.data);
-    nextUrl = charsResp.info?.next || null;
-    characters = [...characters, ...charsResp.results];
+  try {
+    let characters = [];
+    while (nextUrl !== null) {
+      const charsResp = await Axios(nextUrl).then((r) => r.data);
+      nextUrl = charsResp.info?.next || null;
+      characters = [...characters, ...charsResp.results];
+    }
+    return characters;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
-  return characters;
 };
 
 export default function HomeIndex({ allCharData }) {
@@ -52,6 +57,8 @@ export default function HomeIndex({ allCharData }) {
         </section>
       ) : (
         <section>
+          {data && console.log("data", data)}
+          {data.length === 0 ? <div>No Data Found.</div> : null}
           <div className={styles.grid}>
             {data.map((d, i) => (
               <Card character={d} key={i} />

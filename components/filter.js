@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/filter.module.css";
+import Router from "next/router";
 
 const Filter = () => {
   const [query, setQuery] = useState({});
@@ -44,11 +45,17 @@ const Filter = () => {
       >
         <a className={styles.btn}> Filter </a>
       </Link>
-      <Link href="/">
-        <a className={styles.btn}>Clear</a>
-      </Link>
+      <input
+        type="reset"
+        defaultValue="Reset"
+        className={styles.btn}
+        onClick={() => {
+          Router.push("/");
+          setQuery({});
+        }}
+      />
       <Link href="/favorite">
-        <a className={styles.btn}>My Favorite</a>
+        <a className={styles.orangeBtn}>My Favorite</a>
       </Link>
     </form>
   );

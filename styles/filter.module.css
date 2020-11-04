@@ -25,7 +25,12 @@
   width: 130px;
 }
 
-.btn {
+.btn,
+.orangeBtn {
+  font-size: 1.2em;
+  font-family: inherit;
+  line-height: inherit;
+  background: transparent;
   text-decoration: none;
   color: inherit;
   padding: 10px 20px;
@@ -34,8 +39,20 @@
   border-radius: 30px;
 }
 
+.orangeBtn {
+  border: 1px solid rgb(250, 162, 122);
+}
+
 .btn:hover,
 .btn:focus,
 .btn:active {
   background: lightblue;
+  cursor: pointer;
+}
+
+.orangeBtn:hover,
+.orangeBtn:focus,
+.orangeBtn:active {
+  background: rgb(250, 162, 122);
+  cursor: pointer;
 }
