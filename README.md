@@ -1,6 +1,8 @@
 > This project is a part of my interview process as well as my #100DaysOfCode progress. I'm opened to any advice and suggestion!
 
-LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
+## LIVE LINK: 
+
+[https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
 
 # Day 4 of #100DaysOfCode
 
@@ -9,20 +11,20 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 1. Install Docker on my Ubuntu VM: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 2. Create Next.js project and a Dockerfile (Tutorial: Containerize a Next.js app)
 3. Run docker build to create an image
-  - To build the image
-    - docker build --tag myImageName .
-    - the dot at the end is the path
-  - To checkout the images that I built
-    - docker images
-  - To run my container on port 3333 (So that I can hit my application in a browser at [http://localhost:3333](http://localhost:3333/))
-    - docker run -d -p 3333:3000 myImageName
-  - or give our process a name
-    - docker run -p 3333:3000 --name myContainerName -d myImageName
-  - We can see the list of our running containers
-    - docker ps
-  - or we can see the list of all the containers
-    - docker ps -a
-- Fetch external API in Next.js project
+   - To build the image
+      - `docker build --tag myImageName .`
+      - the dot at the end is the path
+   - To checkout the images that I built
+      - `docker images`
+   - To run my container on port 3333 (So that I can hit my application in a browser at [http://localhost:3333](http://localhost:3333/))
+      - `docker run -d -p 3333:3000 myImageName`
+   - or give our process a name
+      - `docker run -p 3333:3000 --name myContainerName -d myImageName`
+   - We can see the list of our running containers
+      - `docker ps`
+   - or we can see the list of all the containers
+      - `docker ps -a`
+4. Fetch external API in Next.js project
 
 **Learning Resources**
 
@@ -64,13 +66,13 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
    - Multiple components for home page: less dirty in my opinion ...
 
 4. **Selected Solution** :
-   When user load all the data: go to the page use &quot;getStaticProps()&quot;;
-   When user filter something: go to the page use &quot;getServerSideProps&quot;.
-   User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
+   - When user load all the data: go to the page use &quot;getStaticProps()&quot;;
+   - When user filter something: go to the page use &quot;getServerSideProps&quot;.
+   - User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
 
-   - HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
-   - HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
-   - Home component
+      - HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
+      - HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
+      - Home component
 
 5. **Result** : The solution might be horrible but the result seems OK. Hope will find a better solution soon.
 
@@ -113,8 +115,6 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 3. NextJS + MongoDB (Mar 26, 2020) [Build an app with NextJS and MongoDB - Part 1](https://youtu.be/tt9hws5JGRc)
 4. Redirect in Next.js [https://nextjs.org/docs/api-reference/next/router#routerpush](https://nextjs.org/docs/api-reference/next/router#routerpush)
 
-#reactjs #nextjs #SSR #SSG #SEO #API @vercel
-
 # Day 9 of #100DaysOfCode
 
 **Users and their favorites**
@@ -134,9 +134,9 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 2. User can only see the filter when they log in
 3. User can only add favorite when they log in
 4. Debug deployment issue on Vercel
-  - Issue: local build succeed but remote build failed
-  - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
-  - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
+   - Issue: local build succeed but remote build failed
+   - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
+   - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
 
 # Day 11 of #100DaysOfCode
 
@@ -147,6 +147,7 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 # Day 12 of #100DaysOfCode
 
 **Progress:**
+
 Favorite page:
 1. Building Favorite page:
 2. rename Home component to Card
@@ -156,15 +157,18 @@ Favorite page:
 6. use Card to display the results
 
 **Something is still broken:**
+
 1. to catch the error when can&#39;t get the result from external api
 2. clean button is not working because of cache?
 3. it&#39;s not loading my data when i first sign in?
 
 **Next Must:**
+
 1. comments + MongoDB
 2. Loading sign
 
 **Can Do better:**
+
 1. filter with dropdown menu
 2. set up a reducer + context
 
@@ -187,12 +191,15 @@ Favorite page:
    4. try to combine API and frontend
 
 **Something is still broken:**
+
 1. clean button is not working because of cache?
 
 **Next Must:**
+
 1. Loading sign
 
 **Can Do better:**
+
 1. filter with dropdown menu
 2. set up a reducer + context
 
@@ -211,28 +218,34 @@ Comments + MongoDB:
 2. error message for no search result
 
 **Next Must:**
+
 1. Loading sign
 
 **Can Do better:**
+
 1. filter with dropdown menu
 2. set up a reducer + context
 
 # Day 15 of #100DaysOfCode
 
 **Progress:**
+
 1. Error feedback when filtering
 2. Error feedback when commenting
 3. Clear button at Index page
 4. Loading sign in favorite page
 
 **Something is still broken:**
+
 1. Index page: after reset the filter, inputs can&#39;t get the cache value from browser
 2. Can&#39;t reset the comment author after navigate to other character page from history
 
 **Can Do better:**
+
 1. filter with dropdown menu
 2. set up a reducer + context
 
 **Learning Resources**
+
 1. react-select [https://react-select.com/home](https://react-select.com/home)
 2. react-loading [https://www.npmjs.com/package/react-loading](https://www.npmjs.com/package/react-loading)
