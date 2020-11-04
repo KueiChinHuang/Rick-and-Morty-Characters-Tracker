@@ -4,19 +4,10 @@ import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
 import Link from "next/link";
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { useState } from "react";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
-
-const fetcher = async (nextUrl) => {
-  let characters = [];
-  while (nextUrl !== null) {
-    const charsResp = await Axios(nextUrl).then((r) => r.data);
-    nextUrl = charsResp.info?.next || null;
-    characters = [...characters, ...charsResp.results];
-  }
-  return characters;
-};
 
 const Comments = ({ cid }) => {
   const { data: allOptions } = useSWR("/api/character/options", (url) =>
@@ -27,8 +18,25 @@ const Comments = ({ cid }) => {
     Axios.get(url).then((r) => r.data.data)
   );
 
+  const [author, setAuthor] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = async () => {
+    try {
+      const postResp = await Axios.post("/api/comment", {
+        cid: cid,
+        author: author,
+        content: content,
+      });
+      console.log("submit succeed.", postResp);
+    } catch (error) {
+      console.log("faile to submit.", error);
+    }
+  };
+
   return (
     <div className={styles.comments}>
+      {console.log("author and content:", author, content)}
       <div className={styles.histories}>
         <h2>History</h2>
         {commentData?.map((data) => (
@@ -39,20 +47,23 @@ const Comments = ({ cid }) => {
                 <Author cid={data.author} />
               </a>
             </Link>
-            <ArrowForwardIcon/>
+            <ArrowForwardIcon />
             <span>{data.content}</span>
           </div>
         ))}
       </div>
-      
+
       <h2>Your Comment</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Select
           options={allOptions}
           formatOptionLabel={formatOptionLabel}
           defaultOptions
+          onChange={(e) => setAuthor(e.value)}
         />
-        <textarea>Hello there, this is some text in a text area</textarea>
+        <textarea onChange={(e) => setContent(e.target.value)}>
+          Hello there, this is some text in a text area
+        </textarea>
         <input type="submit" value="Submit" />
       </form>
     </div>
