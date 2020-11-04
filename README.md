@@ -134,10 +134,9 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 2. User can only see the filter when they log in
 3. User can only add favorite when they log in
 4. Debug deployment issue on Vercel
-
   - Issue: local build succeed but remote build failed
   - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
-   - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
+  - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
 
 # Day 11 of #100DaysOfCode
 
@@ -148,13 +147,13 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 # Day 12 of #100DaysOfCode
 
 **Progress:**
-1. Favorite page:
-  1. Building Favorite page:
-  2. rename Home component to Card
-  3. set up an page use Layout
-  4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
-  5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
-  6. use Card to display the results
+Favorite page:
+1. Building Favorite page:
+2. rename Home component to Card
+3. set up an page use Layout
+4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
+5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
+6. use Card to display the results
 
 **Something is still broken:**
 1. to catch the error when can&#39;t get the result from external api
@@ -174,28 +173,28 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 **Progress:**
 
 1. Favorite page:
-  1. User can remove character from their favorite collection
-  2. Confirm window would pop up before user remove the character
+   1. User can remove character from their favorite collection
+   2. Confirm window would pop up before user remove the character
 
 2. Detail page:
-  1. User should be able to add / remove character to / from favorite collection
-  2. Make Favorite button a component
+   1. User should be able to add / remove character to / from favorite collection
+   2. Make Favorite button a component
 
 3. Comments + MongoDB:
-  1. create data schema for Comment
-  2. create GET and POST API for Comment
-  3. create frontend for comments
-  4. try to combine API and frontend
+   1. create data schema for Comment
+   2. create GET and POST API for Comment
+   3. create frontend for comments
+   4. try to combine API and frontend
 
 **Something is still broken:**
-  1. clean button is not working because of cache?
+1. clean button is not working because of cache?
 
 **Next Must:**
-  1. Loading sign
+1. Loading sign
 
 **Can Do better:**
-  1. filter with dropdown menu
-  2. set up a reducer + context
+1. filter with dropdown menu
+2. set up a reducer + context
 
 # Day 14 of #100DaysOfCode
 
