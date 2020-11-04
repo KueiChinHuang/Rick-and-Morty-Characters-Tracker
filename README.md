@@ -141,20 +141,14 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 # Day 11 of #100DaysOfCode
 
-## Next.js Project: Rick and Morty Character Tracker
-
 1. I suddenly realize that the thing I learned on Day 9 is the best solution of the challenge I met on Day 6!!!!
 2. Debug on Vercel deployment. Preview deployment can&#39;t get the environment variables like master branch.
 3. Working on User&#39;s Favorite page.
 
 # Day 12 of #100DaysOfCode
 
-## Next.js Project: Rick and Morty Character Tracker
-
-1. Progress:
-
-  1. Favorite page:
-
+Progress:
+1. Favorite page:
     1. Building Favorite page:
     2. rename Home component to Card
     3. set up an page use Layout
@@ -162,20 +156,20 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
     5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
     6. use Card to display the results
 
-2. Something is still broken:
-
+Something is still broken:
   1. to catch the error when can&#39;t get the result from external api
   2. clean button is not working because of cache?
   3. it&#39;s not loading my data when i first sign in?
-3. Next Must:
 
+Next Must:
   1. comments + MongoDB
   2. Loading sign
-4. Can Do better:
 
+Can Do better:
   1. filter with dropdown menu
   2. set up a reducer + context
-5. Others:
+
+Others:
 
   1. I got charged by Google for my Amazon Clone. So I tried to fix it (and my IKEA Clone) by setting up a new triel Google account with $300 credits for 3 months.
 
