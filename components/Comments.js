@@ -6,6 +6,7 @@ import Select from "react-select";
 import Link from "next/link";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { useState } from "react";
+import Date from "./Date";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
@@ -21,36 +22,39 @@ const Comments = ({ cid, options }) => {
     e.preventDefault();
 
     try {
-      const postResp = await Axios.post("/api/comment", {
+      await Axios.post("/api/comment", {
         cid: cid,
         author: author,
         content: content,
       });
       trigger(`/api/comment/${cid}`);
       setContent("");
-      console.log("submit succeed.", postResp);
+      console.log("Submit succeed.");
     } catch (error) {
-      console.log("faile to submit.", error);
+      console.log("Fail to submit.", error);
     }
   };
 
   return (
     <div className={styles.comments}>
-      {console.log("author and content:", author, content)}
       <div className={styles.histories}>
-        <h2>History</h2>
-        {commentData?.map((data, i) => (
-          <div className={styles.history} key={i}>
-            <span>{data.created_at}</span>
-            <Link href="/characters/[id]" as={`/characters/${data.author}`}>
-              <a>
-                <Author cid={data.author} />
-              </a>
-            </Link>
-            <ArrowForwardIcon />
-            <span>{data.content}</span>
-          </div>
-        ))}
+        <h2>History Comments</h2>
+        {!commentData || commentData.length === 0 ? (
+          <div>No history comments.</div>
+        ) : (
+          commentData.map((data, i) => (
+            <div className={styles.history} key={i}>
+              <Date dateString={data.created_at} />
+              <Link href="/characters/[id]" as={`/characters/${data.author}`}>
+                <a>
+                  <Author cid={data.author} />
+                </a>
+              </Link>
+              <ArrowForwardIcon />
+              <span>{data.content}</span>
+            </div>
+          ))
+        )}
       </div>
 
       <h2>Your Comment</h2>

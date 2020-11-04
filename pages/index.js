@@ -7,7 +7,7 @@ import Axios from "axios";
 import useSWR from "swr";
 import Filter from "../components/Filter";
 import UserContext from "../components/UserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 export async function getStaticProps() {
   const allCharData = await getAllData();
@@ -46,7 +46,7 @@ export default function HomeIndex({ allCharData }) {
         <section>
           <div className={styles.grid}>
             {allCharData.map((charData, i) => (
-              <Card character={charData} key={i}/>
+              <Card character={charData} key={i} />
             ))}
           </div>
         </section>
@@ -54,7 +54,7 @@ export default function HomeIndex({ allCharData }) {
         <section>
           <div className={styles.grid}>
             {data.map((d, i) => (
-              <Card character={d} key={i}/>
+              <Card character={d} key={i} />
             ))}
           </div>
         </section>

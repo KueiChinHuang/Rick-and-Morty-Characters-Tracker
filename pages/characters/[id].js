@@ -21,7 +21,8 @@ export async function getStaticProps({ params }) {
     `https://rickandmortyapi.com/api/character/${params.id}`
   );
   const charData = await charResp.json();
-  const options = await getOptions();
+  const allOptions = await getOptions();
+  const options = allOptions.filter((o) => o.value !== charData.id);
 
   return {
     props: {
@@ -37,7 +38,6 @@ export default function CharactersDetails({ charData, options }) {
     <Layout>
       <title>{charData.name} | Rick and Morty Character Tracker</title>
       <article>
-        {console.log("use lib to import options:", options)}
         <Favorite character={charData} />
         <img src={charData.image}></img>
         <h1 className={styles.headingXl}>{charData.name}</h1>
@@ -48,8 +48,7 @@ export default function CharactersDetails({ charData, options }) {
         <div>Species: {charData.species}</div>
         <div>Gender: {charData.gender}</div>
         <div>Type: {charData.type}</div>
-        <div>Origin: {charData.origin.name}</div>
-        <Comments cid={charData.id} options={options}/>
+        <Comments cid={charData.id} options={options} />
       </article>
     </Layout>
   );
