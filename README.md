@@ -70,8 +70,8 @@
    - When user filter something: go to the page use &quot;getServerSideProps&quot;.
    - User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
 
-      - HomeIndex component: Doing &quot;getStaticProps()&quot; :point_right: static data :point_right: pass to Home component
-      - HomeFilter component: Doing &quot;getServerSideProps()&quot; :point_right: fetch data when request :point_right: pass to Home component
+      - HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
+      - HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
       - Home component
 
 5. **Result** : The solution might be horrible but the result seems OK. Hope will find a better solution soon.
@@ -153,7 +153,7 @@ Favorite page:
 2. rename Home component to Card
 3. set up an page use Layout
 4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
-5. get data :point_right: my API endpoint :point_right: MongoDB (user&#39;s data: favorite characters&#39; ids) :point_right: get data from external API (characters&#39; data)
+5. get data --> my API endpoint --> MongoDB (user&#39;s data: favorite characters&#39; ids) --> get data from external API (characters&#39; data)
 6. use Card to display the results
 
 **Something is still broken:**
