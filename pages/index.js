@@ -33,7 +33,7 @@ const fetcher = async (nextUrl) => {
   }
 };
 
-export default function HomeIndex({ allCharData }) {
+export default function Index({ allCharData }) {
   const { uid } = useContext(UserContext);
   const router = useRouter();
   const { data } = useSWR(

@@ -138,3 +138,124 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 - Issue: local build succeed but remote build failed
 - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
 - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
+
+# Day 11 of #100DaysOfCode
+
+## Next.js Project: Rick and Morty Character Tracker
+
+1. I suddenly realize that the thing I learned on Day 9 is the best solution of the challenge I met on Day 6!!!!
+2. Debug on Vercel deployment. Preview deployment can&#39;t get the environment variables like master branch.
+3. Working on User&#39;s Favorite page.
+
+# Day 12 of #100DaysOfCode
+
+## Next.js Project: Rick and Morty Character Tracker
+
+1. Progress:
+
+  1. Favorite page:
+
+    1. Building Favorite page:
+    2. rename Home component to Card
+    3. set up an page use Layout
+    4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
+    5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
+    6. use Card to display the results
+
+2. Something is still broken:
+
+  1. to catch the error when can&#39;t get the result from external api
+  2. clean button is not working because of cache?
+  3. it&#39;s not loading my data when i first sign in?
+3. Next Must:
+
+  1. comments + MongoDB
+  2. Loading sign
+4. Can Do better:
+
+  1. filter with dropdown menu
+  2. set up a reducer + context
+5. Others:
+
+  1. I got charged by Google for my Amazon Clone. So I tried to fix it (and my IKEA Clone) by setting up a new triel Google account with $300 credits for 3 months.
+
+
+
+# Day 13 of #100DaysOfCode
+
+## Next.js Project: Rick and Morty Character Tracker
+
+1. Progress:
+
+  1. Favorite page:
+    1. User can remove character from their favorite collection
+    2. Confirm window would pop up before user remove the character
+
+  2. Detail page:
+    1. User should be able to add / remove character to / from favorite collection
+    2. Make Favorite button a component
+
+  3. Comments + MongoDB:
+    1. create data schema for Comment
+    2. create GET and POST API for Comment
+    3. create frontend for comments
+    4. try to combine API and frontend
+
+2. Something is still broken:
+  1. clean button is not working because of cache?
+
+3. Next Must:
+  1. Loading sign
+
+4. Can Do better:
+  1. filter with dropdown menu
+  2. set up a reducer + context
+
+# Day 14 of #100DaysOfCode
+
+## Next.js Project: Rick and Morty Character Tracker
+
+1. Progress:
+
+  1. Comments + MongoDB:
+
+    1. user can leave the comment as one of the character
+    2. the character cannot leave the comment on itself
+
+1. Something is still broken:
+
+  1. clean button is not working because of cache?
+  2. error message for no search result
+1. Next Must:
+
+  1. Loading sign
+1. Can Do better:
+
+  1. filter with dropdown menu
+  2. set up a reducer + context
+
+# Day 15 of #100DaysOfCode
+
+## Next.js Project: Rick and Morty Character Tracker
+
+1. Progress:
+
+  1. Error feedback when filtering
+  2. Error feedback when commenting
+  3. Clear button at Index page
+  4. Loading sign in favorite page
+
+1. Something is still broken:
+
+  1. Index page: after reset the filter, inputs can&#39;t get the cache value from browser
+  2. Can&#39;t reset the comment author after navigate to other character page from history
+1. Can Do better:
+
+  1. filter with dropdown menu
+  2. set up a reducer + context
+
+## Learning Resources
+
+1. react-select [https://react-select.com/home](https://react-select.com/home)
+
+1. react-loading [https://www.npmjs.com/package/react-loading](https://www.npmjs.com/package/react-loading)
