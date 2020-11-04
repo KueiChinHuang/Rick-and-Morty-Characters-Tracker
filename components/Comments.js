@@ -64,7 +64,6 @@ const Comments = ({ cid, options }) => {
           formatOptionLabel={formatOptionLabel}
           defaultOptions
           onChange={(e) => setAuthor(e.value)}
-          loadingMessage={() => "Loading..."}
         />
         <textarea
           onChange={(e) => setContent(e.target.value)}
