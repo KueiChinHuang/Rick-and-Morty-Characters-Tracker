@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         console.log(error.response);
       });
 
-    console.log("charsData in getAllData: ", charsData);
+    // console.log("charsData in getAllData: ", charsData);
 
     if (charsData !== null) {
       nextHref = charsData.info?.next || null;
