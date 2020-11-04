@@ -1,5 +1,5 @@
 import styles from "../styles/comments.module.css";
-import useSWR from "swr";
+import useSWR, { trigger } from "swr";
 import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
@@ -21,13 +21,17 @@ const Comments = ({ cid }) => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
       const postResp = await Axios.post("/api/comment", {
         cid: cid,
         author: author,
         content: content,
       });
+      trigger(`/api/comment/${cid}`);
+      setContent("");
       console.log("submit succeed.", postResp);
     } catch (error) {
       console.log("faile to submit.", error);
@@ -61,9 +65,11 @@ const Comments = ({ cid }) => {
           defaultOptions
           onChange={(e) => setAuthor(e.value)}
         />
-        <textarea onChange={(e) => setContent(e.target.value)}>
-          Hello there, this is some text in a text area
-        </textarea>
+        <textarea
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+          placeholder="Leave your comment here..."
+        ></textarea>
         <input type="submit" value="Submit" />
       </form>
     </div>
