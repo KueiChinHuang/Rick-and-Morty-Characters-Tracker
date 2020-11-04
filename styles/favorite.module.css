@@ -1,10 +1,9 @@
-.favorite {
-  margin-bottom: 2px;
-  align-self: flex-end;
+.loadingContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.favorite:hover,
-.favorite:focus,
-.favorite:active {
-  cursor: pointer;
+.loading {
 }

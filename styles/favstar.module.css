@@ -1,0 +1,10 @@
+.favstar {
+  margin-bottom: 2px;
+  align-self: flex-end;
+}
+
+.favstar:hover,
+.favstar:focus,
+.favstar:active {
+  cursor: pointer;
+}

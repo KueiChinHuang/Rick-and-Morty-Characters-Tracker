@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import { getAllData, getOptions } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
-import Favorite from "../../components/Favorite";
+import FavStar from "../../components/FavStar";
 import Comments from "../../components/Comments";
 
 export async function getStaticPaths() {
@@ -38,7 +38,7 @@ export default function CharactersDetails({ charData, options }) {
     <Layout>
       <title>{charData.name} | Rick and Morty Character Tracker</title>
       <article>
-        <Favorite character={charData} />
+        <FavStar character={charData} />
         <img src={charData.image}></img>
         <h1 className={styles.headingXl}>{charData.name}</h1>
         <div className={styles.lightText}>

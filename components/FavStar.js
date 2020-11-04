@@ -1,12 +1,12 @@
-import styles from "../styles/favorite.module.css";
+import styles from "../styles/favstar.module.css";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 import Axios from "axios";
-import useSWR, { mutate, trigger } from "swr";
+import useSWR, {  trigger } from "swr";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 
-export default function Favorite({ character }) {
+export default function FavStar({ character }) {
   const { uid } = useContext(UserContext);
   const { data: favIDs } = useSWR(`/api/user/${uid}`, (url) =>
     Axios(url).then((r) => r.data.data.favorite)
@@ -43,7 +43,7 @@ export default function Favorite({ character }) {
 
   return (
     <div
-      className={styles.favorite}
+      className={styles.favstar}
       onClick={() => handleFavorite(character.id, character.name)}
     >
       {favIDs && favIDs.includes(character.id) ? (

@@ -20,6 +20,10 @@
   transform: translate3d(0, -2px, 0);
 }
 
+.message {
+  color: red;
+}
+
 .comments form {
   margin: 40px 0;
   border: 1px solid grey;

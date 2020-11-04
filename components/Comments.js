@@ -65,7 +65,7 @@ const Comments = ({ cid, options }) => {
       </div>
 
       <h2>Your Comment</h2>
-      <div>{message}</div>
+      <div className={styles.message}>{message}</div>
       <form onSubmit={handleSubmit}>
         <Select
           options={options}

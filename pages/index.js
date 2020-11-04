@@ -1,6 +1,4 @@
 import { getAllData } from "../lib/chars";
-import Card from "../components/Card";
-import styles from "../styles/cards.module.css";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import Axios from "axios";
@@ -8,6 +6,7 @@ import useSWR from "swr";
 import Filter from "../components/Filter";
 import UserContext from "../components/UserContext";
 import { useContext } from "react";
+import Cards from "../components/Cards";
 
 export async function getStaticProps() {
   const allCharData = await getAllData();
@@ -49,21 +48,12 @@ export default function HomeIndex({ allCharData }) {
       {uid && <Filter />}
       {!data ? (
         <section>
-          <div className={styles.grid}>
-            {allCharData.map((charData, i) => (
-              <Card character={charData} key={i} />
-            ))}
-          </div>
+          <Cards characterData={allCharData} />
         </section>
       ) : (
         <section>
-          {data && console.log("data", data)}
-          {data.length === 0 ? <div>No Data Found.</div> : null}
-          <div className={styles.grid}>
-            {data.map((d, i) => (
-              <Card character={d} key={i} />
-            ))}
-          </div>
+          {data.length === 0 ? <h3>No results. Please try again :) </h3> : null}
+          <Cards characterData={data} />
         </section>
       )}
     </Layout>

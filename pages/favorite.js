@@ -1,10 +1,11 @@
 import Axios from "axios";
 import React, { useContext } from "react";
 import useSWR from "swr";
-import Card from "../components/Card";
-import styles from "../styles/cards.module.css";
 import Layout from "../components/Layout";
 import UserContext from "../components/UserContext";
+import ReactLoading from "react-loading";
+import Cards from "../components/Cards";
+import styles from "../styles/favorite.module.css";
 
 function MyFavorite() {
   const { uid } = useContext(UserContext);
@@ -18,14 +19,18 @@ function MyFavorite() {
       <article>
         <h1>My Favorite</h1>
         {typeof favData == "undefined" || !favData ? (
-          <div>Loding...</div>
+          <div className={styles.loadingContainer}>
+            <ReactLoading
+              type={"bubbles"}
+              color={"lightblue"}
+              height={"10%"}
+              width={"10%"}
+              className={styles.loading}
+            />
+          </div>
         ) : (
           <section>
-            <div className={styles.grid}>
-              {favData.map((data) => (
-                <Card character={data} />
-              ))}
-            </div>
+            <Cards characterData={favData} />
           </section>
         )}
       </article>
