@@ -6,9 +6,9 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 **Next.js + Docker**
 
-- Install Docker on my Ubuntu VM: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
-- Create Next.js project and a Dockerfile (Tutorial: Containerize a Next.js app)
-- Run docker build to create an image
+1. Install Docker on my Ubuntu VM: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+2. Create Next.js project and a Dockerfile (Tutorial: Containerize a Next.js app)
+3. Run docker build to create an image
   - To build the image
     - docker build --tag myImageName .
     - the dot at the end is the path
@@ -26,9 +26,9 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 **Learning Resources**
 
-- Containerize a Next.js app (31 July 2020) [https://thomasgouveia.fr/blog/containerize-next-js.html](https://thomasgouveia.fr/blog/containerize-next-js.html)
-- Getting start w/ Next.JS + Docker (09 May 2019) [https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker](https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker)
-- How to Get Started with Docker (Aug 14, 2020) [How to Get Started with Docker](https://youtu.be/iqqDU2crIEQ)
+1. Containerize a Next.js app (31 July 2020) [https://thomasgouveia.fr/blog/containerize-next-js.html](https://thomasgouveia.fr/blog/containerize-next-js.html)
+2. Getting start w/ Next.JS + Docker (09 May 2019) [https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker](https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker)
+3. How to Get Started with Docker (Aug 14, 2020) [How to Get Started with Docker](https://youtu.be/iqqDU2crIEQ)
 
 # Day 5 of #100DaysOfCode
 
@@ -55,28 +55,28 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 2. **Goal &amp; Limitation** : Implementing SSR is one of the main resaon of using Next.js, but &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot; can&#39;t work together in the same page.
 3. **Possible Solutions** :
 
-- Implement react package: Infinite Scroll [https://www.npmjs.com/package/infinite-scroll](https://www.npmjs.com/package/infinite-scroll)
+   - Implement react package: Infinite Scroll [https://www.npmjs.com/package/infinite-scroll](https://www.npmjs.com/package/infinite-scroll)
 
-  - pros: clean and fast
-  - cons: I failed to integrate this package with Next.js SSR solution
+     - pros: clean and fast
+     - cons: I failed to integrate this package with Next.js SSR solution
 
-- Build the infinite scrolling manually: looks very dirty
-- Multiple components for home page: less dirty in my opinion ...
+   - Build the infinite scrolling manually: looks very dirty
+   - Multiple components for home page: less dirty in my opinion ...
 
 4. **Selected Solution** :
    When user load all the data: go to the page use &quot;getStaticProps()&quot;;
    When user filter something: go to the page use &quot;getServerSideProps&quot;.
    User would feel that they&#39;re on the same page (index page) but they&#39;re actually in different pages when they filter the data.
 
-- HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
-- HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
-- Home component
+   - HomeIndex component: Doing &quot;getStaticProps()&quot; --> static data --> pass to Home component
+   - HomeFilter component: Doing &quot;getServerSideProps()&quot; --> fetch data when request --> pass to Home component
+   - Home component
 
 5. **Result** : The solution might be horrible but the result seems OK. Hope will find a better solution soon.
 
 6. Next.js &amp; API Routes
 
-- I built the back-end application endpoints in pages/api that can fetch my data from external API, but it seems useless because I can&#39;t use that in &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot;. I currently use some stupid way to get the external data in my library.
+   - I built the back-end application endpoints in pages/api that can fetch my data from external API, but it seems useless because I can&#39;t use that in &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot;. I currently use some stupid way to get the external data in my library.
 
 # Day 7 of #100DaysOfCode
 
@@ -84,12 +84,12 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 1. Tried to use the api endpoint that I set up in my app to fetch the external data for user
 
-- failed, because only absolute URL is allowed in pages.
+   - failed, because only absolute URL is allowed in pages.
 
 2. User Authentication with Auth0
 
-- User can login/logout, but I gonna try to store user&#39;s session info using useContext tomorrow.
-- The user authentication in the server-less model is not the same as MERN stack so I had a hard time figuring out a better practice of authentication in Next.js.
+   - User can login/logout, but I gonna try to store user&#39;s session info using useContext tomorrow.
+   - The user authentication in the server-less model is not the same as MERN stack so I had a hard time figuring out a better practice of authentication in Next.js.
 
 **Learning Resources**
 
@@ -135,9 +135,9 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 3. User can only add favorite when they log in
 4. Debug deployment issue on Vercel
 
-- Issue: local build succeed but remote build failed
-- Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
-- The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
+  - Issue: local build succeed but remote build failed
+  - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
+   - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
 
 # Day 11 of #100DaysOfCode
 
@@ -147,109 +147,93 @@ LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/]
 
 # Day 12 of #100DaysOfCode
 
-Progress:
+**Progress:**
 1. Favorite page:
-    1. Building Favorite page:
-    2. rename Home component to Card
-    3. set up an page use Layout
-    4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
-    5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
-    6. use Card to display the results
+  1. Building Favorite page:
+  2. rename Home component to Card
+  3. set up an page use Layout
+  4. in Layout: change &quot;Go back to Home&quot; to &quot;Go back to last page&quot;
+  5. get data --\&gt; my API endpoint --\&gt; MongoDB (user&#39;s data: favorite characters&#39; ids) --\&gt; get data from external API (characters&#39; data)
+  6. use Card to display the results
 
-Something is still broken:
-  1. to catch the error when can&#39;t get the result from external api
-  2. clean button is not working because of cache?
-  3. it&#39;s not loading my data when i first sign in?
+**Something is still broken:**
+1. to catch the error when can&#39;t get the result from external api
+2. clean button is not working because of cache?
+3. it&#39;s not loading my data when i first sign in?
 
-Next Must:
-  1. comments + MongoDB
-  2. Loading sign
+**Next Must:**
+1. comments + MongoDB
+2. Loading sign
 
-Can Do better:
-  1. filter with dropdown menu
-  2. set up a reducer + context
-
-Others:
-
-  1. I got charged by Google for my Amazon Clone. So I tried to fix it (and my IKEA Clone) by setting up a new triel Google account with $300 credits for 3 months.
-
-
+**Can Do better:**
+1. filter with dropdown menu
+2. set up a reducer + context
 
 # Day 13 of #100DaysOfCode
 
-## Next.js Project: Rick and Morty Character Tracker
+**Progress:**
 
-1. Progress:
+1. Favorite page:
+  1. User can remove character from their favorite collection
+  2. Confirm window would pop up before user remove the character
 
-  1. Favorite page:
-    1. User can remove character from their favorite collection
-    2. Confirm window would pop up before user remove the character
+2. Detail page:
+  1. User should be able to add / remove character to / from favorite collection
+  2. Make Favorite button a component
 
-  2. Detail page:
-    1. User should be able to add / remove character to / from favorite collection
-    2. Make Favorite button a component
+3. Comments + MongoDB:
+  1. create data schema for Comment
+  2. create GET and POST API for Comment
+  3. create frontend for comments
+  4. try to combine API and frontend
 
-  3. Comments + MongoDB:
-    1. create data schema for Comment
-    2. create GET and POST API for Comment
-    3. create frontend for comments
-    4. try to combine API and frontend
-
-2. Something is still broken:
+**Something is still broken:**
   1. clean button is not working because of cache?
 
-3. Next Must:
+**Next Must:**
   1. Loading sign
 
-4. Can Do better:
+**Can Do better:**
   1. filter with dropdown menu
   2. set up a reducer + context
 
 # Day 14 of #100DaysOfCode
 
-## Next.js Project: Rick and Morty Character Tracker
+**Progress:**
 
-1. Progress:
+Comments + MongoDB:
 
-  1. Comments + MongoDB:
+  1. user can leave the comment as one of the character
+  2. the character cannot leave the comment on itself
 
-    1. user can leave the comment as one of the character
-    2. the character cannot leave the comment on itself
+**Something is still broken:**
 
-1. Something is still broken:
+1. clean button is not working because of cache?
+2. error message for no search result
 
-  1. clean button is not working because of cache?
-  2. error message for no search result
-1. Next Must:
+**Next Must:**
+1. Loading sign
 
-  1. Loading sign
-1. Can Do better:
-
-  1. filter with dropdown menu
-  2. set up a reducer + context
+**Can Do better:**
+1. filter with dropdown menu
+2. set up a reducer + context
 
 # Day 15 of #100DaysOfCode
 
-## Next.js Project: Rick and Morty Character Tracker
+**Progress:**
+1. Error feedback when filtering
+2. Error feedback when commenting
+3. Clear button at Index page
+4. Loading sign in favorite page
 
-1. Progress:
+**Something is still broken:**
+1. Index page: after reset the filter, inputs can&#39;t get the cache value from browser
+2. Can&#39;t reset the comment author after navigate to other character page from history
 
-  1. Error feedback when filtering
-  2. Error feedback when commenting
-  3. Clear button at Index page
-  4. Loading sign in favorite page
+**Can Do better:**
+1. filter with dropdown menu
+2. set up a reducer + context
 
-1. Something is still broken:
-
-  1. Index page: after reset the filter, inputs can&#39;t get the cache value from browser
-  2. Can&#39;t reset the comment author after navigate to other character page from history
-1. Can Do better:
-
-  1. filter with dropdown menu
-  2. set up a reducer + context
-
-## Learning Resources
-
+**Learning Resources**
 1. react-select [https://react-select.com/home](https://react-select.com/home)
-
-1. react-loading [https://www.npmjs.com/package/react-loading](https://www.npmjs.com/package/react-loading)
+2. react-loading [https://www.npmjs.com/package/react-loading](https://www.npmjs.com/package/react-loading)
