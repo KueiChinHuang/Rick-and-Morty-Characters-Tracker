@@ -51,12 +51,11 @@ export default function Index({ allCharData }) {
       <title>Rick and Morty Character Tracker</title>
 
       {/* User needs to login to filter */}
-      {uid && <Filter />}
+      {uid ? <Filter /> : <h3>Sign in to filter the characters! :) </h3>}
 
-      {/* If filter result is not exist, show all the data */}
+      {/* If filter result not exist, show all the data */}
       {!data ? (
         <section>
-          <h1>Sign in to filter the characters! :) </h1>
           <Cards characterData={allCharData} />
         </section>
       ) : (

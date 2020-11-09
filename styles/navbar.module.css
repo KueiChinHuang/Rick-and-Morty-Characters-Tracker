@@ -3,7 +3,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 1.1em;
+  font-size: 0.9em;
 }
 
 .navbar span {
@@ -15,8 +15,8 @@
 .btn {
   text-decoration: none;
   color: inherit;
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 0.4em 0.8em;
+  margin: 0.4em;
   border: 1px solid lightblue;
   border-radius: 30px;
   cursor: pointer;
