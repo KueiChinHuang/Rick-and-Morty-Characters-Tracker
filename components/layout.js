@@ -11,6 +11,7 @@ export default function Layout({ children, home }) {
   const router = useRouter();
   return (
     <div className={styles.container}>
+      {/* Head: link and meta */}
       <Head>
         <link rel="icon" href="/Rick.ico" />
         <meta
@@ -26,6 +27,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
+      {/* header: navbar and signin/signout */}
       <header className={styles.header}>
         <Navbar />
         {home ? (
@@ -56,14 +59,18 @@ export default function Layout({ children, home }) {
           </>
         )}
       </header>
-      {!home && (
-        <div className={styles.backToHome}>
-          <h3 onClick={() => router.back()}>
-            <a>← Back to last page</a>
-          </h3>
-        </div>
-      )}
-      <main>{children}</main>
+
+      {/* main */}
+      <main>
+        {!home && (
+          <div className={styles.backToHome}>
+            <h3 onClick={() => router.back()}>
+              <a>← Back to last page</a>
+            </h3>
+          </div>
+        )}
+        <div className={styles.mainContainer}>{children}</div>
+      </main>
     </div>
   );
 }

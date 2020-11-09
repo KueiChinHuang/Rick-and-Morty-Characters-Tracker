@@ -92,3 +92,9 @@
 .backToHome a:active {
   color: darkblue;
 }
+
+.mainContainer section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

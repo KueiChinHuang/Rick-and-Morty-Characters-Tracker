@@ -8,6 +8,7 @@ import UserContext from "../components/UserContext";
 import { useContext } from "react";
 import Cards from "../components/Cards";
 
+// Get all the data as static data, to show all the characters when user first come to this site
 export async function getStaticProps() {
   const allCharData = await getAllData();
   return {
@@ -18,6 +19,7 @@ export async function getStaticProps() {
   };
 }
 
+// A fetcher for swr filtering the data
 const fetcher = async (nextUrl) => {
   try {
     let characters = [];
@@ -34,7 +36,10 @@ const fetcher = async (nextUrl) => {
 };
 
 export default function Index({ allCharData }) {
+  // Get user's id
   const { uid } = useContext(UserContext);
+
+  // Get the filter result using swr
   const router = useRouter();
   const { data } = useSWR(
     `https://rickandmortyapi.com/api/character/${router.asPath}`,
@@ -45,15 +50,23 @@ export default function Index({ allCharData }) {
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
 
+      {/* User needs to login to filter */}
       {uid && <Filter />}
+
+      {/* If filter result is not exist, show all the data */}
       {!data ? (
         <section>
+          <h1>Sign in to filter the characters! :) </h1>
           <Cards characterData={allCharData} />
         </section>
       ) : (
         <section>
-          {data.length === 0 ? <h3>No results. Please try again :) </h3> : null}
-          <Cards characterData={data} />
+          {/* When data length is 0, it means there is no results from external API. */}
+          {data.length === 0 ? (
+            <h3>No results. Please try again :) </h3>
+          ) : (
+            <Cards characterData={data} />
+          )}
         </section>
       )}
     </Layout>

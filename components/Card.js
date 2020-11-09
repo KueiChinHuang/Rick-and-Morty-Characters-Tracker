@@ -5,6 +5,7 @@ import UserContext from "./UserContext";
 import FavStar from "./FavStar";
 
 export default function Card({ character }) {
+  // Get user's id
   const { uid } = useContext(UserContext);
 
   return (
