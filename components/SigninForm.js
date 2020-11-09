@@ -63,7 +63,7 @@ const Form = () => {
       />
       {message != "" && <div className={styles.message}>{message}</div>}
       <button className={styles.btn} onClick={(e) => handleOnClick(e)}>
-        Sign In
+        Submit
       </button>
     </form>
   );

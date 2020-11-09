@@ -25,7 +25,7 @@ const Navbar = () => {
           <span>Welcome, new friend!</span>
 
           <Link href="/signin">
-            <a className={styles.btn}>Sign In</a>
+            <a className={styles.btn}>Register & Sign In</a>
           </Link>
         </>
       )}
