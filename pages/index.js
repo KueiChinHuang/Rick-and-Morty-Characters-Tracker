@@ -51,7 +51,7 @@ export default function Index({ allCharData }) {
       <title>Rick and Morty Character Tracker</title>
 
       {/* User needs to login to filter */}
-      {uid ? <Filter /> : <h3>Sign in to filter the characters! :) </h3>}
+      {uid ? <Filter /> : <h3>*** Sign in to filter the characters ***</h3>}
 
       {/* If filter result not exist, show all the data */}
       {!data ? (
@@ -62,7 +62,7 @@ export default function Index({ allCharData }) {
         <section>
           {/* When data length is 0, it means there is no results from external API. */}
           {data.length === 0 ? (
-            <h3>No results. Please try again :) </h3>
+            <h3>No results. Please try again.</h3>
           ) : (
             <Cards characterData={data} />
           )}

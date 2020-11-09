@@ -7,10 +7,12 @@ import Link from "next/link";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { useState } from "react";
 import Date from "./Date";
+import { useRouter } from "next/router";
 
 const formatOptionLabel = ({ value }) => <Author cid={value} />;
 
 const Comments = ({ cid, options }) => {
+  const router = useRouter();
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
     Axios.get(url).then((r) => r.data.data)
   );
@@ -18,6 +20,10 @@ const Comments = ({ cid, options }) => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
+
+  const goToAuthor = (author) => {
+    router.push(`/characters/${author}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,11 +58,9 @@ const Comments = ({ cid, options }) => {
           commentData.map((data, i) => (
             <div className={styles.history} key={i}>
               <Date dateString={data.created_at} />
-              <Link href="/characters/[id]" as={`/characters/${data.author}`}>
-                <a>
-                  <Author cid={data.author} />
-                </a>
-              </Link>
+              <div className={styles.authorBtn} onClick={() => goToAuthor(data.author)}>
+                <Author cid={data.author} />
+              </div>
               <ArrowForwardIcon />
               <span>{data.content}</span>
             </div>
@@ -70,7 +74,8 @@ const Comments = ({ cid, options }) => {
         <Select
           options={options}
           formatOptionLabel={formatOptionLabel}
-          defaultValue={options[0]}
+          defaultInputValue=""
+          placeholder="Select or type to search ..."
           onChange={(e) => setAuthor(e.value)}
         />
         <textarea

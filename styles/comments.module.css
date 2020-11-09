@@ -11,13 +11,14 @@
   margin: 10px;
 }
 
-.history a {
+.authorBtn {
   color: rgb(95, 182, 216);
 }
 
-.history a:hover {
+.authorBtn:hover {
   color: rgb(5, 123, 170);
   transform: translate3d(0, -2px, 0);
+  cursor: pointer;
 }
 
 .message {
