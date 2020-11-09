@@ -1,7 +1,7 @@
 .filterForm {
   width: 100%;
   line-height: 1.5em;
-  font-size: 1.2em;
+  font-size: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -10,7 +10,7 @@
 
 .label {
   height: 80%;
-  margin: 10px;
+  margin: 0.2em;
   display: flex;
 }
 
@@ -27,14 +27,14 @@
 
 .btn,
 .orangeBtn {
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: inherit;
   line-height: inherit;
   background: transparent;
   text-decoration: none;
   color: inherit;
-  padding: 10px 20px;
-  margin: 10px;
+  padding:  0.3em  1em;
+  margin:  0.2em;
   border: 1px solid lightblue;
   border-radius: 30px;
 }

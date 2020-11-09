@@ -48,11 +48,11 @@ export default function FavStar({ character }) {
     >
       {favIDs && favIDs.includes(character.id) ? (
         <div title="Remove from favorite">
-          <StarIcon color="primary" fontSize="large" />
+          <StarIcon color="primary"  />
         </div>
       ) : (
         <div title="Add to favorite">
-          <StarBorderIcon color="disabled" fontSize="large" />
+          <StarBorderIcon color="disabled"  />
         </div>
       )}
     </div>

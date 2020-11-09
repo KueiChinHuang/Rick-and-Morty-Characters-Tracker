@@ -3,6 +3,8 @@ import { getAllData, getOptions } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
 import FavStar from "../../components/FavStar";
 import Comments from "../../components/Comments";
+import { cache } from "swr";
+import { useEffect } from "react";
 
 export async function getStaticPaths() {
   const allData = await getAllData();
@@ -34,6 +36,18 @@ export async function getStaticProps({ params }) {
 }
 
 export default function CharactersDetails({ charData, options }) {
+  useEffect(() => {
+    cache
+      .keys()
+      .filter((key) =>
+        key.startsWith(
+          cache
+            .serializeKey(["https://rickandmortyapi.com/api/character/"])
+            .forEach((key) => cache.delete(key))
+        )
+      );
+  }, []);
+
   return (
     <Layout>
       <title>{charData.name} | Rick and Morty Character Tracker</title>
