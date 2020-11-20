@@ -57,20 +57,26 @@ export default function CharactersDetails({ charData, options }) {
 
   return (
     <Layout>
-      <title>{charData.name} | Rick and Morty Character Tracker</title>
-      <article>
-        <FavStar character={charData} />
-        <img src={charData.image}></img>
-        <h1 className={styles.headingXl}>{charData.name}</h1>
-        <div className={styles.lightText}>
-          Location: {charData.location.name}
-        </div>
-        <div>Status: {charData.status}</div>
-        <div>Species: {charData.species}</div>
-        <div>Gender: {charData.gender}</div>
-        <div>Type: {charData.type}</div>
-        <Comments cid={charData.id} options={options} />
-      </article>
+      {router.isFallback ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <title>{charData.name} | Rick and Morty Character Tracker</title>
+          <article>
+            <FavStar character={charData} />
+            <img src={charData.image}></img>
+            <h1 className={styles.headingXl}>{charData.name}</h1>
+            <div className={styles.lightText}>
+              Location: {charData.location.name}
+            </div>
+            <div>Status: {charData.status}</div>
+            <div>Species: {charData.species}</div>
+            <div>Gender: {charData.gender}</div>
+            <div>Type: {charData.type}</div>
+            <Comments cid={charData.id} options={options} />
+          </article>
+        </>
+      )}
     </Layout>
   );
 }
