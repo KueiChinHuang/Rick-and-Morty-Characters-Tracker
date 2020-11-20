@@ -1,20 +1,21 @@
 import Layout from "../../components/Layout";
-import { getAllData, getOptions } from "../../lib/chars";
+import { getFirstPageData, getOptions } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
 import FavStar from "../../components/FavStar";
 import Comments from "../../components/Comments";
 import { cache } from "swr";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
-  const allData = await getAllData();
-  const paths = allData.map((c) => ({
+  const firstPageData = await getFirstPageData();
+  const paths = firstPageData.map((c) => ({
     params: { id: c.id.toString() },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -31,11 +32,13 @@ export async function getStaticProps({ params }) {
       charData,
       options,
     },
-    revalidate: 604800,
+    revalidate: 1,
   };
 }
 
 export default function CharactersDetails({ charData, options }) {
+  const router = useRouter();
+
   useEffect(() => {
     cache
       .keys()
@@ -47,6 +50,10 @@ export default function CharactersDetails({ charData, options }) {
         )
       );
   }, []);
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout>
