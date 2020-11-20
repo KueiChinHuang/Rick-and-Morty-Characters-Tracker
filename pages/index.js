@@ -7,6 +7,7 @@ import Filter from "../components/Filter";
 import UserContext from "../components/UserContext";
 import { useContext } from "react";
 import Cards from "../components/Cards";
+import { useStateValue } from "../context/StateProvider";
 
 // Get all the data as static data, to show all the characters when user first come to this site
 export async function getStaticProps() {
@@ -37,7 +38,8 @@ const fetcher = async (nextUrl) => {
 
 export default function Index({ allCharData }) {
   // Get user's id
-  const { uid } = useContext(UserContext);
+
+  const [{ user }, dispatch] = useStateValue();
 
   // Get the filter result using swr
   const router = useRouter();
@@ -51,7 +53,7 @@ export default function Index({ allCharData }) {
       <title>Rick and Morty Character Tracker</title>
 
       {/* User needs to login to filter */}
-      {uid ? <Filter /> : <h3>*** Sign in to filter the characters ***</h3>}
+      {user ? <Filter /> : <h3>*** Sign in to filter the characters ***</h3>}
 
       {/* If filter result not exist, show all the data */}
       {!data ? (

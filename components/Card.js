@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 import FavStar from "./FavStar";
+import { useStateValue } from "../context/StateProvider";
 
 export default function Card({ character }) {
   // Get user's id
-  const { uid } = useContext(UserContext);
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className={styles.card}>
@@ -18,10 +19,10 @@ export default function Card({ character }) {
       />
       <div className={styles.content}>
         {/* User can manage favorite only when they login */}
-        {!uid ? null : <FavStar character={character} />}
+        {!user ? null : <FavStar character={character} />}
         <div className={styles.title}>
           {/* User can click on character only when they login */}
-          {!uid ? (
+          {!user ? (
             <h3>{character.name}</h3>
           ) : (
             <Link href="/characters/[id]" as={`/characters/${character.id}`}>

@@ -2,13 +2,14 @@ import styles from "../styles/favstar.module.css";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 import Axios from "axios";
-import useSWR, {  trigger } from "swr";
+import useSWR, { trigger } from "swr";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { useStateValue } from "../context/StateProvider";
 
 export default function FavStar({ character }) {
-  const { uid } = useContext(UserContext);
-  const { data: favIDs } = useSWR(`/api/user/${uid}`, (url) =>
+  const [{ user }, dispatch] = useStateValue();
+  const { data: favIDs } = useSWR(`/api/user/${user.uid}`, (url) =>
     Axios(url).then((r) => r.data.data.favorite)
   );
 
@@ -20,7 +21,7 @@ export default function FavStar({ character }) {
           `Are you sure you want to remove ${cname} from favorite?`
         )
       ) {
-        await Axios.put(`/api/user/${uid}`, {
+        await Axios.put(`/api/user/${user.uid}`, {
           favorite: favIDs.filter((p) => p !== cid),
         })
           .then((res) => console.log("DB updated:", res.data.data.favorite))
@@ -30,15 +31,15 @@ export default function FavStar({ character }) {
 
     // If this character is NOT yet a user's favorite, ADD it
     else {
-      await Axios.put(`/api/user/${uid}`, {
+      await Axios.put(`/api/user/${user.uid}`, {
         favorite: favIDs.concat(cid),
       })
         .then((res) => console.log("DB updated:", res.data.data.favorite))
         .catch((error) => console.log("Failed to update DB:", error));
     }
 
-    trigger(`/api/user/${uid}`);
-    trigger(`/api/user/${uid}/favorite`);
+    trigger(`/api/user/${user.uid}`);
+    trigger(`/api/user/${user.uid}/favorite`);
   };
 
   return (
@@ -48,11 +49,11 @@ export default function FavStar({ character }) {
     >
       {favIDs && favIDs.includes(character.id) ? (
         <div title="Remove from favorite">
-          <StarIcon color="primary"  />
+          <StarIcon color="primary" />
         </div>
       ) : (
         <div title="Add to favorite">
-          <StarBorderIcon color="disabled"  />
+          <StarBorderIcon color="disabled" />
         </div>
       )}
     </div>
