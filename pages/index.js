@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import Axios from "axios";
 import useSWR from "swr";
 import Filter from "../components/Filter";
-import UserContext from "../components/UserContext";
-import { useContext } from "react";
 import Cards from "../components/Cards";
 import { useStateValue } from "../context/StateProvider";
 
@@ -37,8 +35,6 @@ const fetcher = async (nextUrl) => {
 };
 
 export default function Index({ allCharData }) {
-  // Get user's id
-
   const [{ user }, dispatch] = useStateValue();
 
   // Get the filter result using swr

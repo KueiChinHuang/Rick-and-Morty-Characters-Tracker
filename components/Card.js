@@ -1,7 +1,5 @@
 import styles from "../styles/card.module.css";
 import Link from "next/link";
-import { useContext } from "react";
-import UserContext from "./UserContext";
 import FavStar from "./FavStar";
 import { useStateValue } from "../context/StateProvider";
 

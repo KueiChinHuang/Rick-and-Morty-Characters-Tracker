@@ -1,15 +1,15 @@
 import Axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
-import UserContext from "../components/UserContext";
 import ReactLoading from "react-loading";
 import Cards from "../components/Cards";
 import styles from "../styles/favorite.module.css";
+import { useStateValue } from "../context/StateProvider";
 
 function MyFavorite() {
-  const { uid } = useContext(UserContext);
-  const { data: favData } = useSWR(`/api/user/${uid}/favorite`, (url) =>
+  const [{ user }, dispatch] = useStateValue();
+  const { data: favData } = useSWR(user ? `/api/user/${user.uid}/favorite` : null, (url) =>
     Axios(url).then((r) => r.data.favData)
   );
 

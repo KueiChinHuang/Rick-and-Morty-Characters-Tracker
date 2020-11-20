@@ -1,6 +1,4 @@
 import styles from "../styles/favstar.module.css";
-import { useContext } from "react";
-import UserContext from "./UserContext";
 import Axios from "axios";
 import useSWR, { trigger } from "swr";
 import StarIcon from "@material-ui/icons/Star";
@@ -9,8 +7,9 @@ import { useStateValue } from "../context/StateProvider";
 
 export default function FavStar({ character }) {
   const [{ user }, dispatch] = useStateValue();
-  const { data: favIDs } = useSWR(`/api/user/${user.uid}`, (url) =>
-    Axios(url).then((r) => r.data.data.favorite)
+  const { data: favIDs } = useSWR(
+    user ? `/api/user/${user.uid}` : null,
+    (url) => Axios(url).then((r) => r.data.data.favorite)
   );
 
   const handleFavorite = async (cid, cname) => {
