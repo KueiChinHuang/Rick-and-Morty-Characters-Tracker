@@ -5,15 +5,15 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
-      if (action.user) {
-        localStorage.setItem("user", JSON.stringify(action.user));
+      if (action.payload.user) {
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
       } else {
         localStorage.removeItem("user");
       }
 
       return {
         ...state,
-        user: action.user,
+        user: action.payload.user,
       };
 
     default:

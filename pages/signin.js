@@ -33,10 +33,12 @@ const SignIn = () => {
         if (user.username == username && user.password == password) {
           dispatch({
             type: "SET_USER",
-            user: {
-              uid: user._id,
-              username,
-              password,
+            payload: {
+              user: {
+                uid: user._id,
+                username,
+                password,
+              },
             },
           });
           isValid = true;
@@ -60,10 +62,12 @@ const SignIn = () => {
       const newUid = await createUser(username, password);
       dispatch({
         type: "SET_USER",
-        user: {
-          uid: newUid,
-          username,
-          password,
+        payload: {
+          user: {
+            uid: newUid,
+            username,
+            password,
+          },
         },
       });
       setMessage("Register successfully. We're logging you in ...");

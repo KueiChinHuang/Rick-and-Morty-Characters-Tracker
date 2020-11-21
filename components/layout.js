@@ -18,12 +18,16 @@ export default function Layout({ children, home }) {
     if (authCheck) {
       dispatch({
         type: "SET_USER",
-        user: JSON.parse(authCheck),
+        payload: {
+          user: JSON.parse(authCheck),
+        },
       });
     } else {
       dispatch({
         type: "SET_USER",
-        user: null,
+        payload: {
+          user: null,
+        },
       });
     }
   }, []);

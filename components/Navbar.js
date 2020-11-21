@@ -8,7 +8,9 @@ const Navbar = () => {
   const signOut = () => {
     dispatch({
       type: "SET_USER",
-      user: null,
+      payload: {
+        user: null,
+      },
     });
   };
 
