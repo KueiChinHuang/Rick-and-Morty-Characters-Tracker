@@ -6,6 +6,7 @@ import Comments from "../../components/Comments";
 import { cache } from "swr";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useStateValue } from "../../context/StateProvider";
 
 export async function getStaticPaths() {
   const firstPageData = await getFirstPageData();
@@ -24,20 +25,18 @@ export async function getStaticProps({ params }) {
     `https://rickandmortyapi.com/api/character/${params.id}`
   );
   const charData = await charResp.json();
-  const allOptions = await getOptions();
-  const options = allOptions.filter((o) => o.value !== charData.id);
 
   return {
     props: {
       charData,
-      options,
     },
     revalidate: 1,
   };
 }
 
-export default function CharactersDetails({ charData, options }) {
+export default function CharactersDetails({ charData }) {
   const router = useRouter();
+  const [{ user, characters, options }, dispatch] = useStateValue();
 
   useEffect(() => {
     cache

@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Filter from "../components/Filter";
 import Cards from "../components/Cards";
 import { useStateValue } from "../context/StateProvider";
+import { useEffect } from "react";
 
 // Get all the data as static data, to show all the characters when user first come to this site
 export async function getStaticProps() {
@@ -35,7 +36,7 @@ const fetcher = async (nextUrl) => {
 };
 
 export default function Index({ allCharData }) {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, characters, options }, dispatch] = useStateValue();
 
   // Get the filter result using swr
   const router = useRouter();
@@ -43,6 +44,15 @@ export default function Index({ allCharData }) {
     `https://rickandmortyapi.com/api/character/${router.asPath}`,
     fetcher
   );
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_CHARACTERS",
+      payload: {
+        characters: allCharData,
+      },
+    });
+  }, []);
 
   return (
     <Layout home>
