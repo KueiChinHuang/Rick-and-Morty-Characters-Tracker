@@ -42,7 +42,7 @@
 }
 
 .message {
-  color: red;
+  /* color: red; */
   font-size: 1em;
   max-width: 260px;
   text-align: center;

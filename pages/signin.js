@@ -46,7 +46,7 @@ const SignIn = () => {
       if (!isValid) {
         setMessage("Invalid User");
       } else {
-        setMessage(`Welcome, ${username}`);
+        setMessage(`Welcome, ${username}! We're logging you in ...`);
       }
     }
   };
@@ -66,7 +66,7 @@ const SignIn = () => {
           password,
         },
       });
-      setMessage("Register successfully.");
+      setMessage("Register successfully. We're logging you in ...");
       router.push("/");
     }
   };

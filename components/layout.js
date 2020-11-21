@@ -3,12 +3,31 @@ import styles from "../styles/layout.module.css";
 import Link from "next/link";
 import Navbar from "./Navbar";
 import { useRouter } from "next/router";
+import { useStateValue } from "../context/StateProvider";
+import { useEffect } from "react";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
 
 export default function Layout({ children, home }) {
   const router = useRouter();
+  const [{}, dispatch] = useStateValue();
+
+  useEffect(() => {
+    const authCheck = localStorage.getItem("user");
+    if (authCheck) {
+      dispatch({
+        type: "SET_USER",
+        user: JSON.parse(authCheck),
+      });
+    } else {
+      dispatch({
+        type: "SET_USER",
+        user: null,
+      });
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       {/* Head: link and meta */}
