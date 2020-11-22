@@ -67,9 +67,6 @@ const Filter = () => {
         className={styles.btn}
         onClick={handleReset}
       />
-      <Link href="/favorite">
-        <a className={styles.orangeBtn}>My Favorite</a>
-      </Link>
     </form>
   );
 };

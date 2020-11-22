@@ -5,13 +5,14 @@ import Navbar from "./Navbar";
 import { useRouter } from "next/router";
 import { useStateValue } from "../context/StateProvider";
 import { useEffect } from "react";
+import StarIcon from "@material-ui/icons/Star";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
 
 export default function Layout({ children, home }) {
   const router = useRouter();
-  const [{}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     const authCheck = localStorage.getItem("user");
@@ -25,7 +26,7 @@ export default function Layout({ children, home }) {
         },
       });
     }
-    
+
     if (characterCheck) {
       dispatch({
         type: "SET_CHARACTERS",
@@ -65,7 +66,17 @@ export default function Layout({ children, home }) {
               className={`${styles.headerHomeImage} ${styles.borderCircle}`}
               alt={name}
             />
-            <h1 className={styles.heading2Xl}>{name}</h1>
+            <div className={styles.title}>
+              <h1 className={styles.heading2Xl}>{name}</h1>
+              {user ? (
+                <Link href="/favorite">
+                  <a className={styles.btn}>
+                    My Favorite
+                    <StarIcon color="primary" />
+                  </a>
+                </Link>
+              ) : null}
+            </div>
           </>
         ) : (
           <>
@@ -78,11 +89,22 @@ export default function Layout({ children, home }) {
                 />
               </a>
             </Link>
-            <h2 className={styles.headingXl}>
-              <Link href="/">
-                <a className={styles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
+            <div className={styles.title}>
+              <h2 className={styles.headingXl}>
+                <Link href="/">
+                  <a className={styles.colorInherit}>{name}</a>
+                </Link>
+              </h2>
+
+              {user ? (
+                <Link href="/favorite">
+                  <a className={styles.btn}>
+                    My Favorite
+                    <StarIcon color="primary" />
+                  </a>
+                </Link>
+              ) : null}
+            </div>
           </>
         )}
       </header>

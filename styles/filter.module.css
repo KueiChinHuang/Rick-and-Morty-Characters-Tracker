@@ -25,22 +25,17 @@
   width: 130px;
 }
 
-.btn,
-.orangeBtn {
+.btn {
   font-size: 1em;
   font-family: inherit;
   line-height: inherit;
   background: transparent;
   text-decoration: none;
   color: inherit;
-  padding:  0.3em  1em;
-  margin:  0.2em;
+  padding: 0.3em 1em;
+  margin: 0.2em;
   border: 1px solid lightblue;
   border-radius: 30px;
-}
-
-.orangeBtn {
-  border: 1px solid rgb(250, 162, 122);
 }
 
 .btn:hover,
@@ -48,12 +43,5 @@
 .btn:active {
   background: lightblue;
   cursor: pointer;
-  outline: none
-}
-
-.orangeBtn:hover,
-.orangeBtn:focus,
-.orangeBtn:active {
-  background: rgb(250, 162, 122);
-  cursor: pointer;
+  outline: none;
 }
