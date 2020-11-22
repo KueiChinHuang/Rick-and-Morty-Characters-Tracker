@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/filter.module.css";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+
 import { cache } from "swr";
 
 const Filter = () => {
-  // Set up state for user's filter input
-  const [query, setQuery] = useState({});
+  const router = useRouter();
+  const [query, setQuery] = useState({}); // Set up state for user's filter input
 
   const handleChange = (e) => {
     setQuery((prev) => {
@@ -14,6 +15,13 @@ const Filter = () => {
         ...prev,
         [e.target.name]: e.target.value,
       };
+    });
+  };
+
+  const handleFilter = () => {
+    router.push({
+      pathname: "/",
+      query: query,
     });
   };
 
@@ -53,20 +61,13 @@ const Filter = () => {
         <span className={styles.title}>Gender:</span>
         <input name="gender" type="text" onChange={handleChange} />
       </label>
-      <Link
-        href={{
-          pathname: "/",
-          query: query,
-        }}
-      >
-        <a className={styles.btn}> Filter </a>
-      </Link>
       <input
-        type="reset"
-        defaultValue="Reset"
+        type="submit"
+        value="Filter"
         className={styles.btn}
-        onClick={handleReset}
+        onClick={handleFilter}
       />
+      <input type="reset" className={styles.btn} onClick={handleReset} />
     </form>
   );
 };
