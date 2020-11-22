@@ -1,0 +1,27 @@
+.btnOpenFilter button {
+  background-color: rgba(0, 128, 128, 0.5);
+  position: fixed;
+  left: 2em;
+}
+
+.btnTop button {
+  background-color: rgba(0, 128, 128, 0.5);
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+}
+
+.btnTop button:hover,
+.btnOpenFilter button:hover {
+  background-color: rgba(0, 128, 128, 0.3);
+}
+
+.cardsContainer {
+  /* width: 100%; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cards {
+  width: 70vw;
+}

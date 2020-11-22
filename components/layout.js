@@ -110,7 +110,7 @@ export default function Layout({ children, home }) {
       </header>
 
       {/* main */}
-      <main>
+      <main className={styles.main}>
         {!home && (
           <div className={styles.backToHome}>
             <h3 onClick={() => router.back()}>

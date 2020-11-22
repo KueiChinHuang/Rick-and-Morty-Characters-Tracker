@@ -8,7 +8,7 @@ import Cards from "../components/Cards";
 import { useStateValue } from "../context/StateProvider";
 import { useEffect } from "react";
 import { Button } from "@material-ui/core";
-import styles from "../styles/layout.module.css";
+import styles from "../styles/index.module.css";
 
 // Get all the data as static data, to show all the characters when user first come to this site
 export async function getStaticProps() {
@@ -62,21 +62,24 @@ export default function Index({ allCharData }) {
 
       <Filter />
 
-      {/* If filter result not exist, show all the data */}
-      {!data ? (
-        <section>
-          <Cards characterData={allCharData} />
-        </section>
-      ) : (
-        <section>
-          {/* When data length is 0, it means there is no results from external API. */}
-          {data.length === 0 ? (
-            <h3>No results. Please try again.</h3>
-          ) : (
-            <Cards characterData={data} />
-          )}
-        </section>
-      )}
+      <div className={styles.cardsContainer}>
+        {/* If filter result not exist, show all the data */}
+        {!data ? (
+          <div className={styles.cards}>
+            <Cards characterData={allCharData} />
+          </div>
+        ) : (
+          <div className={styles.cards}>
+            {/* When data length is 0, it means there is no results from external API. */}
+            {data.length === 0 ? (
+              <h3>No results. Please try again.</h3>
+            ) : (
+              <Cards characterData={data} />
+            )}
+          </div>
+        )}
+      </div>
+
       <div className={styles.btnTop}>
         <Button
           onClick={() => {
