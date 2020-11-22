@@ -12,8 +12,7 @@ export default async (req, res) => {
         const users = await User.find({});
         res.status(200).json({ success: true, data: users });
       } catch (error) {
-        const errRes = error.response;
-        res.status(400).json({ success: false, errRes });
+        res.status(400).json({ success: false, error });
       }
       break;
     case "POST":
@@ -21,8 +20,11 @@ export default async (req, res) => {
         const user = await User.create(req.body);
         res.status(201).json({ success: true, data: user });
       } catch (error) {
-        const errRes = error.response;
-        res.status(400).json({ success: false, errRes });
+        let message = "";
+        if (error.code === 11000) message = "User existed";
+        res
+          .status(400)
+          .json({ success: false, error: error, message: message });
       }
       break;
     default:

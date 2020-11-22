@@ -9,11 +9,6 @@ const getUsers = async () => {
   return res.data.data;
 };
 
-const createUser = async (username, password) => {
-  const res = await Axios.post("/api/user", { username, password });
-  return res.data.data._id;
-};
-
 const SignIn = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -27,28 +22,33 @@ const SignIn = () => {
     if (username == "" || password == "") {
       setMessage("Please enter your username and password");
     } else {
-      let isValid = false;
-      const users = await getUsers();
-      users.forEach((user) => {
-        if (user.username == username && user.password == password) {
-          dispatch({
-            type: "SET_USER",
-            payload: {
-              user: {
-                uid: user._id,
-                username,
-                password,
+      try {
+        let isValid = false;
+        const res = await Axios.get("/api/user");
+        const users = res.data.data;
+
+        users.forEach((user) => {
+          if (user.username == username && user.password == password) {
+            dispatch({
+              type: "SET_USER",
+              payload: {
+                user: {
+                  uid: user._id,
+                  username,
+                  password,
+                },
               },
-            },
-          });
-          isValid = true;
-          router.push("/");
-        }
-      });
-      if (!isValid) {
-        setMessage("Invalid User");
-      } else {
-        setMessage(`Welcome, ${username}! We're logging you in ...`);
+            });
+            isValid = true;
+            router.push("/");
+          }
+        });
+
+        !isValid
+          ? setMessage("Wrong username or password. Please try again.")
+          : setMessage(`Welcome, ${username}! We're logging you in ...`);
+      } catch (error) {
+        console.log("Can't get users.", error);
       }
     }
   };
@@ -59,19 +59,24 @@ const SignIn = () => {
     if (username == "" || password == "") {
       setMessage("Please enter your username and password");
     } else {
-      const newUid = await createUser(username, password);
-      dispatch({
-        type: "SET_USER",
-        payload: {
-          user: {
-            uid: newUid,
-            username,
-            password,
+      try {
+        const res = await Axios.post("/api/user", { username, password });
+
+        dispatch({
+          type: "SET_USER",
+          payload: {
+            user: {
+              uid: res.data.data._id,
+              username,
+              password,
+            },
           },
-        },
-      });
-      setMessage("Register successfully. We're logging you in ...");
-      router.push("/");
+        });
+        setMessage("Registered successfully. We're logging you in ...");
+        router.push("/");
+      } catch (error) {
+        setMessage("This username is existed. Please log in.");
+      }
     }
   };
 
