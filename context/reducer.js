@@ -7,14 +7,16 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
-      action.payload.user
-        ? localStorage.setItem("user", JSON.stringify(action.payload.user))
-        : localStorage.removeItem("user");
-
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
       return {
         ...state,
         user: action.payload.user,
       };
+
+    case "LOG_OUT":
+      localStorage.removeItem("user");
+      localStorage.removeItem("characters");
+      return initialState;
 
     case "SET_CHARACTERS":
       localStorage.setItem(

@@ -1,17 +1,17 @@
 import styles from "../styles/navbar.module.css";
 import Link from "next/link";
 import { useStateValue } from "../context/StateProvider";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [{ user }, dispatch] = useStateValue();
+  const router = useRouter();
 
   const signOut = () => {
     dispatch({
-      type: "SET_USER",
-      payload: {
-        user: null,
-      },
+      type: "LOG_OUT",
     });
+    router.push(`/`);
   };
 
   return (
