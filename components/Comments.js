@@ -8,10 +8,11 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { useState } from "react";
 import Date from "./Date";
 import { useRouter } from "next/router";
+import { useStateValue } from "../context/StateProvider";
 
-const formatOptionLabel = ({ value }) => <Author cid={value} />;
+const Comments = ({ cid }) => {
+  const [{ user, characters, options }, dispatch] = useStateValue();
 
-const Comments = ({ cid, options }) => {
   const router = useRouter();
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
     Axios.get(url).then((r) => r.data.data)
@@ -58,7 +59,10 @@ const Comments = ({ cid, options }) => {
           commentData.map((data, i) => (
             <div className={styles.history} key={i}>
               <Date dateString={data.created_at} />
-              <div className={styles.authorBtn} onClick={() => goToAuthor(data.author)}>
+              <div
+                className={styles.authorBtn}
+                onClick={() => goToAuthor(data.author)}
+              >
                 <Author cid={data.author} />
               </div>
               <ArrowForwardIcon />
@@ -71,13 +75,15 @@ const Comments = ({ cid, options }) => {
       <h2>Your Comment</h2>
       <div className={styles.message}>{message}</div>
       <form onSubmit={handleSubmit}>
-        <Select
-          options={options}
-          formatOptionLabel={formatOptionLabel}
-          defaultInputValue=""
-          placeholder="Select or type to search ..."
-          onChange={(e) => setAuthor(e.value)}
-        />
+        {!options ? null : (
+          <Select
+            options={options}
+            formatOptionLabel={({ value }) => <Author cid={value} />}
+            defaultInputValue=""
+            placeholder="Select or type to search ..."
+            onChange={(e) => setAuthor(e.value)}
+          />
+        )}
         <textarea
           onChange={(e) => setContent(e.target.value)}
           value={content}

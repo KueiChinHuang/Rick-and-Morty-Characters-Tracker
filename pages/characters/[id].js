@@ -1,12 +1,11 @@
 import Layout from "../../components/Layout";
-import { getFirstPageData, getOptions } from "../../lib/chars";
+import { getFirstPageData } from "../../lib/chars";
 import styles from "../../styles/layout.module.css";
 import FavStar from "../../components/FavStar";
 import Comments from "../../components/Comments";
 import { cache } from "swr";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useStateValue } from "../../context/StateProvider";
 
 export async function getStaticPaths() {
   const firstPageData = await getFirstPageData();
@@ -36,7 +35,6 @@ export async function getStaticProps({ params }) {
 
 export default function CharactersDetails({ charData }) {
   const router = useRouter();
-  const [{ user, characters, options }, dispatch] = useStateValue();
 
   useEffect(() => {
     cache
@@ -53,7 +51,6 @@ export default function CharactersDetails({ charData }) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
   return (
     <Layout>
       {router.isFallback ? (
@@ -72,7 +69,7 @@ export default function CharactersDetails({ charData }) {
             <div>Species: {charData.species}</div>
             <div>Gender: {charData.gender}</div>
             <div>Type: {charData.type}</div>
-            <Comments cid={charData.id} options={options} />
+            <Comments cid={charData.id} />
           </article>
         </>
       )}

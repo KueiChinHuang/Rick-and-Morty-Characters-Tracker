@@ -1,19 +1,16 @@
-import useSWR from "swr";
-import Axios from "axios";
 import styles from "../styles/author.module.css";
+import { useStateValue } from "../context/StateProvider";
 
 const Author = ({ cid }) => {
-  const { data } = useSWR(
-    `https://rickandmortyapi.com/api/character/${cid}`,
-    (url) => Axios.get(url).then((r) => r.data)
-  );
+  const [{ user, characters, options }, dispatch] = useStateValue();
+  const data = characters?.find((character) => character.id === cid);
 
   return (
-      <div className={styles.author}>
-        <img src={data?.image} alt="" />
-        <span>{data?.id} </span>
-        <span>{data?.name} </span>
-      </div>
+    <div className={styles.author}>
+      <img src={data?.image} alt="" />
+      <span>{data?.id} </span>
+      <span>{data?.name} </span>
+    </div>
   );
 };
 export default Author;

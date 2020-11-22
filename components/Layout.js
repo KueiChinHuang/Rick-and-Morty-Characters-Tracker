@@ -15,6 +15,8 @@ export default function Layout({ children, home }) {
 
   useEffect(() => {
     const authCheck = localStorage.getItem("user");
+    const characterCheck = localStorage.getItem("characters");
+
     if (authCheck) {
       dispatch({
         type: "SET_USER",
@@ -22,11 +24,13 @@ export default function Layout({ children, home }) {
           user: JSON.parse(authCheck),
         },
       });
-    } else {
+    }
+    
+    if (characterCheck) {
       dispatch({
-        type: "SET_USER",
+        type: "SET_CHARACTERS",
         payload: {
-          user: null,
+          characters: JSON.parse(characterCheck),
         },
       });
     }

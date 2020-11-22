@@ -17,6 +17,10 @@ const reducer = (state, action) => {
       };
 
     case "SET_CHARACTERS":
+      localStorage.setItem(
+        "characters",
+        JSON.stringify(action.payload.characters)
+      );
       return {
         ...state,
         characters: action.payload.characters,
