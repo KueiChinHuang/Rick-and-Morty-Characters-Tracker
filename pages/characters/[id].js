@@ -7,6 +7,7 @@ import { cache } from "swr";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useStateValue } from "../../context/StateProvider";
+import ReactLoading from "react-loading";
 
 export async function getStaticPaths() {
   const firstPageData = await getFirstPageData();
@@ -50,13 +51,17 @@ export default function CharactersDetails({ charData }) {
       );
   }, []);
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
   return (
     <Layout>
       {router.isFallback ? (
-        <div>Loading...</div>
+        <div className={styles.loadingContainer}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"lightblue"}
+            width={"20%"}
+            className={styles.loading}
+          />
+        </div>
       ) : (
         <>
           <title>{charData.name} | Rick and Morty Character Tracker</title>

@@ -9,8 +9,9 @@ import { useStateValue } from "../context/StateProvider";
 
 function MyFavorite() {
   const [{ user }, dispatch] = useStateValue();
-  const { data: favData } = useSWR(user ? `/api/user/${user.uid}/favorite` : null, (url) =>
-    Axios(url).then((r) => r.data.favData)
+  const { data: favData } = useSWR(
+    user ? `/api/user/${user.uid}/favorite` : null,
+    (url) => Axios(url).then((r) => r.data.favData)
   );
 
   return (
@@ -23,8 +24,7 @@ function MyFavorite() {
             <ReactLoading
               type={"bubbles"}
               color={"lightblue"}
-              height={"10%"}
-              width={"10%"}
+              width={"20%"}
               className={styles.loading}
             />
           </div>
