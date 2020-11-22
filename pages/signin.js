@@ -2,12 +2,8 @@ import Axios from "axios";
 import { useState } from "react";
 import { useStateValue } from "../context/StateProvider.jsx";
 import styles from "../styles/signin.module.css";
-
 import { useRouter } from "next/router";
-const getUsers = async () => {
-  const res = await Axios.get("/api/user");
-  return res.data.data;
-};
+import ReactLoading from "react-loading";
 
 const SignIn = () => {
   const router = useRouter();
@@ -46,7 +42,7 @@ const SignIn = () => {
 
         !isValid
           ? setMessage("Wrong username or password. Please try again.")
-          : setMessage(`Welcome, ${username}! We're logging you in ...`);
+          : setMessage(`Welcome back, ${username}!`);
       } catch (error) {
         console.log("Can't get users.", error);
       }
@@ -72,7 +68,7 @@ const SignIn = () => {
             },
           },
         });
-        setMessage("Registered successfully. We're logging you in ...");
+        setMessage("Registered successfully.");
         router.push("/");
       } catch (error) {
         setMessage("This username is existed. Please log in.");
@@ -97,6 +93,15 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {message != "" && <div className={styles.message}>{message}</div>}
+        {message.includes("successful") || message.includes("Welcome") ? (
+          <ReactLoading
+            type={"bubbles"}
+            color={"lightblue"}
+            width={"30%"}
+            className={styles.loading}
+          />
+        ) : null}
+
         <button className={styles.btn} onClick={(e) => register(e)}>
           Register
         </button>
