@@ -19,16 +19,11 @@ export default function Card({ character }) {
         {/* User can manage favorite only when they login */}
         {!user ? null : <FavStar character={character} />}
         <div className={styles.title}>
-          {/* User can click on character only when they login */}
-          {!user ? (
-            <h3>{character.name}</h3>
-          ) : (
-            <Link href="/characters/[id]" as={`/characters/${character.id}`}>
-              <a title={character.name}>
-                <h3>{character.name}</h3>
-              </a>
-            </Link>
-          )}
+          <Link href="/characters/[id]" as={`/characters/${character.id}`}>
+            <a title={character.name}>
+              <h3>{character.name}</h3>
+            </a>
+          </Link>
           <small>{character.location?.name}</small>
         </div>
 

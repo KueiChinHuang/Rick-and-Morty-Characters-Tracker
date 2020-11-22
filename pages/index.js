@@ -58,8 +58,7 @@ export default function Index({ allCharData }) {
     <Layout home>
       <title>Rick and Morty Character Tracker</title>
 
-      {/* User needs to login to filter */}
-      {user ? <Filter /> : <h3>*** Sign in to filter the characters ***</h3>}
+      <Filter />
 
       {/* If filter result not exist, show all the data */}
       {!data ? (

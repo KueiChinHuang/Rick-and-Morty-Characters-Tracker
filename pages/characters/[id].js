@@ -6,6 +6,7 @@ import Comments from "../../components/Comments";
 import { cache } from "swr";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useStateValue } from "../../context/StateProvider";
 
 export async function getStaticPaths() {
   const firstPageData = await getFirstPageData();
@@ -34,6 +35,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function CharactersDetails({ charData }) {
+  const [{ user }, dispatch] = useStateValue();
   const router = useRouter();
 
   useEffect(() => {
@@ -59,7 +61,8 @@ export default function CharactersDetails({ charData }) {
         <>
           <title>{charData.name} | Rick and Morty Character Tracker</title>
           <article>
-            <FavStar character={charData} />
+            {/* User can manage favorite only when they login */}
+            {user ? <FavStar character={charData} /> : null}
             <img src={charData.image}></img>
             <h1 className={styles.headingXl}>{charData.name}</h1>
             <div className={styles.lightText}>
