@@ -133,3 +133,14 @@
   display: flex;
   justify-content: center;
 }
+
+.btnTop button {
+  background-color: rgba(0, 128, 128, 0.5);
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+}
+
+.btnTop button:hover {
+  background-color: rgba(0, 128, 128, 0.3);
+}

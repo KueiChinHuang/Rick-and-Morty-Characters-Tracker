@@ -7,6 +7,8 @@ import Filter from "../components/Filter";
 import Cards from "../components/Cards";
 import { useStateValue } from "../context/StateProvider";
 import { useEffect } from "react";
+import { Button } from "@material-ui/core";
+import styles from "../styles/layout.module.css";
 
 // Get all the data as static data, to show all the characters when user first come to this site
 export async function getStaticProps() {
@@ -75,6 +77,18 @@ export default function Index({ allCharData }) {
           )}
         </section>
       )}
+      <div className={styles.btnTop}>
+        <Button
+          onClick={() => {
+            window.scroll({
+              top: 0,
+              behavior: "smooth",
+            });
+          }}
+        >
+          To the Top
+        </Button>
+      </div>
     </Layout>
   );
 }
