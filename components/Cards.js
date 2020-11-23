@@ -7,8 +7,9 @@ const Cards = ({ characterData }) => {
   const [{ user }, dispatch] = useStateValue();
 
   return (
-    // Set up the grid for all the cards
-    <div className={styles.grid}>
+    // A container for all the cards
+    <div className={styles.cardContainer}>
+      {/* Create each card */}
       {characterData.map((character, i) => (
         <div className={styles.card} key={i}>
           <img
