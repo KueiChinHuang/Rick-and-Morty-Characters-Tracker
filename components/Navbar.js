@@ -30,10 +30,10 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <span>Welcome, new friend!</span>
+          <span>Welcome! Sign in to save your favorite characters 👉</span>
 
           <Link href="/signin">
-            <a className={styles.btn}>Register & Sign In</a>
+            <a className={styles.btn}>Sign In</a>
           </Link>
         </>
       )}
