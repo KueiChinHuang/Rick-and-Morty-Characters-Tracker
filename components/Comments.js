@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { useStateValue } from "../context/StateProvider";
 
 const Comments = ({ cid }) => {
-  const [{ user, characters, options }, dispatch] = useStateValue();
+  const [{ user, characters, options_character }, dispatch] = useStateValue();
 
   const router = useRouter();
   const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
@@ -75,9 +75,9 @@ const Comments = ({ cid }) => {
       <h2>Your Comment</h2>
       <div className={styles.message}>{message}</div>
       <form onSubmit={handleSubmit}>
-        {!options ? null : (
+        {!options_character ? null : (
           <Select
-            options={options}
+            options={options_character}
             formatOptionLabel={({ value }) => <Author cid={value} />}
             defaultInputValue=""
             placeholder="Select or type to search ..."

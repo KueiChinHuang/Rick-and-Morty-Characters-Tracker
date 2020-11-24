@@ -38,7 +38,7 @@ const fetcher = async (nextUrl) => {
 };
 
 export default function Index({ allCharData }) {
-  const [{ user, characters, options }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
 
   // Get the filter result using swr
   const router = useRouter();
@@ -58,17 +58,14 @@ export default function Index({ allCharData }) {
 
   return (
     <Layout home>
+      {console.log(router.query, router.asPath)}
       <title>Rick and Morty Character Tracker</title>
 
       <Filter />
 
       <div className={styles.cardsContainer}>
         {/* If filter result not exist, show all the data */}
-        {!data ? (
-          <div className={styles.cards}>
-            <Cards characterData={allCharData} />
-          </div>
-        ) : (
+        {data ? (
           <div className={styles.cards}>
             {/* When data length is 0, it means there is no results from external API. */}
             {data.length === 0 ? (
@@ -76,6 +73,10 @@ export default function Index({ allCharData }) {
             ) : (
               <Cards characterData={data} />
             )}
+          </div>
+        ) : (
+          <div className={styles.cards}>
+            <Cards characterData={allCharData} />
           </div>
         )}
       </div>

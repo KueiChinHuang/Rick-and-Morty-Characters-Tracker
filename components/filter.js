@@ -2,23 +2,38 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/filter.module.css";
 import Router, { useRouter } from "next/router";
+import Select from "react-select";
 
 import { cache } from "swr";
+import { useStateValue } from "../context/StateProvider";
 
 const Filter = () => {
   const router = useRouter();
   const [query, setQuery] = useState({}); // Set up state for user's filter input
 
-  const handleChange = (e) => {
+  const [
+    {
+      options_name,
+      options_status,
+      options_species,
+      options_type,
+      options_gender,
+    },
+    dispatch,
+  ] = useStateValue();
+
+  const handleChange = (e, targetName) => {
     setQuery((prev) => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [targetName]: e.label,
       };
     });
   };
 
-  const handleFilter = () => {
+  const handleFilter = (e) => {
+    e.preventDefault();
+
     router.push({
       pathname: "/",
       query: query,
@@ -41,25 +56,41 @@ const Filter = () => {
 
   return (
     <form className={styles.filterForm}>
+      {console.log("query", query)}
       <label className={styles.label}>
         <span className={styles.title}>Name:</span>
-        <input name="name" type="text" onChange={handleChange} />
+        <Select
+          options={options_name}
+          onChange={(e) => handleChange(e, "name")}
+        />
       </label>
       <label className={styles.label}>
         <span className={styles.title}>Status:</span>
-        <input name="status" type="text" onChange={handleChange} />
+        <Select
+          options={options_status}
+          onChange={(e) => handleChange(e, "status")}
+        />
       </label>
       <label className={styles.label}>
         <span className={styles.title}>Species:</span>
-        <input name="species" type="text" onChange={handleChange} />
+        <Select
+          options={options_species}
+          onChange={(e) => handleChange(e, "species")}
+        />
       </label>
       <label className={styles.label}>
         <span className={styles.title}>Type:</span>
-        <input name="type" type="text" onChange={handleChange} />
+        <Select
+          options={options_type}
+          onChange={(e) => handleChange(e, "type")}
+        />
       </label>
       <label className={styles.label}>
         <span className={styles.title}>Gender:</span>
-        <input name="gender" type="text" onChange={handleChange} />
+        <Select
+          options={options_gender}
+          onChange={(e) => handleChange(e, "gender")}
+        />
       </label>
       <input
         type="submit"
