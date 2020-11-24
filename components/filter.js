@@ -7,11 +7,11 @@ import { useStateValue } from "../context/StateProvider";
 const Filter = () => {
   const router = useRouter();
   const [query, setQuery] = useState({}); // Set up state for user's filter input
-  const [nameO, setNameO] = useState({});
-  const [statusO, setStatusO] = useState({});
-  const [speciesO, setSpeciesO] = useState({});
-  const [typeO, setTypeO] = useState({});
-  const [genderO, setGenderO] = useState({});
+  const [nameSelected, setNameSelected] = useState({});
+  const [statusSelected, setStatusSelected] = useState({});
+  const [speciesSelected, setSpeciesSelected] = useState({});
+  const [typeSelected, setTypeSelected] = useState({});
+  const [genderSelected, setGenderSelected] = useState({});
 
   const [
     {
@@ -27,19 +27,19 @@ const Filter = () => {
   const handleChange = (e, targetName) => {
     switch (targetName) {
       case "name":
-        setNameO(e);
+        setNameSelected(e);
         break;
       case "status":
-        setStatusO(e);
+        setStatusSelected(e);
         break;
       case "species":
-        setSpeciesO(e);
+        setSpeciesSelected(e);
         break;
       case "type":
-        setTypeO(e);
+        setTypeSelected(e);
         break;
       case "gender":
-        setGenderO(e);
+        setGenderSelected(e);
         break;
     }
 
@@ -62,11 +62,11 @@ const Filter = () => {
 
   const handleReset = (e) => {
     e.preventDefault();
-    setNameO({});
-    setStatusO({});
-    setSpeciesO({});
-    setTypeO({});
-    setGenderO({});
+    setNameSelected({});
+    setStatusSelected({});
+    setSpeciesSelected({});
+    setTypeSelected({});
+    setGenderSelected({});
 
     setQuery({});
     Router.push("/");
@@ -79,7 +79,7 @@ const Filter = () => {
         {console.log(query, query.name)}
         <Select
           options={options_name}
-          value={nameO}
+          value={nameSelected}
           onChange={(e) => handleChange(e, "name")}
         />
       </label>
@@ -87,7 +87,7 @@ const Filter = () => {
         <span className={styles.title}>Status:</span>
         <Select
           options={options_status}
-          value={statusO}
+          value={statusSelected}
           onChange={(e) => handleChange(e, "status")}
         />
       </label>
@@ -95,7 +95,7 @@ const Filter = () => {
         <span className={styles.title}>Species:</span>
         <Select
           options={options_species}
-          value={speciesO}
+          value={speciesSelected}
           onChange={(e) => handleChange(e, "species")}
         />
       </label>
@@ -103,7 +103,7 @@ const Filter = () => {
         <span className={styles.title}>Type:</span>
         <Select
           options={options_type}
-          value={typeO}
+          value={typeSelected}
           onChange={(e) => handleChange(e, "type")}
         />
       </label>
@@ -111,7 +111,7 @@ const Filter = () => {
         <span className={styles.title}>Gender:</span>
         <Select
           options={options_gender}
-          value={genderO}
+          value={genderSelected}
           onChange={(e) => handleChange(e, "gender")}
         />
       </label>
