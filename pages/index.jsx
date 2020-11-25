@@ -61,9 +61,11 @@ export default function Index({ allCharData }) {
       {console.log(router.query, router.asPath)}
       <title>Rick and Morty Character Tracker</title>
 
-      <Filter />
+      <div className={styles.indexContainer}>
+        <div className={styles.filterContainer}>
+          <Filter />
+        </div>
 
-      <div className={styles.cardsContainer}>
         {/* If filter result not exist, show all the data */}
         {data ? (
           <div className={styles.cards}>
@@ -79,19 +81,19 @@ export default function Index({ allCharData }) {
             <Cards characterData={allCharData} />
           </div>
         )}
-      </div>
 
-      <div className={styles.btnTop}>
-        <Button
-          onClick={() => {
-            window.scroll({
-              top: 0,
-              behavior: "smooth",
-            });
-          }}
-        >
-          To the Top
-        </Button>
+        <div className={styles.btnTop}>
+          <Button
+            onClick={() => {
+              window.scroll({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            To the Top
+          </Button>
+        </div>
       </div>
     </Layout>
   );

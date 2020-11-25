@@ -1,18 +1,18 @@
 .filterForm {
+  width: 20vw;
   position: fixed;
-  left: 2em;
+  left: 4em;
   line-height: 1.5em;
   font-size: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  z-index: 100;
+  align-items: center;
 }
 
 .label {
-  height: 80%;
-  margin: 0.2em;
+  /* height: 80%; */
+  width: 100%;
+  margin: 0.4em;
   display: flex;
 }
 
@@ -26,7 +26,7 @@
   border: 1px solid rgb(207, 206, 206);
   border-radius: 5px;
   font-size: 1em;
-  width: 130px;
+  flex: 1;
 }
 
 .label > div:nth-child(2) {
@@ -41,7 +41,7 @@
   text-decoration: none;
   color: inherit;
   padding: 0.3em 1em;
-  margin: 0.2em;
+  margin: 0.4em;
   border: 1px solid lightblue;
   border-radius: 30px;
 }

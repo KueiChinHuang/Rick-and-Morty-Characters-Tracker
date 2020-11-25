@@ -110,7 +110,7 @@ export default function Layout({ children, home }) {
       </header>
 
       {/* main */}
-      <main className={styles.main}>
+      <main>
         {!home && (
           <div className={styles.backToHome}>
             <h3 onClick={() => router.back()}>
@@ -118,7 +118,7 @@ export default function Layout({ children, home }) {
             </h3>
           </div>
         )}
-        <div className={styles.mainContainer}>{children}</div>
+        <div>{children}</div>
       </main>
     </div>
   );

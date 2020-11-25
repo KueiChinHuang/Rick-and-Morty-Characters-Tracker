@@ -1,7 +1,5 @@
-.btnOpenFilter button {
-  background-color: rgba(0, 128, 128, 0.5);
-  position: fixed;
-  left: 2em;
+.indexContainer {
+  display: flex;
 }
 
 .btnTop button {
@@ -11,17 +9,14 @@
   bottom: 2em;
 }
 
-.btnTop button:hover,
-.btnOpenFilter button:hover {
+.btnTop button:hover {
   background-color: rgba(0, 128, 128, 0.3);
 }
 
-.cardsContainer {
-  /* width: 100%; */
-  display: flex;
-  justify-content: flex-end;
+.filterContainer {
+  flex: 1;
 }
 
 .cards {
-  width: 70vw;
+  flex: 3;
 }

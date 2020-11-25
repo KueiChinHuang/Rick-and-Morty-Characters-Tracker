@@ -1,5 +1,5 @@
 .container {
-  max-width: 80%;
+  width: 90%;
   padding: 0 1rem;
   margin: 3rem auto 6rem;
 }
@@ -122,10 +122,10 @@
   color: darkblue;
 }
 
-.mainContainer h3 {
+/* .mainContainer h3 {
   text-align: center;
   margin-bottom: 1em;
-}
+} */
 
 .loadingContainer {
   width: 100%;

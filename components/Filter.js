@@ -115,13 +115,15 @@ const Filter = () => {
           onChange={(e) => handleChange(e, "gender")}
         />
       </label>
-      <input
-        type="submit"
-        value="Filter"
-        className={styles.btn}
-        onClick={handleFilter}
-      />
-      <input type="reset" className={styles.btn} onClick={handleReset} />
+      <div className={styles.buttons}>
+        <input
+          type="submit"
+          value="Filter"
+          className={styles.btn}
+          onClick={handleFilter}
+        />
+        <input type="reset" className={styles.btn} onClick={handleReset} />
+      </div>
     </form>
   );
 };
