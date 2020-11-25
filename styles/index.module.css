@@ -20,3 +20,9 @@
 .cards {
   flex: 3;
 }
+
+@media (max-width: 1000px) {
+  .indexContainer {
+    flex-direction: column;
+  }
+}
