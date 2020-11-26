@@ -63,23 +63,21 @@ export default function CharactersDetails({ charData }) {
           />
         </div>
       ) : (
-        <>
+        <div>
           <title>{charData.name} | Rick and Morty Character Tracker</title>
-          <article>
-            {/* User can manage favorite only when they login */}
-            {user ? <FavStar character={charData} /> : null}
-            <img src={charData.image}></img>
-            <h1 className={styles.headingXl}>{charData.name}</h1>
-            <div className={styles.lightText}>
-              Location: {charData.location.name}
-            </div>
-            <div>Status: {charData.status}</div>
-            <div>Species: {charData.species}</div>
-            <div>Gender: {charData.gender}</div>
-            <div>Type: {charData.type}</div>
-            <Comments cid={charData.id} />
-          </article>
-        </>
+          {/* User can manage favorite only when they login */}
+          {user ? <FavStar character={charData} /> : null}
+          <img src={charData.image}></img>
+          <h1 className={styles.headingXl}>{charData.name}</h1>
+          <div className={styles.lightText}>
+            Location: {charData.location.name}
+          </div>
+          <div>Status: {charData.status}</div>
+          <div>Species: {charData.species}</div>
+          <div>Gender: {charData.gender}</div>
+          <div>Type: {charData.type}</div>
+          <Comments cid={charData.id} />
+        </div>
       )}
     </Layout>
   );

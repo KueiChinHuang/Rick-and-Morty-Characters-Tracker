@@ -111,14 +111,20 @@ export default function Layout({ children, home }) {
 
       {/* main */}
       <main>
-        {!home && (
-          <div className={styles.backToHome}>
-            <h3 onClick={() => router.back()}>
-              <a>← Back to last page</a>
-            </h3>
-          </div>
+        {!home ? (
+          <>
+            <div className={styles.subpage}>
+              <div className={styles.backToHome}>
+                <h3 onClick={() => router.back()}>
+                  <a>← Back to last page</a>
+                </h3>
+              </div>
+              {children}
+            </div>
+          </>
+        ) : (
+          <div>{children}</div>
         )}
-        <div>{children}</div>
       </main>
     </div>
   );
