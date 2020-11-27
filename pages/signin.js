@@ -31,7 +31,6 @@ const SignIn = () => {
                 user: {
                   uid: user._id,
                   username,
-                  password,
                 },
               },
             });
