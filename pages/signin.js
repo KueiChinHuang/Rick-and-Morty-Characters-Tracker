@@ -20,24 +20,25 @@ const SignIn = () => {
     } else {
       try {
         let isValid = false;
-        const res = await Axios.get("/api/user");
-        const users = res.data.data;
+        const res = await Axios.get("/api/user/login");
+        const user = res.data.data;
 
-        users.forEach((user) => {
-          if (user.username == username && user.password == password) {
-            dispatch({
-              type: "SET_USER",
-              payload: {
-                user: {
-                  uid: user._id,
-                  username,
-                },
-              },
-            });
-            isValid = true;
-            router.push("/");
-          }
-        });
+        console.log(user);
+        // users.forEach((user) => {
+        //   if (user.username == username && user.password == password) {
+        //     dispatch({
+        //       type: "SET_USER",
+        //       payload: {
+        //         user: {
+        //           uid: user._id,
+        //           username,
+        //         },
+        //       },
+        //     });
+        //     isValid = true;
+        //     router.push("/");
+        //   }
+        // });
 
         !isValid
           ? setMessage("Wrong username or password. Please try again.")
@@ -63,7 +64,6 @@ const SignIn = () => {
             user: {
               uid: res.data.data._id,
               username,
-              password,
             },
           },
         });

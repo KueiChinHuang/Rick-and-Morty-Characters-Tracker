@@ -10,6 +10,7 @@ export default async (req, res) => {
   } = req;
 
   switch (method) {
+    // Get one user with uid
     case "GET":
       try {
         const user = await User.findById(id);
@@ -26,6 +27,7 @@ export default async (req, res) => {
         res.status(400).json({ success: false, errRes });
       }
       break;
+    // Update one user with uid
     case "PUT":
       try {
         const user = await User.findByIdAndUpdate(id, req.body, {
@@ -45,6 +47,7 @@ export default async (req, res) => {
         res.status(400).json({ success: false, errRes });
       }
       break;
+    // Detele one user with uid
     case "DELETE":
       try {
         const deletedUser = await User.deleteOne({ _id: id });
