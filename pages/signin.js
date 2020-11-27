@@ -19,32 +19,26 @@ const SignIn = () => {
       setMessage("Please enter your username and password");
     } else {
       try {
-        let isValid = false;
-        const res = await Axios.get("/api/user/login");
-        const user = res.data.data;
+        const res = await Axios.post("/api/user/login", { username, password });
 
-        console.log(user);
-        // users.forEach((user) => {
-        //   if (user.username == username && user.password == password) {
-        //     dispatch({
-        //       type: "SET_USER",
-        //       payload: {
-        //         user: {
-        //           uid: user._id,
-        //           username,
-        //         },
-        //       },
-        //     });
-        //     isValid = true;
-        //     router.push("/");
-        //   }
-        // });
-
-        !isValid
-          ? setMessage("Wrong username or password. Please try again.")
-          : setMessage(`Welcome back, ${username}!`);
+        if (res.data.success) {
+          const user = res.data.data;
+          dispatch({
+            type: "SET_USER",
+            payload: {
+              user: {
+                uid: user._id,
+                username: user.username,
+              },
+            },
+          });
+          setMessage(`Welcome back, ${username}!`);
+          router.push("/");
+        } else {
+          setMessage("Wrong username or password. Please try again.");
+        }
       } catch (error) {
-        console.log("Can't get users.", error);
+        console.log("Login API failed", error);
       }
     }
   };
