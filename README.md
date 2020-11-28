@@ -21,7 +21,8 @@
 
 ![Rick-and-Morty-Characters-Tracker.png](Rick-and-Morty-Characters-Tracker.png)
 
-# Day 4 of #100DaysOfCode
+# #100DaysOfCode
+## Day 4 of #100DaysOfCode
 
 **Next.js + Docker**
 
@@ -49,7 +50,7 @@
 2. Getting start w/ Next.JS + Docker (09 May 2019) [https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker](https://www.ballistiq.com/blog/Getting-started-w-Next-JS-Docker)
 3. How to Get Started with Docker (Aug 14, 2020) [How to Get Started with Docker](https://youtu.be/iqqDU2crIEQ)
 
-# Day 5 of #100DaysOfCode
+## Day 5 of #100DaysOfCode
 
 **Next.js & SSR**
 
@@ -65,7 +66,7 @@
 4. Fetching Data in Next.js (Jul 21, 2020) [Next.js 9.3+ Data Fetching Explained: getServerSideProps(), getStaticProps(), and getStaticPaths()](https://youtu.be/eWObYvG0-lI)
 5. How to Integrate MongoDB Into Your Next.js App (Sep 10, 2020) [https://developer.mongodb.com/how-to/nextjs-with-mongodb](https://developer.mongodb.com/how-to/nextjs-with-mongodb)
 
-# Day 6 of #100DaysOfCode
+## Day 6 of #100DaysOfCode
 
 **Fixing timeout issue**
 
@@ -97,7 +98,7 @@
 
    - I built the back-end application endpoints in pages/api that can fetch my data from external API, but it seems useless because I can&#39;t use that in &quot;getStaticProps()&quot; and &quot;getServerSideProps()&quot;. I currently use some stupid way to get the external data in my library.
 
-# Day 7 of #100DaysOfCode
+## Day 7 of #100DaysOfCode
 
 **API and User Authentication**
 
@@ -115,7 +116,7 @@
 1. The Ultimate Guide to Next.js Authentication with Auth0 (October 10, 2019) [https://auth0.com/blog/ultimate-guide-nextjs-authentication-auth0/](https://auth0.com/blog/ultimate-guide-nextjs-authentication-auth0/)
 2. @auth0/nextjs-auth0 (README.md: 15 days ago) [https://github.com/auth0/nextjs-auth0](https://github.com/auth0/nextjs-auth0)
 
-# Day 8 of #100DaysOfCode
+## Day 8 of #100DaysOfCode
 
 **User Sessions**
 
@@ -132,7 +133,7 @@
 3. NextJS + MongoDB (Mar 26, 2020) [Build an app with NextJS and MongoDB - Part 1](https://youtu.be/tt9hws5JGRc)
 4. Redirect in Next.js [https://nextjs.org/docs/api-reference/next/router#routerpush](https://nextjs.org/docs/api-reference/next/router#routerpush)
 
-# Day 9 of #100DaysOfCode
+## Day 9 of #100DaysOfCode
 
 **Users and their favorites**
 
@@ -143,7 +144,7 @@
 
 1. If fetching data on client side, SWR is super fast --\&gt; [React Hooks SWR: Fetch, Cache and ReValidate server data with SWR and Axios](https://youtu.be/a7JigiLw_OY)
 
-# Day 10 of #100DaysOfCode
+## Day 10 of #100DaysOfCode
 
 **First State Finished**
 
@@ -155,13 +156,13 @@
    - Error message: ModuleNotFoundError: Module not found: Error: Can't resolve ... Error: > Build failed because of webpack errors
    - The reply I got from their technican: [https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error](https://vercel.com/knowledge/how-do-i-resolve-a-module-not-found-error)
 
-# Day 11 of #100DaysOfCode
+## Day 11 of #100DaysOfCode
 
 1. I suddenly realize that the thing I learned on Day 9 is the best solution of the challenge I met on Day 6!!!!
 2. Debug on Vercel deployment. Preview deployment can&#39;t get the environment variables like master branch.
 3. Working on User&#39;s Favorite page.
 
-# Day 12 of #100DaysOfCode
+## Day 12 of #100DaysOfCode
 
 **Progress:**
 
@@ -189,7 +190,7 @@ Favorite page:
 1. filter with dropdown menu
 2. set up a reducer + context
 
-# Day 13 of #100DaysOfCode
+## Day 13 of #100DaysOfCode
 
 **Progress:**
 
@@ -220,7 +221,7 @@ Favorite page:
 1. filter with dropdown menu
 2. set up a reducer + context
 
-# Day 14 of #100DaysOfCode
+## Day 14 of #100DaysOfCode
 
 **Progress:**
 
@@ -243,7 +244,7 @@ Comments + MongoDB:
 1. filter with dropdown menu
 2. set up a reducer + context
 
-# Day 15 of #100DaysOfCode
+## Day 15 of #100DaysOfCode
 
 **Progress:**
 
