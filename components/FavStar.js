@@ -46,7 +46,9 @@ export default function FavStar({ character }) {
       className={styles.favstar}
       onClick={() => handleFavorite(character.id, character.name)}
     >
-      {favIDs && favIDs.includes(character.id) ? (
+      {/* If no favIDs, don't show star at all */}
+      {!favIDs ? null : // If favIDs data exist, show start status
+      favIDs.includes(character.id) ? (
         <div title="Remove from favorite">
           <StarIcon color="primary" />
         </div>

@@ -1,6 +1,5 @@
 .favstar {
-  margin-bottom: 2px;
-  align-self: flex-end;
+  margin: 0 0.5em;
 }
 
 .favstar:hover,

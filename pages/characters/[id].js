@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import { getFirstPageData } from "../../lib/chars";
-import styles from "../../styles/layout.module.css";
+import styles from "../../styles/details.module.css";
 import FavStar from "../../components/FavStar";
 import Comments from "../../components/Comments";
 import { cache } from "swr";
@@ -55,27 +55,30 @@ export default function CharactersDetails({ charData }) {
     <Layout>
       {router.isFallback ? (
         <div className={styles.loadingContainer}>
-          <ReactLoading
-            type={"bubbles"}
-            color={"lightblue"}
-            width={"20%"}
-            className={styles.loading}
-          />
+          <ReactLoading type={"bubbles"} color={"lightblue"} width={"20%"} />
         </div>
       ) : (
         <div>
           <title>{charData.name} | Rick and Morty Character Tracker</title>
-          {/* User can manage favorite only when they login */}
-          {user ? <FavStar character={charData} /> : null}
-          <img src={charData.image}></img>
-          <h1 className={styles.headingXl}>{charData.name}</h1>
-          <div className={styles.lightText}>
-            Location: {charData.location.name}
+          <div className={styles.characterInfo}>
+            {/* <div className={styles.starContainer}></div> */}
+            <img src={charData.image}></img>
+            <div className={styles.title}>
+              <h1 className={styles.headingXl}>{charData.name}</h1>
+
+              {/* User can manage favorite only when they login */}
+              {user ? <FavStar character={charData} /> : null}
+            </div>
+            <div className={styles.content}>
+              <div className={styles.lightText}>
+                Location: {charData.location.name}
+              </div>
+              <div>Status: {charData.status}</div>
+              <div>Species: {charData.species}</div>
+              <div>Gender: {charData.gender}</div>
+              <div>Type: {charData.type}</div>
+            </div>
           </div>
-          <div>Status: {charData.status}</div>
-          <div>Species: {charData.species}</div>
-          <div>Gender: {charData.gender}</div>
-          <div>Type: {charData.type}</div>
           <Comments cid={charData.id} />
         </div>
       )}

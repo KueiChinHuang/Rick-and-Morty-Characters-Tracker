@@ -12,6 +12,10 @@ const Cards = ({ characterData }) => {
       {/* Create each card */}
       {characterData.map((character, i) => (
         <div className={styles.card} key={i}>
+          <div className={styles.starContainer}>
+            {/* User can manage favorite only when they login */}
+            {!user ? null : <FavStar character={character} />}
+          </div>
           <img
             className={styles.img}
             src={character.image}
@@ -19,8 +23,6 @@ const Cards = ({ characterData }) => {
             height="150"
           />
           <div className={styles.content}>
-            {/* User can manage favorite only when they login */}
-            {!user ? null : <FavStar character={character} />}
             <div className={styles.title}>
               <Link href="/characters/[id]" as={`/characters/${character.id}`}>
                 <a title={character.name}>

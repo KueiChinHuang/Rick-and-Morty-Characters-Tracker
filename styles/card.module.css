@@ -42,6 +42,12 @@
   flex-direction: column;
 }
 
+.starContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .title {
   color: #0070f3;
   font-weight: bold;

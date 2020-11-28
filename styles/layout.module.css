@@ -88,11 +88,11 @@
   color: inherit;
 }
 
-.padding1px {
+/* .padding1px {
   padding-top: 1px;
-}
+} */
 
-.list {
+/* .list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -100,11 +100,11 @@
 
 .listItem {
   margin: 0 0 1.25rem;
-}
+} */
 
-.lightText {
+/* .lightText {
   color: #999;
-}
+} */
 
 .backToHome {
   margin: 3rem 0;
@@ -122,12 +122,12 @@
   color: darkblue;
 }
 
-.loadingContainer {
+/* .loadingContainer {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-}
+} */
 
 .subpage {
   margin: 0 6em;
