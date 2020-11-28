@@ -22,7 +22,7 @@ This project is a part of my interview process as well as my #100DaysOfCode prog
 ![Rick-and-Morty-Characters-Tracker.png](Rick-and-Morty-Characters-Tracker.png)
 
 # #100DaysOfCode
-Check out my whole proecss at my twitter 👉 [@KC78215273](https://twitter.com/KC78215273)
+Check out my whole proecss at twitter 👉 [@KC78215273](https://twitter.com/KC78215273)
 ### Day 4 of #100DaysOfCode
 
 **Next.js + Docker**
