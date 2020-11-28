@@ -4,6 +4,20 @@
 
 [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
 
+
+# Project Introduction
+
+1. Language & Framework: Next.js
+2. User stories: User can list, filter, and save as favorites characters from Rick and Morty show
+3. API: [https://rickandmortyapi.com/documentation/#rest](https://rickandmortyapi.com/documentation/#rest)
+4. Database: MongoDB
+5. Technical achievements:
+      1. SSR & SSG: get static data when rendering / building
+      2. SWR + Axios: fetch dynamic data
+      2. bcrypt to hash password
+
+![Rick-and-Morty-Characters-Tracker.png](Rick-and-Morty-Characters-Tracker.png)
+
 # Day 4 of #100DaysOfCode
 
 **Next.js + Docker**
