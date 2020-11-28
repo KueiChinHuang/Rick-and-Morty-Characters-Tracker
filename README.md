@@ -1,8 +1,12 @@
 
 
-# Project Introduction
+# Rick-and-Morty-Characters-Tracker
 
-LIVE LINK: [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
+## LIVE LINK: 
+
+[https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
+
+## Project Introduction
 
 > This project is a part of my interview process as well as my #100DaysOfCode progress. I'm opened to any advice and suggestion!
 
