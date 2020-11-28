@@ -1,11 +1,12 @@
-> This project is a part of my interview process as well as my #100DaysOfCode progress. I'm opened to any advice and suggestion!
+
+
+# Project Introduction
 
 ## LIVE LINK: 
 
 [https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/](https://rick-and-morty-characters-tracker.kueichinhuang.vercel.app/)
 
-
-# Project Introduction
+> This project is a part of my interview process as well as my #100DaysOfCode progress. I'm opened to any advice and suggestion!
 
 1. Language & Framework: Next.js
 2. User stories: User can list, filter, and save as favorites characters from Rick and Morty show
