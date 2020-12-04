@@ -4,7 +4,7 @@ import { useStateValue } from "../context/StateProvider";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ username }, dispatch] = useStateValue();
   const router = useRouter();
 
   const signOut = () => {
@@ -16,13 +16,11 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      {user ? (
+      {username ? (
         <>
           <span>
-            Hello, <strong>{user.username}</strong>!
+            Hello, <strong>{username}</strong>!
           </span>
-
-          <span>UID: {user.uid}</span>
 
           <div className={styles.btn} onClick={signOut}>
             Sign Out

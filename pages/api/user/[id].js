@@ -5,7 +5,7 @@ dbConnect();
 
 export default async (req, res) => {
   const {
-    query: { id },
+    user: { uid },
     method,
   } = req;
 
@@ -13,7 +13,7 @@ export default async (req, res) => {
     // Get one user with uid
     case "GET":
       try {
-        const user = await User.findById(id);
+        const user = await User.findById(uid);
 
         if (!user) {
           return res
@@ -22,41 +22,6 @@ export default async (req, res) => {
         }
 
         res.status(200).json({ success: true, data: user });
-      } catch (error) {
-        const errRes = error.response;
-        res.status(400).json({ success: false, errRes });
-      }
-      break;
-    // Update one user with uid
-    case "PUT":
-      try {
-        const user = await User.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-        });
-
-        if (!user) {
-          return res
-            .status(400)
-            .json({ success: false, message: "Can't find the user." });
-        }
-
-        res.status(200).json({ success: true, data: user });
-      } catch (error) {
-        const errRes = error.response;
-        res.status(400).json({ success: false, errRes });
-      }
-      break;
-    // Detele one user with uid
-    case "DELETE":
-      try {
-        const deletedUser = await User.deleteOne({ _id: id });
-
-        if (!deletedUser) {
-          return res.status(400).json({ success: false });
-        }
-
-        res.status(200).json({ success: true, data: {} });
       } catch (error) {
         const errRes = error.response;
         res.status(400).json({ success: false, errRes });

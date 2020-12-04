@@ -1,5 +1,5 @@
 export const initialState = {
-  user: null,
+  username: null,
   characters: null,
   options_character: null,
   options_name: null,
@@ -12,10 +12,9 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
       return {
         ...state,
-        user: action.payload.user,
+        username: action.payload.username,
       };
 
     case "LOG_OUT":

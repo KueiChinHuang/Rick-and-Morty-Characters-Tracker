@@ -6,23 +6,24 @@ import { useRouter } from "next/router";
 import { useStateValue } from "../context/StateProvider";
 import { useEffect } from "react";
 import StarIcon from "@material-ui/icons/Star";
+import jwt from "jsonwebtoken";
 
 const name = "Rick and Morty Character Tracker";
 export const siteTitle = "Created by Kuei-Chin Huang";
 
 export default function Layout({ children, home }) {
   const router = useRouter();
-  const [{ user }, dispatch] = useStateValue();
+  const [{ username }, dispatch] = useStateValue();
 
   useEffect(() => {
-    const authCheck = localStorage.getItem("user");
+    const username = localStorage.getItem("username");
     const characterCheck = localStorage.getItem("characters");
 
-    if (authCheck) {
+    if (username) {
       dispatch({
         type: "SET_USER",
         payload: {
-          user: JSON.parse(authCheck),
+          username: username,
         },
       });
     }
@@ -68,7 +69,7 @@ export default function Layout({ children, home }) {
             />
             <div className={styles.title}>
               <h1 className={styles.heading2Xl}>{name}</h1>
-              {user ? (
+              {username ? (
                 <Link href="/favorite">
                   <a className={styles.btn}>
                     My Favorite
@@ -96,7 +97,7 @@ export default function Layout({ children, home }) {
                 </Link>
               </h2>
 
-              {user ? (
+              {username ? (
                 <Link href="/favorite">
                   <a className={styles.btn}>
                     My Favorite
