@@ -1,5 +1,6 @@
 export const initialState = {
   username: null,
+  token: null,
   characters: null,
   options_character: null,
   options_name: null,
@@ -12,15 +13,22 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
+      localStorage.setItem("username", action.payload.username);
+      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         username: action.payload.username,
+        token: action.payload.token,
       };
 
     case "LOG_OUT":
-      localStorage.removeItem("user");
-      localStorage.removeItem("characters");
-      return initialState;
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        username: null,
+        token: null,
+      };
 
     case "SET_CHARACTERS":
       localStorage.setItem(

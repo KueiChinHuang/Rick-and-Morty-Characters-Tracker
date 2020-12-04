@@ -11,11 +11,9 @@ const authenticated = (fn) => async (req, res) => {
     token,
     process.env.ACCESS_TOKEN_SECRET,
     async function (err, user) {
-      if (!err && user) {
-        req.user = user;
-        return await fn(req, res);
-      }
-      return res.status(403).send({ message: "Invalid token" });
+      if (err) return res.status(403).send({ message: "Invalid token" });
+      req.user = user;
+      return await fn(req, res);
     }
   );
 };
@@ -31,8 +29,8 @@ export default authenticated(async (req, res) => {
     case "GET":
       try {
         const user = await User.findById(uid);
-        const favorite = user.favorite;
-        res.status(200).json({ success: true, data: favorite });
+        const favIDs = user.favorite;
+        res.status(200).json({ success: true, favIDs });
       } catch (error) {
         res.status(400).json({ success: false, error });
       }

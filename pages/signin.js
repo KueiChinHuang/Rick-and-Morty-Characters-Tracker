@@ -21,19 +21,13 @@ const SignIn = () => {
       try {
         const res = await Axios.post("/api/user/login", { username, password });
         if (res.data.accessToken) {
-          localStorage.setItem("token", res.data.accessToken);
-          localStorage.setItem("username", username);
-          // console.log(res.data);
-          // const user = res.data.data;
-          // dispatch({
-          //   type: "SET_USER",
-          //   payload: {
-          //     user: {
-          //       uid: user._id,
-          //       username: user.username,
-          //     },
-          //   },
-          // });
+          dispatch({
+            type: "SET_USER",
+            payload: {
+              username: username,
+              token: res.data.accessToken,
+            },
+          });
           setMessage(`Welcome back, ${username}!`);
           router.push("/");
         } else {

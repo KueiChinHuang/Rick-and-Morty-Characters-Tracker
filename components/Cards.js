@@ -4,7 +4,7 @@ import FavStar from "./FavStar";
 import { useStateValue } from "../context/StateProvider";
 
 const Cards = ({ characterData }) => {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ username }, dispatch] = useStateValue();
 
   return (
     // A container for all the cards
@@ -14,7 +14,7 @@ const Cards = ({ characterData }) => {
         <div className={styles.card} key={i}>
           <div className={styles.starContainer}>
             {/* User can manage favorite only when they login */}
-            {!user ? null : <FavStar character={character} />}
+            {!username ? null : <FavStar character={character} />}
           </div>
           <img
             className={styles.img}

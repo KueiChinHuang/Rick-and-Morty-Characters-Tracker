@@ -6,11 +6,16 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useStateValue } from "../context/StateProvider";
 
 export default function FavStar({ character }) {
-  const [{ user }, dispatch] = useStateValue();
-  const { data: favIDs } = useSWR(
-    user ? `/api/user/${user.uid}` : null,
-    (url) => Axios(url).then((r) => r.data.data.favorite)
-  );
+  const [{ username, token }, dispatch] = useStateValue();
+
+  const fetcher = (url) =>
+    Axios.get(url, {
+      headers: {
+        Authorization: token,
+      },
+    }).then((r) => r.data.favIDs);
+
+  const { data: favIDs } = useSWR(username ? "/api/favorite" : null, fetcher);
 
   const handleFavorite = async (cid, cname) => {
     // If this character is already one of user's favorites, REMOVE it
@@ -20,7 +25,7 @@ export default function FavStar({ character }) {
           `Are you sure you want to remove ${cname} from favorite?`
         )
       ) {
-        await Axios.put(`/api/user/${user.uid}`, {
+        await Axios.put(`/api/favorite`, {
           favorite: favIDs.filter((p) => p !== cid),
         })
           .then((res) => console.log("DB updated:", res.data.data.favorite))
@@ -30,15 +35,15 @@ export default function FavStar({ character }) {
 
     // If this character is NOT yet a user's favorite, ADD it
     else {
-      await Axios.put(`/api/user/${user.uid}`, {
+      await Axios.put(`/api/favorite`, {
         favorite: favIDs.concat(cid),
       })
         .then((res) => console.log("DB updated:", res.data.data.favorite))
         .catch((error) => console.log("Failed to update DB:", error));
     }
 
-    trigger(`/api/user/${user.uid}`);
-    trigger(`/api/user/${user.uid}/favorite`);
+    trigger(`/api/favorite`);
+    // trigger(`/api/user/${user.uid}/favorite`);
   };
 
   return (
@@ -47,8 +52,7 @@ export default function FavStar({ character }) {
       onClick={() => handleFavorite(character.id, character.name)}
     >
       {/* If no favIDs, don't show star at all */}
-      {!favIDs ? null : // If favIDs data exist, show start status
-      favIDs.includes(character.id) ? (
+      {!favIDs ? null : favIDs.includes(character.id) ? ( // If favIDs data exist, show start status
         <div title="Remove from favorite">
           <StarIcon color="primary" />
         </div>

@@ -16,23 +16,25 @@ export default function Layout({ children, home }) {
   const [{ username }, dispatch] = useStateValue();
 
   useEffect(() => {
-    const username = localStorage.getItem("username");
-    const characterCheck = localStorage.getItem("characters");
+    const characters = localStorage.getItem("characters");
+    const token = localStorage.getItem("token");
+    const uname = localStorage.getItem("username");
 
-    if (username) {
+    if (token) {
       dispatch({
         type: "SET_USER",
         payload: {
-          username: username,
+          username: uname,
+          token: token,
         },
       });
     }
 
-    if (characterCheck) {
+    if (characters) {
       dispatch({
         type: "SET_CHARACTERS",
         payload: {
-          characters: JSON.parse(characterCheck),
+          characters: JSON.parse(characters),
         },
       });
     }
