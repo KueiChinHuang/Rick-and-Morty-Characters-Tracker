@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function CharactersDetails({ charData }) {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ username }, dispatch] = useStateValue();
   const router = useRouter();
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function CharactersDetails({ charData }) {
               <h1 className={styles.headingXl}>{charData.name}</h1>
 
               {/* User can manage favorite only when they login */}
-              {user ? <FavStar character={charData} /> : null}
+              {username ? <FavStar character={charData} /> : null}
             </div>
             <div className={styles.content}>
               <div className={styles.lightText}>
