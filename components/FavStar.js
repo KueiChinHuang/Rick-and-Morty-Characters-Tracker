@@ -7,43 +7,43 @@ import { useStateValue } from "../context/StateProvider";
 
 export default function FavStar({ character }) {
   const [{ username, token }, dispatch] = useStateValue();
+  const favUrl = "/api/favorite";
+  const requestHeader = { headers: { Authorization: token } };
 
+  // Set up swr to fetch data dynamically
   const fetcher = (url) =>
-    Axios.get(url, {
-      headers: {
-        Authorization: token,
-      },
-    }).then((r) => r.data.favIDs);
+    Axios.get(url, requestHeader).then((r) => r.data.favIDs);
 
-  const { data: favIDs } = useSWR(username ? "/api/favorite" : null, fetcher);
+  const { data: favIDs } = useSWR(username ? favUrl : null, fetcher);
 
+  // Function to handle add / remove to favorite
   const handleFavorite = async (cid, cname) => {
     // If this character is already one of user's favorites, REMOVE it
     if (favIDs.includes(cid)) {
-      if (
-        window.confirm(
-          `Are you sure you want to remove ${cname} from favorite?`
-        )
-      ) {
-        await Axios.put(`/api/favorite`, {
+      const userConfirm = window.confirm(
+        `Are you sure you want to remove ${cname} from favorite?`
+      );
+      if (userConfirm) {
+        const removeData = {
           favorite: favIDs.filter((p) => p !== cid),
-        })
-          .then((res) => console.log("DB updated:", res.data.data.favorite))
+        };
+        await Axios.put(favUrl, removeData, requestHeader)
+          .then((res) => console.log("DB updated:", res.data.favIDs))
           .catch((error) => console.log("Failed to update DB:", error));
       }
     }
 
     // If this character is NOT yet a user's favorite, ADD it
     else {
-      await Axios.put(`/api/favorite`, {
-        favorite: favIDs.concat(cid),
-      })
-        .then((res) => console.log("DB updated:", res.data.data.favorite))
+      const insertData = {
+        favorite: favIDs.concat(cid).sort((a, b) => a - b),
+      };
+      await Axios.put(favUrl, insertData, requestHeader)
+        .then((res) => console.log("DB updated:", res.data.favIDs))
         .catch((error) => console.log("Failed to update DB:", error));
     }
 
-    trigger(`/api/favorite`);
-    // trigger(`/api/user/${user.uid}/favorite`);
+    trigger(favUrl);
   };
 
   return (

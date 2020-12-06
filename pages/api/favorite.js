@@ -36,6 +36,27 @@ export default authenticated(async (req, res) => {
       }
       break;
 
+    // Update one user with uid
+    case "PUT":
+      try {
+        const user = await User.findByIdAndUpdate(uid, req.body, {
+          new: true,
+          runValidators: true,
+        });
+
+        if (!user) {
+          return res
+            .status(400)
+            .json({ success: false, message: "Can't find the user." });
+        }
+
+        res.status(200).json({ success: true, favIDs: user.favorite });
+      } catch (error) {
+        const errRes = error.response;
+        res.status(400).json({ success: false, errRes });
+      }
+      break;
+
     // Method doesn't exist
     default:
       res.status(400).json({ success: false, error: "Method is wrong." });
