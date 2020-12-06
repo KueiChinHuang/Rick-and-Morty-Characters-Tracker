@@ -1,6 +1,8 @@
 import dbConnect from "../../util/dbConnect";
 import User from "../../models/User";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 dbConnect();
 
 export default async (req, res) => {
@@ -24,7 +26,11 @@ export default async (req, res) => {
           username: req.body.username,
           password: hashedPassword,
         });
-        res.status(201).json({ success: true, data: user });
+        const accessToken = jwt.sign(
+          { uid: user._id },
+          process.env.ACCESS_TOKEN_SECRET
+        );
+        res.status(201).json({ accessToken: accessToken });
       } catch (error) {
         let message = "";
         if (error.code === 11000) message = "User existed";

@@ -51,13 +51,11 @@ const SignIn = () => {
         dispatch({
           type: "SET_USER",
           payload: {
-            user: {
-              uid: res.data.data._id,
-              username,
-            },
+            username: username,
+            token: res.data.accessToken,
           },
         });
-        setMessage("Registered successfully.");
+        setMessage(`Welcome, ${username}! You registered successfully.`);
         router.push("/");
       } catch (error) {
         setMessage("This username is existed. Please log in.");

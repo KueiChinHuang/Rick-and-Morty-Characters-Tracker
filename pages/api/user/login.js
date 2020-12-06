@@ -22,7 +22,6 @@ export default async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET
           );
           res.json({ accessToken: accessToken });
-          // res.status(200).json({ success: true, data: user });
         } else {
           res.status(200).json({ success: false, message: "Invalid user." });
         }
