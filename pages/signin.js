@@ -19,7 +19,7 @@ const SignIn = () => {
       setMessage("Please enter your username and password");
     } else {
       try {
-        const res = await Axios.post("/api/user/login", { username, password });
+        const res = await Axios.post("/api/login", { username, password });
         if (res.data.accessToken) {
           dispatch({
             type: "SET_USER",
