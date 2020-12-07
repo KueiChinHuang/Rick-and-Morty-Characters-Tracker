@@ -40,15 +40,7 @@ export default function CharactersDetails({ charData }) {
   const router = useRouter();
 
   useEffect(() => {
-    cache
-      .keys()
-      .filter((key) =>
-        key.startsWith(
-          cache
-            .serializeKey(["https://rickandmortyapi.com/api/character/"])
-            .forEach((key) => cache.delete(key))
-        )
-      );
+    // cache.clear();
   }, []);
 
   return (

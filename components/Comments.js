@@ -1,5 +1,5 @@
 import styles from "../styles/comments.module.css";
-import useSWR, { trigger } from "swr";
+import useSWR, { trigger, mutate, cache } from "swr";
 import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
@@ -11,11 +11,11 @@ import { useRouter } from "next/router";
 import { useStateValue } from "../context/StateProvider";
 
 const Comments = ({ cid }) => {
-  const [{ user, characters, options_character }, dispatch] = useStateValue();
+  const [{ options_character }, dispatch] = useStateValue();
 
   const router = useRouter();
-  const { data: commentData } = useSWR(`/api/comment/${cid}`, (url) =>
-    Axios.get(url).then((r) => r.data.data)
+  const { data: commentData } = useSWR(`/api/comment/?${cid}`, (url) =>
+    Axios.get(url, { params: { cid: cid } }).then((r) => r.data.comments)
   );
 
   const [author, setAuthor] = useState("");
@@ -23,6 +23,7 @@ const Comments = ({ cid }) => {
   const [message, setMessage] = useState("");
 
   const goToAuthor = (author) => {
+    cache.clear();
     router.push(`/characters/${author}`);
   };
 
@@ -33,12 +34,13 @@ const Comments = ({ cid }) => {
       setMessage("Please try to use another character as the author.");
     } else {
       try {
-        await Axios.post("/api/comment", {
+        const newComment = {
           cid: cid,
           author: author,
           content: content,
-        });
-        trigger(`/api/comment/${cid}`);
+        };
+        await Axios.post("/api/comment", newComment);
+        trigger(`/api/comment/?${cid}`);
         setContent("");
         console.log("Submit succeed.");
         setMessage("");
