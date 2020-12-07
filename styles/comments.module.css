@@ -11,6 +11,12 @@
   margin: 10px;
 }
 
+@media (max-width: 1000px) {
+  .history > * {
+    font-size: smaller;
+  }
+}
+
 .authorBtn {
   color: rgb(95, 182, 216);
 }
