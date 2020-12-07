@@ -41,7 +41,7 @@ export default function CharactersDetails({ charData }) {
 
   useEffect(() => {
     window.scroll({
-      top: 0,
+      top: 300,
       behavior: "smooth",
     });
   }, [charData]);
