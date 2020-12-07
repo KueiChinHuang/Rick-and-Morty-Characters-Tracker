@@ -1,9 +1,8 @@
 import styles from "../styles/comments.module.css";
-import useSWR, { trigger, mutate, cache } from "swr";
+import useSWR, { trigger } from "swr";
 import Axios from "axios";
 import Author from "./Author";
 import Select from "react-select";
-import Link from "next/link";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { useState } from "react";
 import Date from "./Date";
@@ -23,7 +22,6 @@ const Comments = ({ cid }) => {
   const [message, setMessage] = useState("");
 
   const goToAuthor = (author) => {
-    cache.clear();
     router.push(`/characters/${author}`);
   };
 
