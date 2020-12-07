@@ -40,8 +40,11 @@ export default function CharactersDetails({ charData }) {
   const router = useRouter();
 
   useEffect(() => {
-    // cache.clear();
-  }, []);
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [charData]);
 
   return (
     <Layout>
