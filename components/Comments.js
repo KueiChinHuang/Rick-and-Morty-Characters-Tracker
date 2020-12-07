@@ -84,11 +84,14 @@ const Comments = ({ cid }) => {
             onChange={(e) => setAuthor(e.value)}
           />
         )}
-        <textarea
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-          placeholder="Leave your comment here..."
-        ></textarea>
+        <div className={styles.textarea}>
+          <textarea
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            placeholder="Leave your comment here..."
+            rows="3"
+          ></textarea>
+        </div>
         <input type="submit" value="Submit" />
       </form>
     </div>
